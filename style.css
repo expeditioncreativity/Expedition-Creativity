@@ -462,3 +462,130 @@ body {
 
 /* V6.5 incremental patch from uploaded V6.4 */
 .expedition-card .tag{font-size:11px;padding:4px 8px}.expedition-card a.btn{white-space:nowrap}.follow-panel{background:linear-gradient(135deg,var(--gold),var(--goldSoft))!important;color:#080808!important;border-color:transparent!important}.follow-panel h3{color:#080808!important}.follow-panel a{background:rgba(0,0,0,.08)!important;border-color:rgba(0,0,0,.16)!important;color:#080808!important}.follow-panel small{color:rgba(0,0,0,.68)!important}.top-float{display:inline-flex!important;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--gold),var(--goldSoft))!important;color:#080808!important;border:0!important;font-weight:950}.filter-btn.active{color:#080808!important;background:linear-gradient(135deg,var(--gold),var(--goldSoft))!important;border-color:transparent!important}.filter-btn.reset-filter{background:rgba(255,255,255,.08);color:var(--white)}.filter-summary{color:var(--silver);margin:-20px 0 28px}.track-filter-card[hidden]{display:none!important}.contact-options{align-items:stretch}.contact-options .card{min-width:0}.contact-options .card .btn{width:100%;max-width:320px;text-align:center}@media(max-width:860px){body{padding-top:122px}.nav-inner{display:grid!important;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}.brand{grid-column:1/3;min-width:0}.brand img{width:34px!important;height:34px!important}.brand span{display:inline!important;font-size:18px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.menu-label{grid-column:3;justify-self:end;padding:8px 12px;font-size:14px}.nav-links{grid-column:1/4;width:100%}.search-wrap{grid-column:1/4;width:100%;margin-left:0!important}.search-wrap input{padding:11px 14px}.contact-options{grid-template-columns:1fr!important}.contact-options .card{padding:22px!important}.contact-options .card p{font-size:16px;line-height:1.55}.follow-panel{bottom:72px!important}.follow-toggle{bottom:70px!important;z-index:240}.top-float{right:16px!important;bottom:18px!important;z-index:238;padding:10px 12px;font-size:13px}}
+
+
+/* V6.6 incremental updates */
+:root{--expeditionBlue:#184A78;--youtubeRed:#FF0000;--linkedinBlue:#0077B5}
+.site-nav{background:linear-gradient(135deg,var(--gold),var(--goldSoft))!important;border-bottom:1px solid rgba(0,0,0,.28);box-shadow:0 10px 32px rgba(0,0,0,.32)}
+.brand,.nav-links,.nav-links a{color:#111!important}.nav-links a{font-weight:900;padding:7px 10px;border-radius:999px}.nav-links a:hover{background:var(--expeditionBlue);color:#fff!important}.menu-label{color:#111;background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.22)}.search-wrap input{background:rgba(0,0,0,.16);border-color:rgba(0,0,0,.25);color:#111}.search-wrap input::placeholder{color:rgba(0,0,0,.62)}
+.follow-toggle{background:linear-gradient(135deg,var(--gold),var(--goldSoft));color:#080808}.follow-panel{border-color:rgba(221,179,19,.55);box-shadow:0 24px 80px rgba(0,0,0,.58)}.follow-panel a:hover{border-color:rgba(221,179,19,.65);background:rgba(221,179,19,.08)}
+.track-card-tags{margin:8px 0 12px}.journey-layout{display:grid;grid-template-columns:1.35fr .65fr;gap:24px;align-items:stretch}.journey-copy strong{color:var(--gold)}.journey-quote blockquote{font-size:clamp(22px,2.4vw,32px)}
+.branded-contact{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.social-btn{width:100%;border:0;color:#fff!important;gap:9px;padding-left:18px;padding-right:18px;white-space:normal}.youtube-btn{background:var(--youtubeRed)!important}.linkedin-btn{background:var(--linkedinBlue)!important}.email-btn{background:linear-gradient(135deg,var(--gold),var(--goldSoft))!important;color:#080808!important;min-width:260px}.social-btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.about-hero{padding:120px 0 72px}.about-photo-placeholder{min-height:320px;border:1px dashed rgba(221,179,19,.55);border-radius:28px;display:grid;place-items:center;color:var(--gold);background:rgba(255,255,255,.035);text-align:center;padding:26px}.about-story strong{color:var(--gold)}
+@media(max-width:860px){.journey-layout,.branded-contact{grid-template-columns:1fr}.journey-quote{padding:22px}.email-btn{min-width:0}.nav-links a{color:#111!important}}
+
+
+/* V6.6.1 incremental design refinements */
+.nav-links a:hover{background:#000!important;color:var(--gold)!important;}
+.social-btn{min-height:54px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;line-height:1.15!important;}
+.email-btn{min-height:54px!important;padding-top:14px!important;padding-bottom:14px!important;}
+.expedition-card h3{min-height:64px!important;display:flex!important;align-items:flex-start!important;line-height:1.25!important;margin-bottom:12px!important;}
+.track-rail .expedition-card p{min-height:112px!important;}
+.track-rail .track-card-tags{min-height:86px!important;}
+.video iframe{width:100%!important;height:100%!important;border:0!important;}
+
+
+/* V6.6.2 polish fixes */
+.nav-links a:hover,
+.btn:hover,
+.filter-btn:hover,
+.social-btn:hover {
+  background:#050505 !important;
+  color:var(--gold) !important;
+  border-color:rgba(221,179,19,.55) !important;
+  filter:none !important;
+}
+.contact-options .card .btn,
+.branded-contact .social-btn,
+.email-btn,
+.youtube-btn,
+.linkedin-btn {
+  min-height:58px !important;
+  height:58px !important;
+  padding:0 22px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  line-height:1.05 !important;
+  flex-direction:row !important;
+  gap:8px !important;
+}
+.email-btn { white-space:nowrap !important; font-size:14px !important; }
+.track-rail .expedition-card,
+.grid-3 .expedition-card { display:flex !important; flex-direction:column !important; }
+.track-rail .expedition-card h3,
+.grid-3 .expedition-card h3 {
+  min-height:72px !important;
+  height:72px !important;
+  line-height:1.18 !important;
+  display:block !important;
+  margin:0 0 10px !important;
+  overflow:hidden !important;
+}
+.title-spacer { visibility:hidden; }
+.track-rail .track-card-tags,
+.grid-3 .track-card-tags {
+  min-height:76px !important;
+  margin:0 0 16px !important;
+  display:block !important;
+}
+.track-rail .expedition-card p,
+.grid-3 .expedition-card p {
+  min-height:118px !important;
+  margin-top:0 !important;
+}
+.track-rail .expedition-card .btn,
+.grid-3 .expedition-card .btn { margin-top:auto !important; }
+.track-hero + section .grid-2 { grid-template-columns:1fr !important; }
+.track-hero + section .panel { max-width:980px; margin:0 auto; }
+@media(max-width:860px){
+  .contact-options .card .btn,.branded-contact .social-btn,.email-btn,.youtube-btn,.linkedin-btn{height:auto!important;min-height:58px!important;white-space:normal!important;}
+  .track-rail .expedition-card h3,.grid-3 .expedition-card h3{height:auto!important;min-height:64px!important;}
+}
+
+
+/* V6.6.3 incremental alignment and navigation polish */
+.site-nav .brand img{
+  width:44px!important;
+  height:44px!important;
+  border-radius:50%!important;
+  object-fit:cover!important;
+  background:#050505!important;
+  border:2px solid #050505!important;
+  box-shadow:0 0 0 2px rgba(255,255,255,.38),0 4px 14px rgba(0,0,0,.28)!important;
+}
+.site-nav .brand{padding:0 5px 0 0!important;}
+.page-head{padding-bottom:28px!important;}
+.page-head + section{padding-top:18px!important;}
+.filter-bar{margin:0 0 18px!important;}
+.filter-summary{margin:0 0 26px!important;}
+.track-rail .expedition-card h3{height:72px!important;min-height:72px!important;margin-bottom:10px!important;}
+.track-rail .track-card-tags{min-height:76px!important;margin:0 0 16px!important;}
+.track-rail .expedition-card p{min-height:0!important;margin:0 0 16px!important;}
+.track-rail .expedition-card .btn{margin-top:auto!important;}
+.grid-3 .expedition-card h3{height:auto!important;min-height:54px!important;margin-bottom:10px!important;}
+.grid-3 .track-card-tags{min-height:0!important;margin:0 0 18px!important;}
+.grid-3 .expedition-card p{min-height:0!important;margin:0 0 14px!important;}
+.grid-3 .expedition-card p.track-subtitle{margin:0 0 10px!important;min-height:0!important;}
+.grid-3 .expedition-card p.track-subtitle + p{margin-top:0!important;}
+.grid-3 .expedition-card .btn{margin-top:auto!important;}
+@media(max-width:860px){
+  .site-nav .brand img{width:38px!important;height:38px!important;}
+  .page-head{padding-bottom:22px!important;}
+  .page-head + section{padding-top:14px!important;}
+}
+
+
+/* V6.6.4 Tracks filtering, search and card spacing */
+.track-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:8px 0 18px!important;}
+.track-keyword{flex:1 1 320px;min-width:260px;padding:13px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.045);color:var(--white);font-weight:750;}
+.track-keyword::placeholder{color:var(--muted);}
+.track-keyword:focus{outline:1px solid var(--gold);}
+.track-sort{padding:13px 16px;border-radius:999px;border:1px solid var(--line);background:#090909;color:var(--white);font-weight:850;}
+.filter-bar{margin:0 0 10px!important;}
+.filter-summary{margin:8px 0 24px!important;}
+.grid-3 .expedition-card{height:auto!important;min-height:0!important;overflow:visible!important;}
+.grid-3 .expedition-card p{min-height:0!important;margin:0 0 18px!important;}
+.grid-3 .expedition-card .btn{margin-top:18px!important;position:relative!important;z-index:1!important;}
+.grid-3 .track-card-tags{margin:0 0 18px!important;}
+.grid-3 .expedition-card h3{min-height:64px!important;}

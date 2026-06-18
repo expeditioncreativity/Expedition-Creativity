@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Dreamcatcher | Expedition Creativity</title><meta content="A tribal-flavoured orchestral soundtrack written for a 40+ piece orchestra, evoking wide horizons and ancient rhythms." name="description"/><link href="style.css" rel="stylesheet"/></head><body><nav class="site-nav"><div class="nav-inner"><a class="brand" href="index.html#top"><img alt="Expedition Creativity logo" src="logo-expedition-creativity.jpg"/><span>Expedition Creativity</span></a><input class="menu-checkbox" id="menu-toggle" type="checkbox"/><label class="menu-label" for="menu-toggle">☰ Menu</label><div class="nav-links"><a href="index.html#top">Home</a><a href="tracks.html">Tracks</a><a href="timeline.html">Timeline</a><a href="index.html#journey">Journey</a><a href="about.html">About</a><a href="index.html#behind">Behind The Score</a><a href="index.html#contact">Contact</a></div><div class="search-wrap"><input onfocus="runSearch(this)" oninput="runSearch(this)" placeholder="Search expeditions..." type="search"/></div><a class="subscribe" href="https://www.youtube.com/@expeditioncreativity" target="_blank">Subscribe</a></div></nav><div class="search-results" id="searchResults"></div><header class="track-hero" id="top"><div class="wrap featured-expedition"><div><div class="expedition-label">Nature Expedition · March 2022</div><h1>Dreamcatcher</h1><p class="lead" style="margin-top:24px">A Savannah Morning Journey</p><div class="actions" style="justify-content:flex-start;"><a class="btn gold" href="https://youtu.be/gCvYoYYdQKw" target="_blank">Watch on YouTube</a><a class="btn dark" href="tracks.html">Back to Tracks</a></div></div><div class="artwork"><img alt="Dreamcatcher artwork" src="https://img.youtube.com/vi/ZdDMN1Ewqn4/maxresdefault.jpg"/><a aria-label="Play An Elephant's Day In Life on YouTube" class="play-badge" href="track-chills-of-antarctica.html#watch">▶</a></div></div></header><main><section><div class="wrap grid-2"><h2>The Story</h2><p>Dreamcatcher is an early orchestral soundtrack written for a 40+ piece orchestra. It explores a frontier atmosphere with tribal colours, broad cinematic gestures and a sense of mystery.</p><p>The piece was created in Ableton Live 10 Standard, with sound effects obtained from Zapsplat. The mix status for this track is intentionally noted as unmixed, preserving the raw sketch-like energy of the composition.</p><div class="track-card-tags"><span class="tag">2020</span><span class="tag">Frontier</span><span class="tag">Orchestral</span><span class="tag">Ableton Live</span><span class="tag">BBCSO</span><span class="tag">Tribal</span><span class="tag">Americas</span></div></div></section><section><div class="wrap"><div class="section-head"><h2>Watch</h2><p class="lead">Listen with headphones for the full cinematic experience.</p></div><div class="video"><iframe allowfullscreen="" src="https://www.youtube.com/embed/ZdDMN1Ewqn4?rel=0&amp;modestbranding=0&amp;controls=1" title="An Elephant's Day In Life"></iframe></div></div></section></main><footer>Expedition Creativity · An Elephant's Day In Life</footer><script src="search.js"></script>
+<a class="top-float" href="#top">↑ Top</a>
+<div class="follow-panel" id="followPanel">
+<h3>🚀 Follow The Expedition</h3>
+<a href="https://www.youtube.com/@expeditioncreativity" target="_blank"><strong>▶ Subscribe on YouTube</strong><small>Main content hub for new expeditions.</small></a>
+<a href="track-blue-boy-planet.html"><strong>🌌 Latest Expedition</strong><small>Blue Boy Planet · May 2026</small></a>
+<a href="tracks.html"><strong>🎼 Explore Tracks</strong><small>Browse all cinematic expeditions.</small></a>
+<a href="timeline.html"><strong>📅 Release Timeline</strong><small>Follow the journey from 2022 onward.</small></a>
+<a href="mailto:hello@expeditioncreativity.com"><strong>✉ Contact</strong><small>hello@expeditioncreativity.com</small></a>
+</div>
+<button class="follow-toggle" onclick="toggleFollowPanel()" type="button">🚀 Follow</button>
+<script>
+function toggleFollowPanel(){
+  var panel = document.getElementById('followPanel');
+  if(panel) panel.classList.toggle('open');
+}
+document.addEventListener('click', function(e){
+  var panel = document.getElementById('followPanel');
+  var toggle = document.querySelector('.follow-toggle');
+  if(panel && toggle && !panel.contains(e.target) && !toggle.contains(e.target)){
+    panel.classList.remove('open');
+  }
+});
+</script>
+</body></html>
