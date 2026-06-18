@@ -589,3 +589,18 @@ body {
 .grid-3 .expedition-card .btn{margin-top:18px!important;position:relative!important;z-index:1!important;}
 .grid-3 .track-card-tags{margin:0 0 18px!important;}
 .grid-3 .expedition-card h3{min-height:64px!important;}
+
+
+/* V6.6.5 Tracks controls and filtering fixes */
+.track-tools{display:flex!important;gap:12px;align-items:center;flex-wrap:wrap;margin:6px 0 18px!important;}
+.track-search-form{display:flex;gap:10px;align-items:center;flex:1 1 520px;min-width:280px;}
+.track-keyword{flex:1 1 auto;min-width:220px;padding:13px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.045);color:var(--white);font-weight:750;}
+.track-keyword::placeholder{color:var(--muted);}
+.track-keyword:focus{outline:1px solid var(--gold);}
+.track-search-button{min-width:112px!important;padding:13px 18px!important;}
+.track-sort{padding:13px 16px;border-radius:999px;border:1px solid var(--line);background:#090909;color:var(--white);font-weight:850;}
+.filter-bar{margin:0 0 10px!important;}
+.filter-btn{cursor:pointer;}
+.grid-3 .expedition-card .btn{margin-top:auto!important;}
+.grid-3 .expedition-card p{margin-bottom:18px!important;}
+@media(max-width:700px){.track-search-form{flex-direction:column;align-items:stretch;flex-basis:100%;}.track-search-button,.track-sort{width:100%;}.track-keyword{width:100%;}}
