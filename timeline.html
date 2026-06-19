@@ -1,6 +1,78 @@
 <!DOCTYPE html>
 
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Timeline | Expedition Creativity</title><meta content="Release timeline of Expedition Creativity." name="description"/><link href="style.css" rel="stylesheet"/></head><body><nav class="site-nav"><div class="nav-inner"><a class="brand" href="index.html#top"><img alt="Expedition Creativity logo" src="logo-expedition-creativity.jpg"/><span>Expedition Creativity</span></a><input class="menu-checkbox" id="menu-toggle" type="checkbox"/><label class="menu-label" for="menu-toggle">☰ Menu</label><div class="nav-links"><a href="index.html#top">Home</a><a href="tracks.html">Tracks</a><a href="timeline.html">Timeline</a><a href="index.html#journey">Journey</a><a href="about.html">About</a><a href="index.html#behind">Behind The Score</a><a href="index.html#contact">Contact</a></div><div class="search-wrap"><input onfocus="runSearch(this)" oninput="runSearch(this)" placeholder="Search expeditions..." type="search"/></div><a class="subscribe" href="https://www.youtube.com/@expeditioncreativity" target="_blank">Subscribe</a></div></nav><div class="search-results" id="searchResults"></div><main><section class="page-head"><div class="wrap"><div class="eyebrow">Release Timeline</div><h1>The Expedition Timeline</h1><p class="lead" style="margin-top:24px">8 expeditions across 5 worlds, from early orchestral sketches to cinematic journeys beyond Earth.</p></div></section><section><div class="wrap"><div class="timeline"><div class="year-group"><div class="year">2020</div><div class="timeline-items"><div class="timeline-item"><div class="timeline-icon">🪶</div><div><h3>Dreamcatcher</h3><p>May 2020 · Frontier Expedition · A tribal-flavoured orchestral soundtrack written for a 40+ piece orchestra, evoking wide horizons and ancient rhythms.</p><div class="timeline-action"><a href="track-dreamcatcher.html">Explore Expedition →</a></div></div></div></div></div><div class="year-group"><div class="year">2021</div><div class="timeline-items"><div class="timeline-item"><div class="timeline-icon">🎬</div><div><h3>Orchestral Overture</h3><p>April 2021 · Origins Expedition · A cinematic overture written as the introduction to an imagined movie, opening with a mysterious French horn solo.</p><div class="timeline-action"><a href="track-orchestral-overture.html">Explore Expedition →</a></div></div></div></div></div><div class="year-group"><div class="year">2022</div><div class="timeline-items"><div class="timeline-item"><div class="timeline-icon">🐘</div><div><h3>An Elephant's Day In Life</h3><p>March 2022 · Nature Expedition · A gentle orchestral journey following a young elephant awakening on the African savannah at dawn.</p><div class="timeline-action"><a href="track-an-elephants-day-in-life.html">Explore Expedition →</a></div></div></div></div></div><div class="year-group"><div class="year">2023</div><div class="timeline-items"><div class="timeline-item"><div class="timeline-icon">🎼</div><div><h3>Symphonic Awakening</h3><p>August 2023 · Origins Expedition · The first steps into orchestral composition and film scoring: a symphonic awakening built around strings, brass and cinematic textures.</p><div class="timeline-action"><a href="track-symphonic-awakening.html">Explore Expedition →</a></div></div></div><div class="timeline-item"><div class="timeline-icon">🤠</div><div><h3>Pride of the Prairies</h3><p>November 2023 · Frontier Expedition · A western-inspired orchestral ride through untamed landscapes where wild horses roam freely across vast plains.</p><div class="timeline-action"><a href="track-pride-of-the-prairies.html">Explore Expedition →</a></div></div></div></div></div><div class="year-group"><div class="year">2024</div><div class="timeline-items"><div class="timeline-item"><div class="timeline-icon">🌊</div><div><h3>Turtle Travel</h3><p>March 2024 · Ocean Expedition · A cinematic ocean journey imagining the first adventure of baby sea turtles as they make their way to the deep blue sea.</p><div class="timeline-action"><a href="track-turtle-travel.html">Explore Expedition →</a></div></div></div><div class="timeline-item"><div class="timeline-icon">❄️</div><div><h3>Chills of Antarctica</h3><p>October 2024 · Nature Expedition · A short but captivating symphonic journey through majestic glaciers, Antarctic wildlife and the fragile beauty of nature.</p><div class="timeline-action"><a href="track-chills-of-antarctica.html">Explore Expedition →</a></div></div></div></div></div><div class="year-group"><div class="year">2026</div><div class="timeline-items"><div class="timeline-item"><div class="timeline-icon">🌌</div><div><h3>Blue Boy Planet</h3><p>May 2026 · Space Expedition · An emotional cinematic orchestral composition about imagination, wonder, childhood innocence and the idea that love never truly disappears.</p><div class="timeline-action"><a href="track-blue-boy-planet.html">Explore Expedition →</a></div></div></div></div></div></div></div></section></main><footer>Expedition Creativity · Timeline</footer><script src="search.js"></script>
+<div aria-label="Cookie consent" aria-live="polite" class="cookie-consent" id="cookieConsent" role="dialog">
+<div class="cookie-consent-inner">
+<div>
+<h3>Cookie preferences</h3>
+<p>Expedition Creativity uses essential site functions and, with your consent, Google Analytics and live YouTube statistics to understand which expeditions are being explored.</p>
+</div>
+<div class="cookie-actions">
+<button class="btn dark" onclick="ecRejectCookies()" type="button">Essential only</button>
+<button class="btn gold" onclick="ecAcceptCookies()" type="button">Accept analytics</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  const GA_ID = 'G-G9HM3R866P';
+  const CONSENT_KEY = 'ec_cookie_consent_v1';
+  let gaLoaded = false;
+  function hasConsent(){ return localStorage.getItem(CONSENT_KEY) === 'accepted'; }
+  function loadGA(){
+    if(gaLoaded || !hasConsent()) return;
+    gaLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  }
+  function hideBanner(){ const b=document.getElementById('cookieConsent'); if(b) b.classList.remove('open'); }
+  function showBanner(){ const b=document.getElementById('cookieConsent'); if(b && !localStorage.getItem(CONSENT_KEY)) b.classList.add('open'); }
+  window.ecHasConsent = hasConsent;
+  window.ecRunWithConsent = function(callback){
+    if(hasConsent()) callback();
+    else {
+      document.querySelectorAll('.youtube-stats[data-video-id]').forEach(function(el){ el.textContent = '▶ Accept analytics for live YouTube stats'; });
+      window.addEventListener('ecConsentAccepted', callback, { once:true });
+    }
+  };
+  window.ecAcceptCookies = function(){
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    hideBanner();
+    loadGA();
+    window.dispatchEvent(new Event('ecConsentAccepted'));
+  };
+  window.ecRejectCookies = function(){
+    localStorage.setItem(CONSENT_KEY, 'essential');
+    hideBanner();
+    document.querySelectorAll('.youtube-stats[data-video-id]').forEach(function(el){ el.textContent = '▶ Live YouTube stats disabled'; });
+  };
+  window.ecTrackEvent = function(name, params){
+    if(hasConsent() && typeof gtag === 'function') gtag('event', name, params || {});
+  };
+  document.addEventListener('click', function(e){
+    const a = e.target.closest && e.target.closest('a');
+    if(!a) return;
+    const href = a.getAttribute('href') || '';
+    if(href.includes('youtube.com') || href.includes('youtu.be')) window.ecTrackEvent('youtube_click', { link_url: href, link_text: (a.textContent || '').trim() });
+    if(href.startsWith('mailto:')) window.ecTrackEvent('email_click', { link_url: href });
+    if(href.includes('linkedin.com')) window.ecTrackEvent('linkedin_click', { link_url: href });
+    if(a.classList.contains('btn') && (a.textContent || '').toLowerCase().includes('go on expedition')) window.ecTrackEvent('go_on_expedition_click', { link_url: href, link_text: (a.textContent || '').trim() });
+  });
+  document.addEventListener('DOMContentLoaded', function(){
+    showBanner();
+    if(hasConsent()){
+      loadGA();
+      window.dispatchEvent(new Event('ecConsentAccepted'));
+    }
+  });
+})();
+</script>
 <a class="top-float" href="#top">↑ Top</a>
 <div class="follow-panel" id="followPanel">
 <h3>🚀 Follow The Expedition</h3>

@@ -604,3 +604,155 @@ body {
 .grid-3 .expedition-card .btn{margin-top:auto!important;}
 .grid-3 .expedition-card p{margin-bottom:18px!important;}
 @media(max-width:700px){.track-search-form{flex-direction:column;align-items:stretch;flex-basis:100%;}.track-search-button,.track-sort{width:100%;}.track-keyword{width:100%;}}
+
+
+/* V6.6.6 Critical tracks filtering and spacing fix */
+.track-filter-card[hidden],
+.track-filter-card.is-hidden{
+  display:none!important;
+  visibility:hidden!important;
+}
+.grid-3 .expedition-card .btn{
+  margin-top:26px!important;
+  align-self:flex-start!important;
+  position:relative!important;
+  z-index:1!important;
+}
+.grid-3 .expedition-card p{
+  margin-bottom:0!important;
+}
+.grid-3 .expedition-card p.track-subtitle{
+  margin-bottom:12px!important;
+}
+.grid-3 .expedition-card p.track-subtitle + p{
+  margin-top:0!important;
+}
+
+
+/* V6.6.7 YouTube API stats and definitive Tracks fixes */
+.youtube-stats{display:inline-flex;align-items:center;gap:6px;width:max-content;max-width:100%;margin:0 0 18px;padding:7px 11px;border-radius:999px;border:1px solid rgba(221,179,19,.28);background:rgba(221,179,19,.08);color:var(--gold);font-size:12px;font-weight:900;line-height:1.2;}
+.detail-youtube-stats{margin:14px 0 0;}
+.track-filter-card[hidden],.track-filter-card.is-hidden{display:none!important;}
+.grid-3 .expedition-card{display:flex!important;flex-direction:column!important;}
+.grid-3 .expedition-card p{margin-bottom:22px!important;}
+.grid-3 .expedition-card .btn{margin-top:auto!important;}
+.track-card-tags + .youtube-stats{margin-top:-6px;}
+@media(max-width:700px){.youtube-stats{width:100%;justify-content:center;}}
+
+
+/* V6.6.8 Privacy, Analytics and definitive Tracks fixes */
+.grid-3 .track-filter-card[hidden],
+.grid-3 .track-filter-card.is-hidden,
+.track-rail .track-filter-card[hidden],
+.track-rail .track-filter-card.is-hidden{
+  display:none!important;
+  visibility:hidden!important;
+}
+.grid-3 .expedition-card .btn,
+.track-rail .expedition-card .btn{
+  margin-top:30px!important;
+}
+.grid-3 .expedition-card p,
+.track-rail .expedition-card p{
+  margin-bottom:22px!important;
+}
+.cookie-consent{
+  position:fixed;
+  left:24px;
+  right:24px;
+  bottom:24px;
+  z-index:9999;
+  display:none;
+  max-width:920px;
+  margin:0 auto;
+  padding:18px;
+  border:1px solid rgba(221,179,19,.38);
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(14,14,14,.98),rgba(0,0,0,.96));
+  box-shadow:0 24px 70px rgba(0,0,0,.55);
+  color:var(--white);
+}
+.cookie-consent.open{display:block;}
+.cookie-consent-inner{display:flex;gap:18px;align-items:center;justify-content:space-between;}
+.cookie-consent h3{margin:0 0 6px;font-size:18px;color:var(--gold);}
+.cookie-consent p{margin:0;color:var(--muted);line-height:1.55;font-size:14px;}
+.cookie-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
+.cookie-actions .btn{white-space:nowrap;}
+.cookie-actions .btn.dark{background:#090909;color:var(--white);border:1px solid var(--line);}
+.cookie-settings-link{color:var(--gold);text-decoration:underline;text-underline-offset:3px;}
+@media(max-width:760px){
+  .cookie-consent{left:12px;right:12px;bottom:12px;padding:16px;border-radius:18px;}
+  .cookie-consent-inner{flex-direction:column;align-items:flex-start;}
+  .cookie-actions{width:100%;}
+  .cookie-actions .btn{width:100%;justify-content:center;}
+}
+
+
+/* V6.6.9 subtle hero background, menu search and spacing refinements */
+.hero{isolation:isolate;}
+.hero::after{content:"";position:absolute;inset:-32px;background:linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.58),rgba(0,0,0,.82)),url("channel-banner.jpg") center 38%/cover no-repeat;opacity:.16;filter:blur(2px) saturate(1.05);z-index:0;pointer-events:none;}
+.hero::before{z-index:1;}
+.hero-content{z-index:2;}
+.behind-links a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(221,179,19,.35);}
+.behind-links a:hover{border-bottom-color:var(--gold);}
+.grid-3 .expedition-card p.track-subtitle{margin-bottom:10px!important;}
+.grid-3 .expedition-card p.track-subtitle + p,.track-rail .expedition-card p.track-subtitle + p{margin-bottom:30px!important;}
+.grid-3 .expedition-card .btn,.track-rail .expedition-card .btn{margin-top:auto!important;}
+.track-search-form{gap:10px;}
+.track-search-form .btn{min-width:110px;}
+
+/* V6.6.10 polish: compact home tags, restored thumbnails, tighter card rhythm */
+.track-rail .track-card-tags,
+.home-carousel .track-card-tags {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  max-height: 64px !important;
+  min-height: 58px !important;
+  margin: 0 0 14px !important;
+}
+.track-rail .track-card-tags .tag,
+.home-carousel .track-card-tags .tag {
+  margin-bottom: 8px !important;
+}
+.track-rail .expedition-card h3 {
+  height: 64px !important;
+  min-height: 64px !important;
+  margin-bottom: 12px !important;
+}
+.track-rail .expedition-card p.track-subtitle {
+  min-height: 0 !important;
+  margin: 0 0 14px !important;
+  line-height: 1.35 !important;
+}
+.track-rail .expedition-card p.track-subtitle + p,
+.track-rail .expedition-card p:not(.track-subtitle) {
+  min-height: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  line-height: 1.55 !important;
+}
+.track-rail .expedition-card .youtube-stats {
+  margin: 2px 0 14px !important;
+}
+.track-rail .expedition-card .btn {
+  margin-top: auto !important;
+}
+.track-rail .artwork img,
+.grid-3 .artwork img,
+.featured-expedition .artwork img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #090909;
+}
+.grid-3 .expedition-card p.track-subtitle {
+  margin-bottom: 12px !important;
+}
+.grid-3 .expedition-card p.track-subtitle + p {
+  margin-top: 0 !important;
+  margin-bottom: 26px !important;
+}
+.grid-3 .expedition-card .btn {
+  margin-top: auto !important;
+}
