@@ -756,3 +756,11 @@ body {
 .grid-3 .expedition-card .btn {
   margin-top: auto !important;
 }
+
+/* V6.6.11 fixes */
+.expedition-card h4{margin:18px 0 12px!important;min-height:auto!important;}
+.expedition-card p{margin-top:0!important;}
+.expedition-card .btn{margin-top:24px!important;}
+.track-card-tags{max-height:58px;overflow:hidden;}
+html{scroll-behavior:smooth;}
+#watch{scroll-margin-top:96px;}
