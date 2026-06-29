@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Migration | Expedition Creativity</title><meta content="A cinematic orchestral journey inspired by the great annual migration of wildebeest, zebras and gazelles from the Serengeti to the Maasai Mara, crossing dangerous landscapes, predators, rivers and changing weather." name="description"/><link href="style.css" rel="stylesheet"/></head><body><nav class="site-nav"><div class="nav-inner"><a class="brand" href="index.html#top"><img alt="Expedition Creativity logo" loading="lazy" src="logo-expedition-creativity.jpg"/><span>Expedition Creativity</span></a><input class="menu-checkbox" id="menu-toggle" type="checkbox"/><label class="menu-label" for="menu-toggle">☰ Menu</label><div class="nav-links"><a href="index.html#top">Home</a><a href="tracks.html">Tracks</a><a href="timeline.html">Timeline</a><a href="index.html#journey">Journey</a><a href="about.html">About</a><a href="index.html#behind">Behind The Score</a><a href="index.html#contact">Contact</a></div><div class="search-wrap"><input onfocus="runSearch(this)" oninput="runSearch(this)" placeholder="Search expeditions..." type="search"/></div><a class="subscribe" href="https://www.youtube.com/@expeditioncreativity" target="_blank">Subscribe</a></div></nav><div class="search-results" id="searchResults"></div><header class="track-hero" id="top"><div class="wrap featured-expedition"><div><div class="expedition-label">Great Migration Expedition · March 2020</div><h1>Migration</h1><p class="lead" style="margin-top:24px">A cinematic journey across the Serengeti and Maasai Mara</p><div class="actions" style="justify-content:flex-start;"><a class="btn gold" href="https://youtu.be/bcgmBnpzOj8" target="_blank">Watch on YouTube</a><a class="btn dark" href="tracks.html">Back to Tracks</a></div></div><div class="artwork"><img alt="Migration artwork" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/bcgmBnpzOj8/hqdefault.jpg';" src="https://i.ytimg.com/vi/bcgmBnpzOj8/maxresdefault.jpg"/><a aria-label="Play Migration on YouTube" class="play-badge" href="#watch">▶</a></div></div></header><main><section><div class="wrap grid-2"><h2>The Story</h2><p>Migration follows the <strong>great annual trek</strong> of wildebeest, zebras and gazelles from the <strong>Serengeti</strong> in Tanzania to the <strong>Maasai Mara</strong> in Kenya.</p><p>Across roughly <strong>1,000 km</strong>, the journey is shaped by predators, river crossings, weather and climate, turning survival into a cinematic expedition across East Africa.</p><div class="track-card-tags detail-story-tags"><span class="tag">2020</span><span class="tag">Great Migration</span><span class="tag">Wildebeest</span><span class="tag">Africa</span><span class="tag">Wildlife</span></div></div></section><section id="watch"><div class="wrap"><div class="section-head"><h2>Watch</h2><p class="lead">Listen with headphones for the full cinematic experience.</p></div><div class="video"><iframe allowfullscreen="" src="https://www.youtube.com/embed/bcgmBnpzOj8?rel=0&amp;modestbranding=0&amp;controls=1" title="Migration"></iframe></div><div class="youtube-stats detail-youtube-stats" data-video-id="bcgmBnpzOj8">▶ Loading views…</div></div></section></main><script src="search.js"></script>
+<div aria-label="Cookie consent" aria-live="polite" class="cookie-consent" id="cookieConsent" role="dialog">
+<div class="cookie-consent-inner">
+<div>
+<h3>Cookie preferences</h3>
+<p>Expedition Creativity uses essential site functions and, with your consent, Google Analytics and live YouTube statistics to understand which expeditions are being explored.</p>
+</div>
+<div class="cookie-actions">
+<button class="btn dark" onclick="ecRejectCookies()" type="button">Essential only</button>
+<button class="btn gold" onclick="ecAcceptCookies()" type="button">Accept analytics</button>
+</div>
+</div>
+</div>
+<script>
+(function(){
+  const GA_ID = 'G-G9HM3R866P';
+  const CONSENT_KEY = 'ec_cookie_consent_v1';
+  let gaLoaded = false;
+  function hasConsent(){ return localStorage.getItem(CONSENT_KEY) === 'accepted'; }
+  function loadGA(){
+    if(gaLoaded || !hasConsent()) return;
+    gaLoaded = true;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+    const s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  }
+  function hideBanner(){ const b=document.getElementById('cookieConsent'); if(b) b.classList.remove('open'); }
+  function showBanner(){ const b=document.getElementById('cookieConsent'); if(b && !localStorage.getItem(CONSENT_KEY)) b.classList.add('open'); }
+  window.ecHasConsent = hasConsent;
+  window.ecRunWithConsent = function(callback){
+    if(hasConsent()) callback();
+    else {
+      document.querySelectorAll('.youtube-stats[data-video-id]').forEach(function(el){ el.textContent = '▶ Accept analytics for live YouTube stats'; });
+      window.addEventListener('ecConsentAccepted', callback, { once:true });
+    }
+  };
+  window.ecAcceptCookies = function(){
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    hideBanner();
+    loadGA();
+    window.dispatchEvent(new Event('ecConsentAccepted'));
+  };
+  window.ecRejectCookies = function(){
+    localStorage.setItem(CONSENT_KEY, 'essential');
+    hideBanner();
+    document.querySelectorAll('.youtube-stats[data-video-id]').forEach(function(el){ el.textContent = '▶ Live YouTube stats disabled'; });
+  };
+  window.ecTrackEvent = function(name, params){
+    if(hasConsent() && typeof gtag === 'function') gtag('event', name, params || {});
+  };
+  document.addEventListener('click', function(e){
+    const a = e.target.closest && e.target.closest('a');
+    if(!a) return;
+    const href = a.getAttribute('href') || '';
+    if(href.includes('youtube.com') || href.includes('youtu.be')) window.ecTrackEvent('youtube_click', { link_url: href, link_text: (a.textContent || '').trim() });
+    if(href.startsWith('mailto:')) window.ecTrackEvent('email_click', { link_url: href });
+    if(href.includes('linkedin.com')) window.ecTrackEvent('linkedin_click', { link_url: href });
+    if(a.classList.contains('btn') && (a.textContent || '').toLowerCase().includes('go on expedition')) window.ecTrackEvent('go_on_expedition_click', { link_url: href, link_text: (a.textContent || '').trim() });
+  });
+  document.addEventListener('DOMContentLoaded', function(){
+    showBanner();
+    if(hasConsent()){
+      loadGA();
+      window.dispatchEvent(new Event('ecConsentAccepted'));
+    }
+  });
+})();
+</script>
+<footer class="site-footer">
+<div class="site-footer-inner">
+<img alt="Expedition Creativity logo" class="footer-logo" src="footer-logo.png"/>
+<nav aria-label="Footer navigation" class="footer-links">
+<a href="index.html#top">Home</a>
+<a href="tracks.html">Tracks</a>
+<a href="timeline.html">Timeline</a>
+<a href="index.html#journey">Journey</a>
+<a href="about.html">About</a>
+<a href="index.html#behind">Behind The Score</a>
+<a href="index.html#contact">Contact</a>
+<a href="cookie-policy.html">Cookie Policy</a>
+</nav>
+<p class="footer-rights">© 2026 Expedition Creativity. All rights reserved.</p>
+<button class="cookie-policy-button" onclick="document.getElementById('cookieConsent')?.classList.add('open')" type="button">Cookie preferences</button>
+</div>
+</footer><a class="top-float" href="#top">↑ Top</a>
+<div class="follow-panel" id="followPanel">
+<h3>🚀 Follow The Expedition</h3>
+<a href="https://www.youtube.com/@expeditioncreativity" target="_blank"><strong>▶ Subscribe on YouTube</strong><small>Main content hub for new expeditions.</small></a>
+<a href="track-blue-boy-planet.html"><strong>🌌 Latest Expedition</strong><small>Blue Boy Planet · May 2026</small></a>
+<a href="tracks.html"><strong>🎼 Explore Tracks</strong><small>Browse all cinematic expeditions.</small></a>
+<a href="timeline.html"><strong>📅 Release Timeline</strong><small>Follow the journey from 2022 onward.</small></a>
+<a href="mailto:hello@expeditioncreativity.com"><strong>✉ Contact</strong><small>hello@expeditioncreativity.com</small></a>
+</div>
+<button class="follow-toggle" onclick="toggleFollowPanel()" type="button">🚀 Follow</button>
+<script>
+function toggleFollowPanel(){
+  var panel = document.getElementById('followPanel');
+  if(panel) panel.classList.toggle('open');
+}
+document.addEventListener('click', function(e){
+  var panel = document.getElementById('followPanel');
+  var toggle = document.querySelector('.follow-toggle');
+  if(panel && toggle && !panel.contains(e.target) && !toggle.contains(e.target)){
+    panel.classList.remove('open');
+  }
+});
+</script>
+<script>
+(function(){
+  const YOUTUBE_API_KEY = "AIzaSyCvdQhv__FCoUdBwrMS82BokPq4B6wMMEo";
+  function formatCompact(n){ const num=Number(n||0); if(num>=1000000) return (num/1000000).toFixed(num>=10000000?0:1).replace('.0','')+'M'; if(num>=1000) return (num/1000).toFixed(num>=10000?0:1).replace('.0','')+'K'; return num.toLocaleString(); }
+  async function loadYouTubeStats(){ const els=Array.from(document.querySelectorAll('.youtube-stats[data-video-id]')); const ids=[...new Set(els.map(el=>el.dataset.videoId).filter(Boolean))]; if(!ids.length) return; try{ const res=await fetch('https://www.googleapis.com/youtube/v3/videos?part=statistics&id='+ids.join(',')+'&key='+encodeURIComponent(YOUTUBE_API_KEY)); if(!res.ok) throw new Error('api'); const data=await res.json(); const byId=new Map((data.items||[]).map(item=>[item.id,item.statistics||{}])); els.forEach(el=>{ const st=byId.get(el.dataset.videoId); el.textContent=(st&&st.viewCount)?('▶ '+formatCompact(st.viewCount)+' views'+(st.likeCount?' · ♥ '+formatCompact(st.likeCount)+' likes':'')):'▶ YouTube stats unavailable'; }); }catch(e){ els.forEach(el=>el.textContent='▶ YouTube stats unavailable'); } }
+  document.addEventListener('DOMContentLoaded', function(){ window.ecRunWithConsent ? window.ecRunWithConsent(loadYouTubeStats) : window.addEventListener('ecConsentAccepted', loadYouTubeStats, {once:true}); });
+})();
+</script></body></html>

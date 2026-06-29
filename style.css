@@ -764,3 +764,943 @@ body {
 .track-card-tags{max-height:58px;overflow:hidden;}
 html{scroll-behavior:smooth;}
 #watch{scroll-margin-top:96px;}
+
+
+/* V6.6.12 layout regression fixes: cards, tags and track hero */
+/* Track page cards: allow content to determine height; keep CTA below text. */
+.grid-3 .expedition-card{
+  height:auto!important;
+  min-height:690px!important;
+  overflow:visible!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.grid-3 .expedition-card .track-card-tags{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow:visible!important;
+  margin:0 0 14px!important;
+}
+.grid-3 .expedition-card .youtube-stats{
+  flex:0 0 auto!important;
+  margin:0 0 18px!important;
+  position:relative!important;
+  z-index:1!important;
+}
+.grid-3 .expedition-card p.track-subtitle{
+  margin:0 0 16px!important;
+  min-height:0!important;
+}
+.grid-3 .expedition-card p:not(.track-subtitle){
+  margin:0 0 30px!important;
+  min-height:0!important;
+}
+.grid-3 .expedition-card .btn{
+  margin-top:auto!important;
+  align-self:flex-start!important;
+  position:relative!important;
+  z-index:1!important;
+}
+/* Home carousel: keep a compact two-line tag block but preserve CTA spacing. */
+.track-rail .expedition-card{
+  min-height:680px!important;
+  height:auto!important;
+  overflow:visible!important;
+}
+.track-rail .expedition-card .youtube-stats{
+  margin:0 0 18px!important;
+}
+.track-rail .expedition-card p.track-subtitle{
+  margin:0 0 16px!important;
+}
+.track-rail .expedition-card p:not(.track-subtitle){
+  margin:0 0 30px!important;
+}
+.track-rail .expedition-card .btn{
+  margin-top:auto!important;
+}
+/* Individual track pages: never crop tags and keep buttons below tag cloud. */
+.track-hero .track-card-tags{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:0!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow:visible!important;
+  margin:18px 0 20px!important;
+}
+.track-hero .actions{
+  margin-top:8px!important;
+  position:relative!important;
+  z-index:2!important;
+}
+.track-hero .featured-expedition{
+  align-items:center!important;
+}
+.track-hero .artwork img{
+  aspect-ratio:16/9!important;
+  object-fit:cover!important;
+}
+/* Global tag cropping should not affect detail/timeline blocks. */
+.timeline .track-card-tags,
+.track-hero .track-card-tags,
+section .grid-2 .track-card-tags{
+  max-height:none!important;
+  overflow:visible!important;
+}
+@media(max-width:860px){
+  .grid-3 .expedition-card, .track-rail .expedition-card{min-height:0!important;}
+}
+
+
+/* V6.6.13 card alignment, one-line tag rhythm and mobile safeguards */
+.gold-keyword{color:var(--gold);font-weight:900;}
+
+/* Home carousel: keep tags compact and force Hymn card into the same rhythm. */
+.track-rail .expedition-card .track-card-tags{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:0!important;
+  max-height:58px!important;
+  min-height:58px!important;
+  overflow:hidden!important;
+  margin:0 0 14px!important;
+}
+.track-rail .expedition-card .youtube-stats{
+  margin:0 0 16px!important;
+  flex:0 0 auto!important;
+}
+.track-rail .expedition-card p.track-subtitle{
+  min-height:24px!important;
+  margin:0 0 14px!important;
+  line-height:1.35!important;
+}
+.track-rail .expedition-card p:not(.track-subtitle){
+  min-height:0!important;
+  margin:0 0 24px!important;
+  line-height:1.52!important;
+}
+.track-rail .expedition-card .btn{margin-top:auto!important;}
+
+/* Tracks grid: one visible line of tags; filter data remains available via data-tags. */
+.grid-3 .expedition-card .track-card-tags{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  gap:0!important;
+  max-height:34px!important;
+  min-height:34px!important;
+  overflow:hidden!important;
+  margin:0 0 14px!important;
+}
+.grid-3 .expedition-card .track-card-tags .tag{
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+}
+.grid-3 .expedition-card .youtube-stats{
+  margin:0 0 18px!important;
+  flex:0 0 auto!important;
+  max-width:100%!important;
+}
+.grid-3 .expedition-card p.track-subtitle{
+  min-height:24px!important;
+  margin:0 0 14px!important;
+  line-height:1.35!important;
+}
+.grid-3 .expedition-card p:not(.track-subtitle){
+  margin:0 0 32px!important;
+  line-height:1.52!important;
+}
+.grid-3 .expedition-card .btn{
+  margin-top:auto!important;
+  align-self:flex-start!important;
+}
+
+/* Individual track pages: keep tag cloud to one line in the hero to prevent button overlap. */
+.track-hero .track-card-tags{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  max-height:34px!important;
+  min-height:34px!important;
+  overflow:hidden!important;
+  margin:18px 0 20px!important;
+}
+.track-hero .track-card-tags .tag{flex:0 0 auto!important;white-space:nowrap!important;}
+.track-hero .actions{margin-top:12px!important;}
+.track-hero .lead{margin-bottom:0!important;}
+.track-hero .featured-expedition{gap:40px!important;}
+
+@media(max-width:860px){
+  .track-rail .expedition-card,
+  .grid-3 .expedition-card{min-height:0!important;}
+  .track-rail .expedition-card .track-card-tags{max-height:58px!important;min-height:58px!important;}
+  .grid-3 .expedition-card .track-card-tags{max-height:34px!important;min-height:34px!important;}
+  .youtube-stats{width:100%!important;justify-content:center!important;white-space:normal!important;text-align:center!important;}
+  .grid-3 .expedition-card .btn,
+  .track-rail .expedition-card .btn{width:100%;justify-content:center;margin-top:22px!important;}
+  .track-hero .track-card-tags{overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:none;}
+  .track-hero .featured-expedition{gap:26px!important;}
+}
+
+
+/* V6.6.14 polish: equal track cards, link color, timeline tag consistency */
+#behind a,
+#behind a:visited {
+  color: var(--gold) !important;
+  font-weight: 850;
+  text-decoration-color: rgba(221,179,19,.55);
+  text-underline-offset: 3px;
+}
+#behind a:hover { color: var(--goldSoft) !important; }
+
+/* Ensure every Tracks card occupies the same column width and thumbnails have the same visual size. */
+.tracks-page .grid-3,
+main .grid-3:has(.track-filter-card) {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+}
+.track-filter-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+.track-filter-card .artwork {
+  width: 100% !important;
+  aspect-ratio: 16 / 9 !important;
+}
+.track-filter-card .artwork img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  aspect-ratio: 16 / 9 !important;
+}
+
+/* Remove subtitle spacing rhythm after card subtitle removal and keep CTAs aligned. */
+.grid-3 .expedition-card p.track-subtitle { display:none!important; }
+.grid-3 .expedition-card .youtube-stats { margin:0 0 18px!important; }
+.grid-3 .expedition-card p:not(.track-subtitle) { margin-top:0!important; margin-bottom:34px!important; }
+.grid-3 .expedition-card .btn { margin-top:auto!important; }
+.grid-3 .expedition-card .btn.gold { background:linear-gradient(135deg,var(--gold),var(--goldSoft))!important; color:#080808!important; border-color:transparent!important; box-shadow:0 14px 44px rgba(221,179,19,.25)!important; }
+
+@media(max-width:860px){
+  .tracks-page .grid-3,
+  main .grid-3:has(.track-filter-card) { grid-template-columns:1fr!important; }
+  .track-filter-card .artwork { aspect-ratio:16/9!important; }
+}
+
+
+/* V6.6.15 final polish: hero position, safer tags, grouped filters and About photo */
+@media (min-width:861px){
+  .hero-content{transform:translateY(28px)!important;}
+}
+.track-rail .expedition-card .track-card-tags,
+.home-carousel .expedition-card .track-card-tags{
+  max-height:70px!important;
+  min-height:66px!important;
+  padding-bottom:4px!important;
+  overflow:hidden!important;
+}
+.track-rail .expedition-card .track-card-tags .tag,
+.home-carousel .expedition-card .track-card-tags .tag{
+  line-height:1.25!important;
+  margin-bottom:7px!important;
+}
+/* Tracks: never show a half tag. Keep filter data available via data-tags. */
+.tracks-page .grid-3 .expedition-card .track-card-tags{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  overflow:hidden!important;
+  max-height:36px!important;
+  min-height:36px!important;
+  gap:0!important;
+}
+.tracks-page .grid-3 .expedition-card .track-card-tags .tag{
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+}
+.tracks-page .grid-3 .expedition-card .track-card-tags .tag:nth-child(n+6){display:none!important;}
+.filter-bar{display:flex!important;flex-wrap:wrap!important;gap:12px 14px!important;align-items:flex-start!important;}
+.filter-group{display:flex;flex-wrap:wrap;gap:8px;align-items:center;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.025);border-radius:18px;padding:9px 10px;}
+.filter-group-label{color:var(--gold);font-weight:950;text-transform:uppercase;letter-spacing:1.4px;font-size:11px;margin:0 4px 0 2px;}
+.filter-btn.disabled-filter,.filter-btn:disabled{opacity:.32!important;cursor:not-allowed!important;filter:grayscale(1);}
+.tracks-page .grid-3 .expedition-card{min-height:680px!important;}
+.tracks-page .grid-3 .expedition-card p:not(.track-subtitle){margin-bottom:34px!important;}
+#behind a{color:var(--gold)!important;}
+.about-hero h1{line-height:1.02!important;letter-spacing:-3px!important;}
+.about-hero .lead{max-width:680px;}
+.about-photo-frame{position:relative;min-height:430px;border-radius:28px;overflow:hidden;border:1px solid rgba(221,179,19,.35);background:#070707;box-shadow:0 28px 90px rgba(0,0,0,.45);}
+.about-photo-frame:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.45)),radial-gradient(circle at 82% 10%,rgba(221,179,19,.22),transparent 36%);z-index:1;pointer-events:none;}
+.about-photo-frame img{width:100%;height:100%;min-height:430px;object-fit:cover;display:block;filter:saturate(.92) contrast(1.04);}
+.about-photo-badge{position:absolute;left:20px;bottom:20px;z-index:2;background:rgba(0,0,0,.68);border:1px solid rgba(221,179,19,.40);color:var(--gold);font-weight:900;border-radius:999px;padding:10px 14px;backdrop-filter:blur(10px);}
+@media(max-width:860px){
+  .hero-content{transform:none!important;}
+  .filter-bar{gap:10px!important;}
+  .filter-group{width:100%;}
+  .tracks-page .grid-3 .expedition-card{min-height:0!important;}
+  .about-hero h1{letter-spacing:-2px!important;}
+  .about-photo-frame,.about-photo-frame img{min-height:360px;}
+}
+
+
+/* V6.6.16 final layout polish: filters, tags, About photo proportion */
+/* Home hero: keep centered from V6.6.15, but avoid overdoing it on shorter screens. */
+@media (min-width:861px){
+  .hero-content{transform:translateY(34px)!important;}
+}
+
+/* Track cards: universal production tags are now subtle metadata, not filter chips. */
+.tech-meta{
+  margin:4px 0 22px!important;
+  color:rgba(255,255,255,.42)!important;
+  font-size:11px!important;
+  line-height:1.35!important;
+  letter-spacing:.2px!important;
+}
+.grid-3 .expedition-card .tech-meta,
+.tracks-page .expedition-card .tech-meta{
+  margin-top:auto!important;
+  margin-bottom:18px!important;
+}
+
+/* Hide any tag that cannot fully fit instead of clipping it at the right edge. */
+.tracks-page .grid-3 .expedition-card .track-card-tags,
+.track-rail .expedition-card .track-card-tags,
+.home-carousel .expedition-card .track-card-tags{
+  box-sizing:border-box!important;
+  padding-right:0!important;
+  overflow:hidden!important;
+}
+.tracks-page .grid-3 .expedition-card .track-card-tags .tag:nth-child(n+6){display:none!important;}
+@media (max-width:1200px){
+  .tracks-page .grid-3 .expedition-card .track-card-tags .tag:nth-child(n+5){display:none!important;}
+}
+@media (max-width:520px){
+  .tracks-page .grid-3 .expedition-card .track-card-tags .tag:nth-child(n+4){display:none!important;}
+}
+
+/* Grouped filters: fixed label column so chips start at the same x-position. */
+.filter-bar{display:flex!important;flex-direction:column!important;gap:10px!important;align-items:stretch!important;max-width:1180px;}
+.filter-group{
+  display:grid!important;
+  grid-template-columns:82px 1fr!important;
+  align-items:start!important;
+  gap:8px!important;
+  padding:10px 12px!important;
+}
+.filter-group-label{
+  display:block!important;
+  width:72px!important;
+  padding-top:9px!important;
+  margin:0!important;
+}
+.filter-group .filter-btn{justify-self:start;}
+.filter-group{
+  grid-auto-flow:row!important;
+}
+.filter-group::after{content:"";display:block;clear:both;}
+.filter-group .filter-btn{margin-right:6px;margin-bottom:6px;}
+.filter-group-label + .filter-btn{grid-column:2;}
+.filter-group .filter-btn:nth-child(n+3){grid-column:auto;}
+@supports (display: contents){
+  .filter-group{display:flex!important;align-items:flex-start!important;gap:8px!important;}
+  .filter-group-label{flex:0 0 82px!important;}
+}
+
+/* About heading: tighter cinematic stack while keeping the lead clear of the descender. */
+.about-hero h1{
+  line-height:.88!important;
+  letter-spacing:-3px!important;
+  margin-bottom:26px!important;
+}
+.about-hero h1 span{display:inline-block!important;line-height:.95!important;}
+.about-hero .lead{margin-top:0!important;position:relative;z-index:2;}
+
+/* About photo: no stretching; portrait crop with subtle gold structure overlay. */
+.about-photo-frame{
+  aspect-ratio:4/5!important;
+  min-height:0!important;
+  height:min(62vh,620px)!important;
+  max-height:620px!important;
+  border-radius:30px!important;
+  position:relative!important;
+  overflow:hidden!important;
+}
+.about-photo-frame:before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.48)),
+    radial-gradient(circle at 72% 18%,rgba(221,179,19,.20),transparent 36%)!important;
+}
+.about-photo-frame:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:
+    linear-gradient(135deg,transparent 0 43%,rgba(221,179,19,.14) 44%,transparent 46% 100%),
+    repeating-linear-gradient(135deg,rgba(221,179,19,.10) 0 1px,transparent 1px 18px);
+  mix-blend-mode:screen;
+  opacity:.35;
+}
+.about-photo-frame img{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+  display:block!important;
+  filter:saturate(.92) contrast(1.05) brightness(.88)!important;
+}
+.about-photo-badge{z-index:3!important;}
+@media(max-width:860px){
+  .filter-group{display:flex!important;flex-direction:column!important;gap:8px!important;}
+  .filter-group-label{width:auto!important;flex:auto!important;padding-top:0!important;}
+  .about-hero h1{line-height:.92!important;letter-spacing:-2px!important;margin-bottom:22px!important;}
+  .about-photo-frame{height:auto!important;aspect-ratio:4/5!important;max-height:none!important;}
+}
+
+
+/* V6.6.17 polish: About portrait, SEO files and card spacing */
+.about-hero h1{
+  line-height:.98!important;
+  letter-spacing:-3px!important;
+  margin-bottom:18px!important;
+  text-wrap:balance;
+}
+.about-hero h1 span{
+  display:inline-block!important;
+  line-height:1.02!important;
+  position:relative;
+  z-index:1;
+}
+.about-photo-frame{
+  position:relative!important;
+  height:560px!important;
+  min-height:560px!important;
+  border-radius:44px 96px 44px 96px!important;
+  overflow:hidden!important;
+  border:1px solid rgba(221,179,19,.52)!important;
+  background:#050505!important;
+  box-shadow:0 30px 100px rgba(0,0,0,.58), 0 0 0 1px rgba(221,179,19,.10) inset!important;
+  transform:rotate(.25deg);
+}
+.about-photo-frame img{
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  object-fit:cover!important;
+  object-position:56% 30%!important;
+  filter:grayscale(1) contrast(1.14) brightness(.88)!important;
+  transform:scale(1.035) rotate(-.25deg);
+}
+.about-photo-frame:before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  background:
+    radial-gradient(circle at 72% 22%, rgba(221,179,19,.26), transparent 30%),
+    linear-gradient(135deg, rgba(221,179,19,.14), transparent 28%, transparent 68%, rgba(221,179,19,.18)),
+    linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.54))!important;
+  mix-blend-mode:screen;
+}
+.about-photo-frame:after{
+  content:""!important;
+  position:absolute!important;
+  inset:-12%!important;
+  z-index:2!important;
+  pointer-events:none!important;
+  opacity:.44!important;
+  background:
+    repeating-linear-gradient(118deg, transparent 0 20px, rgba(221,179,19,.22) 21px, transparent 23px),
+    radial-gradient(circle at 18% 22%, transparent 0 90px, rgba(221,179,19,.25) 91px 92px, transparent 93px 160px, rgba(221,179,19,.18) 161px 162px, transparent 163px),
+    radial-gradient(circle at 88% 76%, transparent 0 120px, rgba(221,179,19,.22) 121px 122px, transparent 123px 210px);
+  transform:rotate(-7deg);
+}
+.about-photo-badge{z-index:3!important;}
+.tech-meta{
+  margin-top:16px!important;
+  display:block;
+  line-height:1.35!important;
+}
+.tracks-page .expedition-card p:not(.tech-meta){
+  margin-bottom:10px!important;
+}
+/* Keep the universal tech line from touching longer descriptions. */
+.tracks-page .expedition-card p:not(.tech-meta) + .tech-meta{
+  margin-top:18px!important;
+}
+@media(max-width:860px){
+  .about-hero h1{line-height:1.02!important;letter-spacing:-2px!important;}
+  .about-photo-frame{height:auto!important;min-height:0!important;aspect-ratio:4/5!important;border-radius:34px 70px 34px 70px!important;}
+  .about-photo-frame img{object-position:56% 28%!important;}
+  .tech-meta{margin-top:18px!important;}
+}
+
+
+/* V6.6.18 polish */
+:root{--footer-max:1180px;}
+.site-footer{border-top:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(0,0,0,.92),rgba(0,0,0,.98));padding:42px 20px 48px;margin-top:72px;}
+.site-footer-inner{max-width:var(--footer-max);margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;}
+.footer-logo{width:min(220px,62vw);height:auto;display:block;filter:drop-shadow(0 18px 36px rgba(221,179,19,.18));}
+.footer-links{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center;}
+.footer-links a{color:rgba(255,255,255,.72);font-weight:850;font-size:13px;text-decoration:none;}
+.footer-links a:hover{color:var(--gold);}
+.footer-rights{color:rgba(255,255,255,.54);font-size:13px;margin:0;}
+.cookie-policy-button{border:1px solid rgba(221,179,19,.36);background:rgba(221,179,19,.10);color:var(--gold);border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer;}
+.cookie-policy-button:hover{background:rgba(221,179,19,.18);}
+.about-photo-frame{border-radius:42px 88px 42px 88px!important;aspect-ratio:4/5!important;min-height:0!important;height:auto!important;overflow:hidden!important;transform:rotate(-1deg);}
+.about-photo-frame img{aspect-ratio:4/5!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:58% 32%!important;filter:grayscale(1) contrast(1.18) brightness(.88)!important;transform:scale(1.10)!important;}
+.about-photo-frame:before{background:radial-gradient(circle at 78% 18%,rgba(221,179,19,.32),transparent 32%),linear-gradient(135deg,rgba(221,179,19,.08),transparent 44%),linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.54))!important;}
+.about-photo-frame:after{content:""!important;position:absolute!important;inset:-12%!important;z-index:2!important;pointer-events:none!important;background:repeating-linear-gradient(128deg,rgba(221,179,19,.00) 0 16px,rgba(221,179,19,.16) 17px,rgba(221,179,19,.00) 18px 34px),radial-gradient(circle at 28% 78%,transparent 0 28%,rgba(221,179,19,.18) 29%,transparent 30% 100%)!important;mix-blend-mode:screen!important;opacity:.55!important;}
+.about-photo-badge{transform:rotate(1deg);}
+.tracks-page .expedition-card p:not(.tech-meta){margin-bottom:22px!important;}
+.tracks-page .expedition-card .tech-meta{margin-top:22px!important;display:block!important;line-height:1.45!important;}
+@media(max-width:760px){.site-footer{padding-bottom:92px}.footer-links{gap:8px 12px}.about-photo-frame{transform:none!important;}}
+
+
+/* V6.6.19 final fixes: Migration order, About portrait resolution/crop */
+.about-photo-frame{aspect-ratio:4/5!important;border-radius:54px 110px 54px 110px!important;transform:rotate(-.75deg)!important;}
+.about-photo-frame img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:55% 24%!important;filter:grayscale(1) contrast(1.22) brightness(.90)!important;transform:scale(1.14)!important;image-rendering:auto!important;}
+.about-photo-frame:after{opacity:.72!important;background:repeating-linear-gradient(122deg,rgba(221,179,19,0) 0 18px,rgba(221,179,19,.22) 19px,rgba(221,179,19,0) 21px 42px),radial-gradient(circle at 22% 78%,transparent 0 32%,rgba(221,179,19,.22) 33%,transparent 34% 100%),linear-gradient(145deg,transparent 0 50%,rgba(221,179,19,.10) 51%,transparent 54%)!important;}
+.timeline-action a{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-height:42px!important;border-radius:999px!important;padding:10px 16px!important;background:rgba(255,255,255,.04)!important;border:1px solid rgba(255,255,255,.12)!important;color:var(--gold)!important;font-weight:950!important;text-decoration:none!important;}
+.tracks-page .grid-3 .expedition-card .track-card-tags{display:flex!important;flex-wrap:nowrap!important;overflow:hidden!important;gap:8px!important;}
+.tracks-page .grid-3 .expedition-card .track-card-tags .tag{flex:0 0 auto!important;}
+.tracks-page .grid-3 .expedition-card .track-card-tags .tag:nth-child(n+5){display:none!important;}
+@media(max-width:760px){.about-photo-frame{transform:none!important;border-radius:34px 70px 34px 70px!important}.about-photo-frame img{object-position:55% 24%!important;transform:scale(1.12)!important}}
+
+
+/* V6.6.20 polish: footer restored, filters one-line per group, home migration, about photo */
+.stats span:nth-child(n+3){display:none;}
+.hero{align-items:center;}
+
+.site-footer{border-top:1px solid rgba(255,255,255,.08)!important;background:linear-gradient(180deg,rgba(0,0,0,.92),rgba(0,0,0,.98))!important;padding:42px 20px 48px!important;margin-top:72px!important;text-align:center!important;}
+.site-footer-inner{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;}
+.footer-logo{width:min(220px,62vw);height:auto;display:block;filter:drop-shadow(0 18px 36px rgba(221,179,19,.18));}
+.footer-links{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;align-items:center;}
+.footer-links a{color:rgba(255,255,255,.72);font-weight:850;font-size:13px;text-decoration:none;}
+.footer-links a:hover{color:var(--gold);}
+.footer-rights{color:rgba(255,255,255,.54);font-size:13px;margin:0;}
+.cookie-policy-button{border:1px solid rgba(221,179,19,.36);background:rgba(221,179,19,.10);color:var(--gold);border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer;}
+.cookie-policy-button:hover{background:rgba(221,179,19,.18);}
+
+/* Filter rows: fixed label column and no wrap, preventing second-row drift */
+.filter-group{display:grid!important;grid-template-columns:74px minmax(0,1fr)!important;align-items:center!important;gap:12px!important;overflow:hidden!important;}
+.filter-group-label{min-width:0!important;width:74px!important;display:block!important;}
+.filter-options{display:flex!important;flex-wrap:nowrap!important;gap:8px!important;min-width:0!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:thin;padding:2px 2px 6px!important;}
+.filter-options .filter-btn{flex:0 0 auto!important;white-space:nowrap!important;}
+
+/* Card tag rows: never show half a tag at the right edge */
+.track-card-tags{display:flex!important;flex-wrap:nowrap!important;overflow:hidden!important;gap:8px!important;max-width:100%!important;padding-bottom:2px!important;}
+.track-card-tags .tag{flex:0 0 auto!important;margin-right:0!important;}
+.track-card-tags .tag:nth-child(n+5){display:none!important;}
+.expedition-card .tech-meta{margin-top:16px!important;}
+
+/* About image: preserve proportions, stronger crop and no badge */
+.about-photo-frame{aspect-ratio:4/5!important;border-radius:54px 110px 54px 110px!important;transform:rotate(-.75deg)!important;overflow:hidden!important;min-height:0!important;height:auto!important;}
+.about-photo-frame img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:55% 24%!important;filter:grayscale(1) contrast(1.24) brightness(.92)!important;transform:scale(1.18)!important;image-rendering:auto!important;}
+.about-photo-badge{display:none!important;}
+.about-photo-frame:before{background:radial-gradient(circle at 76% 18%,rgba(221,179,19,.32),transparent 34%),linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.52))!important;}
+.about-photo-frame:after{content:""!important;position:absolute!important;inset:-12%!important;z-index:2!important;pointer-events:none!important;background:repeating-linear-gradient(122deg,rgba(221,179,19,0) 0 18px,rgba(221,179,19,.22) 19px,rgba(221,179,19,0) 21px 42px),radial-gradient(circle at 22% 78%,transparent 0 32%,rgba(221,179,19,.22) 33%,transparent 34% 100%),linear-gradient(145deg,transparent 0 50%,rgba(221,179,19,.10) 51%,transparent 54%)!important;mix-blend-mode:screen!important;opacity:.70!important;}
+
+@media(max-width:760px){
+  .site-footer{padding-bottom:92px!important;}
+  .footer-links{gap:8px 12px;}
+  .filter-group{grid-template-columns:1fr!important;gap:8px!important;}
+  .filter-group-label{width:auto!important;}
+  .about-photo-frame{transform:none!important;border-radius:34px 70px 34px 70px!important;}
+  .about-photo-frame img{object-position:55% 24%!important;transform:scale(1.15)!important;}
+}
+
+/* V6.6.21 regression repair: restore clean filter rows and stable tag chips */
+/* Track filter panel: label fixed left, chips always start at one x-position. */
+.tracks-page .filter-bar{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:10px!important;
+  align-items:stretch!important;
+  max-width:1180px!important;
+}
+.tracks-page .filter-group{
+  position:relative!important;
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  gap:8px!important;
+  width:100%!important;
+  min-height:56px!important;
+  padding:10px 12px 10px 104px!important;
+  overflow:visible!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  background:rgba(255,255,255,.025)!important;
+  border-radius:18px!important;
+}
+.tracks-page .filter-group-label{
+  position:absolute!important;
+  left:14px!important;
+  top:50%!important;
+  transform:translateY(-50%)!important;
+  width:74px!important;
+  min-width:74px!important;
+  padding:0!important;
+  margin:0!important;
+  display:block!important;
+  color:var(--gold)!important;
+  font-weight:950!important;
+  text-transform:uppercase!important;
+  letter-spacing:1.4px!important;
+  font-size:11px!important;
+}
+.tracks-page .filter-options{display:contents!important;}
+.tracks-page .filter-group .filter-btn{
+  flex:0 0 auto!important;
+  margin:0!important;
+  white-space:nowrap!important;
+}
+.tracks-page .filter-btn.reset-filter{
+  width:auto!important;
+  align-self:flex-start!important;
+  margin-top:2px!important;
+}
+
+/* Track/Home card tag chips: restore normal pill sizing and spacing. */
+.track-rail .expedition-card .track-card-tags,
+.home-carousel .expedition-card .track-card-tags{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:flex-start!important;
+  gap:8px!important;
+  max-height:70px!important;
+  min-height:66px!important;
+  overflow:hidden!important;
+  padding:0 0 5px!important;
+  margin:0 0 14px!important;
+}
+.tracks-page .grid-3 .expedition-card .track-card-tags{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  gap:8px!important;
+  max-height:36px!important;
+  min-height:36px!important;
+  overflow:hidden!important;
+  padding:0 0 2px!important;
+  margin:0 0 14px!important;
+}
+.track-rail .expedition-card .track-card-tags .tag,
+.home-carousel .expedition-card .track-card-tags .tag,
+.tracks-page .grid-3 .expedition-card .track-card-tags .tag{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  flex:0 0 auto!important;
+  padding:5px 10px!important;
+  margin:0!important;
+  line-height:1.15!important;
+  border-radius:999px!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  color:#111!important;
+  background:var(--gold)!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-indent:0!important;
+}
+/* Keep card rows compact: maximum four visible chips, never half a chip. */
+.track-rail .expedition-card .track-card-tags .tag:nth-child(n+5),
+.home-carousel .expedition-card .track-card-tags .tag:nth-child(n+5),
+.tracks-page .grid-3 .expedition-card .track-card-tags .tag:nth-child(n+5){
+  display:none!important;
+}
+/* Timeline/detail tag rows may keep their normal flow. */
+.timeline .track-card-tags,
+.track-hero .track-card-tags{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:8px!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow:visible!important;
+}
+.timeline .track-card-tags .tag,
+.track-hero .track-card-tags .tag{
+  display:inline-flex!important;
+  width:auto!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  padding:5px 10px!important;
+  margin:0!important;
+  line-height:1.15!important;
+  white-space:nowrap!important;
+  text-indent:0!important;
+}
+
+@media(max-width:760px){
+  .tracks-page .filter-group{
+    padding:36px 12px 12px!important;
+    gap:8px!important;
+  }
+  .tracks-page .filter-group-label{
+    left:14px!important;
+    top:12px!important;
+    transform:none!important;
+  }
+}
+
+/* V6.6.22 - individual track hero backgrounds and Migration tag cleanup */
+.track-hero.track-bg-blue-boy-planet,
+.track-hero.track-bg-chills-of-antarctica,
+.track-hero.track-bg-symphonic-awakening,
+.track-hero.track-bg-an-elephants-day-in-life,
+.track-hero.track-bg-hymn-to-the-giants{
+  position:relative!important;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  min-height:82vh!important;
+  background:#000!important;
+}
+.track-hero.track-bg-blue-boy-planet::before,
+.track-hero.track-bg-chills-of-antarctica::before,
+.track-hero.track-bg-symphonic-awakening::before,
+.track-hero.track-bg-an-elephants-day-in-life::before,
+.track-hero.track-bg-hymn-to-the-giants::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:-3!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  opacity:.30!important;
+  filter:saturate(1.04) contrast(1.08)!important;
+  transform:scale(1.02)!important;
+}
+.track-hero.track-bg-blue-boy-planet::after,
+.track-hero.track-bg-chills-of-antarctica::after,
+.track-hero.track-bg-symphonic-awakening::after,
+.track-hero.track-bg-an-elephants-day-in-life::after,
+.track-hero.track-bg-hymn-to-the-giants::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:-2!important;
+  pointer-events:none!important;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.72) 42%, rgba(0,0,0,.62) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.34) 45%, rgba(0,0,0,.88) 100%),
+    radial-gradient(circle at 68% 38%, rgba(221,179,19,.18), transparent 34%)!important;
+}
+.track-hero.track-bg-blue-boy-planet::before{background-image:url("hero-blue-boy-planet.png")!important;background-position:center center!important;}
+.track-hero.track-bg-chills-of-antarctica::before{background-image:url("hero-chills-of-antarctica.jpeg")!important;background-position:center center!important;}
+.track-hero.track-bg-symphonic-awakening::before{background-image:url("hero-symphonic-awakening.jpg")!important;background-position:center center!important;}
+.track-hero.track-bg-an-elephants-day-in-life::before{background-image:url("hero-an-elephants-day-in-life.jpg")!important;background-position:center center!important;}
+.track-hero.track-bg-hymn-to-the-giants::before{background-image:url("hero-hymn-to-the-giants.jpg")!important;background-position:center center!important;}
+.track-hero .wrap,
+.track-hero .featured-expedition{position:relative!important;z-index:1!important;}
+
+/* Migration was the only card where the tag row could inherit a bad compact state. */
+.expedition-card[data-title="Migration"] .track-card-tags{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:8px!important;
+  max-height:70px!important;
+  min-height:36px!important;
+  overflow:hidden!important;
+}
+.expedition-card[data-title="Migration"] .track-card-tags .tag{
+  display:inline-flex!important;
+  align-items:center!important;
+  width:auto!important;
+  min-width:auto!important;
+  height:auto!important;
+  aspect-ratio:auto!important;
+  padding:5px 10px!important;
+  border-radius:999px!important;
+  white-space:nowrap!important;
+  text-indent:0!important;
+}
+
+@media(max-width:760px){
+  .track-hero.track-bg-blue-boy-planet,
+  .track-hero.track-bg-chills-of-antarctica,
+  .track-hero.track-bg-symphonic-awakening,
+  .track-hero.track-bg-an-elephants-day-in-life,
+  .track-hero.track-bg-hymn-to-the-giants{min-height:auto!important;}
+  .track-hero.track-bg-blue-boy-planet::before,
+  .track-hero.track-bg-chills-of-antarctica::before,
+  .track-hero.track-bg-symphonic-awakening::before,
+  .track-hero.track-bg-an-elephants-day-in-life::before,
+  .track-hero.track-bg-hymn-to-the-giants::before{opacity:.20!important;}
+}
+
+
+/* V6.6.23 - targeted fixes: Migration tags, track hero visibility, Dreamcatcher category */
+/* Make the uploaded track hero images more present while preserving readable text. */
+.track-hero.track-bg-blue-boy-planet::before,
+.track-hero.track-bg-chills-of-antarctica::before,
+.track-hero.track-bg-symphonic-awakening::before,
+.track-hero.track-bg-an-elephants-day-in-life::before,
+.track-hero.track-bg-hymn-to-the-giants::before{
+  opacity:.52!important;
+  filter:saturate(1.08) contrast(1.12)!important;
+}
+.track-hero.track-bg-blue-boy-planet::after,
+.track-hero.track-bg-chills-of-antarctica::after,
+.track-hero.track-bg-symphonic-awakening::after,
+.track-hero.track-bg-an-elephants-day-in-life::after,
+.track-hero.track-bg-hymn-to-the-giants::after{
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.84) 0%, rgba(0,0,0,.58) 45%, rgba(0,0,0,.48) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.22) 48%, rgba(0,0,0,.82) 100%),
+    radial-gradient(circle at 68% 38%, rgba(221,179,19,.18), transparent 34%)!important;
+}
+@media(max-width:760px){
+  .track-hero.track-bg-blue-boy-planet::before,
+  .track-hero.track-bg-chills-of-antarctica::before,
+  .track-hero.track-bg-symphonic-awakening::before,
+  .track-hero.track-bg-an-elephants-day-in-life::before,
+  .track-hero.track-bg-hymn-to-the-giants::before{opacity:.36!important;}
+}
+
+/* Migration is the only card that showed the tag row differently. Force the exact same pill row as the other cards. */
+.expedition-card[data-title="Migration"] .track-card-tags{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:flex-start!important;
+  gap:8px!important;
+  max-height:70px!important;
+  min-height:66px!important;
+  overflow:hidden!important;
+  padding:0 0 5px!important;
+  margin:0 0 14px!important;
+}
+.tracks-page .expedition-card[data-title="Migration"] .track-card-tags{
+  flex-wrap:nowrap!important;
+  align-items:center!important;
+  max-height:36px!important;
+  min-height:36px!important;
+  padding:0 0 2px!important;
+  margin:0 0 14px!important;
+}
+.expedition-card[data-title="Migration"] .track-card-tags .tag{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  min-width:0!important;
+  max-width:none!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  flex:0 0 auto!important;
+  padding:5px 10px!important;
+  margin:0!important;
+  line-height:1.15!important;
+  border-radius:999px!important;
+  font-size:11px!important;
+  font-weight:900!important;
+  color:#111!important;
+  background:var(--gold)!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-indent:0!important;
+}
+.expedition-card[data-title="Migration"] .track-card-tags .tag:nth-child(n+5){display:none!important;}
+
+/* The first Home carousel card must not turn into the primary yellow CTA just because it is first/active. */
+.track-rail .expedition-card[data-title="Migration"] .btn,
+.home-carousel .expedition-card[data-title="Migration"] .btn{
+  background:rgba(255,255,255,.04)!important;
+  color:var(--white)!important;
+  border:1px solid var(--line)!important;
+  box-shadow:none!important;
+}
+
+
+/* V6.6.24 - final track hero/background and Migration tag fixes */
+.track-hero.track-bg-blue-boy-planet::before,
+.track-hero.track-bg-chills-of-antarctica::before,
+.track-hero.track-bg-symphonic-awakening::before,
+.track-hero.track-bg-an-elephants-day-in-life::before,
+.track-hero.track-bg-hymn-to-the-giants::before{
+  opacity:.68!important;
+  filter:saturate(1.12) contrast(1.15)!important;
+  transform:scale(1.01)!important;
+}
+.track-hero.track-bg-blue-boy-planet::after,
+.track-hero.track-bg-chills-of-antarctica::after,
+.track-hero.track-bg-symphonic-awakening::after,
+.track-hero.track-bg-an-elephants-day-in-life::after,
+.track-hero.track-bg-hymn-to-the-giants::after{
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.76) 0%, rgba(0,0,0,.50) 45%, rgba(0,0,0,.42) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.34) 0%, rgba(0,0,0,.18) 48%, rgba(0,0,0,.78) 100%),
+    radial-gradient(circle at 68% 38%, rgba(221,179,19,.16), transparent 34%)!important;
+}
+
+/* Detail story tags: keep normal pill size/alignment; fixes Migration detail page. */
+.detail-story-tags,
+section .grid-2 .track-card-tags.detail-story-tags{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  align-items:center!important;
+  gap:8px!important;
+  max-height:none!important;
+  min-height:0!important;
+  overflow:visible!important;
+  padding:0!important;
+  margin:18px 0 0!important;
+}
+.detail-story-tags .tag,
+section .grid-2 .track-card-tags.detail-story-tags .tag{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  min-width:0!important;
+  height:auto!important;
+  min-height:0!important;
+  aspect-ratio:auto!important;
+  flex:0 0 auto!important;
+  padding:5px 10px!important;
+  margin:0!important;
+  line-height:1.15!important;
+  border-radius:999px!important;
+  font-size:12px!important;
+  font-weight:900!important;
+  color:#111!important;
+  background:var(--gold)!important;
+  white-space:nowrap!important;
+  text-indent:0!important;
+}
+
+/* Keep Migration Home CTA consistent with the other carousel cards. */
+.track-rail .expedition-card[data-title="Migration"] .btn,
+.home-carousel .expedition-card[data-title="Migration"] .btn{
+  background:rgba(255,255,255,.04)!important;
+  color:var(--white)!important;
+  border:1px solid var(--line)!important;
+  box-shadow:none!important;
+}
+
+@media(max-width:760px){
+  .track-hero.track-bg-blue-boy-planet::before,
+  .track-hero.track-bg-chills-of-antarctica::before,
+  .track-hero.track-bg-symphonic-awakening::before,
+  .track-hero.track-bg-an-elephants-day-in-life::before,
+  .track-hero.track-bg-hymn-to-the-giants::before{opacity:.52!important;}
+}
