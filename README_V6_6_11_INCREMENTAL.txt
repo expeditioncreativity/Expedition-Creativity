@@ -1,1 +1,0 @@
-V6.6.11 incremental fixes: restored V6.6.9 content after V6.6.10 regression, re-added Hymn to the Giants to Home/Tracks/Timeline, restored Behind The Score updates, fixed track hero play badge to scroll to the embedded video, fixed brand logo on track pages, and tightened card spacing.
