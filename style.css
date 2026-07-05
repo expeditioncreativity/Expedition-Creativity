@@ -1704,3 +1704,86 @@ section .grid-2 .track-card-tags.detail-story-tags .tag{
   .track-hero.track-bg-an-elephants-day-in-life::before,
   .track-hero.track-bg-hymn-to-the-giants::before{opacity:.52!important;}
 }
+
+/* V6.6.25 mobile-only polish: preserve desktop, fix iPhone alignment issues */
+@media (max-width: 760px){
+  /* Home Journey CTA: keep multiline button copy optically centered on mobile. */
+  .journey-copy .actions,
+  #journey .actions{
+    width:100%!important;
+  }
+  .journey-copy .btn,
+  #journey .btn{
+    width:100%!important;
+    max-width:100%!important;
+    text-align:center!important;
+    justify-content:center!important;
+    align-items:center!important;
+    padding:20px 22px!important;
+    line-height:1.22!important;
+    white-space:normal!important;
+  }
+
+  /* Search dropdown: sit clearly below the mobile search field instead of touching it. */
+  .search-results{
+    top:150px!important;
+    left:16px!important;
+    right:16px!important;
+    width:auto!important;
+    max-height:calc(100vh - 176px)!important;
+    overflow:auto!important;
+    border-radius:20px!important;
+  }
+
+  /* Individual track pages: all story blocks align to the same mobile width. */
+  .track-hero + main section .wrap.grid-2,
+  main section .wrap.grid-2{
+    width:100%!important;
+    max-width:1180px!important;
+    padding-left:22px!important;
+    padding-right:22px!important;
+    gap:18px!important;
+  }
+  .track-hero + main section .panel,
+  main section .grid-2 > .panel{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    margin-right:0!important;
+  }
+
+  /* Story tags: keep pills comfortably inside the story card on iPhone. */
+  .detail-story-tags,
+  section .grid-2 .track-card-tags.detail-story-tags,
+  .track-hero + main section .track-card-tags{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    gap:10px 8px!important;
+    max-width:100%!important;
+    overflow:visible!important;
+    padding-right:6px!important;
+    margin-top:18px!important;
+  }
+  .detail-story-tags .tag,
+  section .grid-2 .track-card-tags.detail-story-tags .tag,
+  .track-hero + main section .track-card-tags .tag{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:auto!important;
+    min-width:auto!important;
+    height:auto!important;
+    min-height:34px!important;
+    padding:7px 12px!important;
+    margin:0!important;
+    line-height:1.05!important;
+    font-size:12px!important;
+    white-space:nowrap!important;
+    border-radius:999px!important;
+    flex:0 0 auto!important;
+  }
+
+  /* Floating buttons should not cover long story text too aggressively. */
+  .follow-toggle{bottom:82px!important;right:14px!important;}
+  .top-float{bottom:22px!important;right:14px!important;}
+}
