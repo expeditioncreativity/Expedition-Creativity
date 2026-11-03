@@ -135,11 +135,92 @@ content:
     type: file
     path: content/site/catalogue.json
     format: json
-    list: true
     fields:
-      - {name: title, label: Titel, type: string}
-      - {name: slug, label: URL-sleutel, type: string}
-      - {name: year, label: Jaar, type: number}
-      - {name: youtube_id, label: YouTube video-ID, type: string}
-      - {name: world, label: Wereld of thema, type: string}
-      - {name: type, label: Muziektype, type: string}
+      - name: tracks
+        label: Composities in catalogus
+        type: object
+        list: true
+        fields:
+          - {name: title, label: Titel, type: string}
+          - {name: slug, label: URL-sleutel, type: string}
+          - {name: year, label: Jaar, type: number}
+          - {name: youtube_id, label: YouTube video-ID, type: string}
+          - {name: world, label: Wereld of thema, type: string}
+          - {name: type, label: Muziektype, type: string}
+
+  # Nederlandstalige redactionele pagina's. Deze records leveren de reviewpagina's.
+  - name: about-nl
+    label: Mijn verhaal (Nederlands)
+    type: file
+    path: content/site/over_nl.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Bovenregel, type: string}
+      - {name: title, label: Paginatitel, type: string}
+      - {name: intro, label: Introductie, type: text}
+      - {name: story_heading, label: Subkop muzikale reis, type: string}
+      - {name: story, label: Mijn muzikale reis, type: rich-text, options: {format: markdown}}
+      - {name: purpose_heading, label: Subkop doelgroepen, type: string}
+      - {name: purpose, label: "Voor wie componeer ik?", type: rich-text, options: {format: markdown}}
+      - {name: quote, label: Persoonlijk citaat, type: string}
+      - {name: seo_title, label: SEO-titel, type: string}
+      - {name: seo_description, label: Meta-omschrijving, type: text}
+  - name: timeline-nl
+    label: Tijdlijn (Nederlands)
+    type: file
+    path: content/site/tijdlijn_nl.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Bovenregel, type: string}
+      - {name: title, label: Paginatitel, type: string}
+      - {name: intro, label: Introductie, type: text}
+      - {name: note, label: Publicatienotitie, type: text}
+      - {name: seo_title, label: SEO-titel, type: string}
+      - {name: seo_description, label: Meta-omschrijving, type: text}
+  - name: behind-nl
+    label: Achter de muziek (Nederlands)
+    type: file
+    path: content/site/achter_nl.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Bovenregel, type: string}
+      - {name: title, label: Paginatitel, type: string}
+      - {name: intro, label: Introductie, type: text}
+      - {name: process_heading, label: Subkop proces, type: string}
+      - {name: process, label: Creatief proces, type: rich-text, options: {format: markdown}}
+      - {name: tools_heading, label: Subkop gereedschap, type: string}
+      - {name: tools, label: Gebruikte software en bibliotheken, type: rich-text, options: {format: markdown}}
+      - {name: gallery_heading, label: Galerijtitel, type: string}
+      - {name: gallery_intro, label: Galerij-intro, type: text}
+      - {name: seo_title, label: SEO-titel, type: string}
+      - {name: seo_description, label: Meta-omschrijving, type: text}
+  - name: contact-nl
+    label: Contact (Nederlands)
+    type: file
+    path: content/site/contact_nl.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Bovenregel, type: string}
+      - {name: title, label: Paginatitel, type: string}
+      - {name: intro, label: Introductie, type: text}
+      - {name: email, label: E-mail, type: string}
+      - {name: youtube, label: YouTube-link, type: string}
+      - {name: linkedin, label: LinkedIn-link, type: string}
+      - {name: score_heading, label: Partituren subkop, type: string}
+      - {name: score_body, label: Partituren informatie, type: rich-text, options: {format: markdown}}
+      - {name: collaboration_heading, label: Samenwerking subkop, type: string}
+      - {name: collaboration_body, label: Samenwerking informatie, type: rich-text, options: {format: markdown}}
+      - {name: seo_title, label: SEO-titel, type: string}
+      - {name: seo_description, label: Meta-omschrijving, type: text}
+  - name: cookies-nl
+    label: Cookiebeleid (Nederlandse ontwerptekst)
+    type: file
+    path: content/site/cookies_nl.json
+    format: json
+    fields:
+      - {name: eyebrow, label: Bovenregel, type: string}
+      - {name: title, label: Paginatitel, type: string}
+      - {name: intro, label: Introductie, type: text}
+      - {name: body, label: Inhoud - te controleren voor publicatie, type: rich-text, options: {format: markdown}}
+      - {name: seo_title, label: SEO-titel, type: string}
+      - {name: seo_description, label: Meta-omschrijving, type: text}

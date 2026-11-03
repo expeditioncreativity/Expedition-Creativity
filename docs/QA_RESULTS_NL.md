@@ -22,9 +22,19 @@ Test: 3 november 2026. Nulmeting van een lokaal, op de bron ontworpen prototype.
 - YouTube-player op een echte HTTPS-Netlify-preview: de fout 153 kan niet volledig vanuit de lokale renderomgeving worden vastgesteld. De pagina heeft een werkende fallback-link naar YouTube.
 - Externe thumbnailafbeeldingen: lokale browser blokkeert netwerkverzoeken; de geldige `i.ytimg.com`-adressen zijn ingevuld maar online laadgedrag nog niet vastgesteld.
 - Pages CMS-accountlogin en GitHub-autorisatie: eigenaar dient toegang te verbinden.
-- Overige pagina’s (About, Timeline, Behind The Score, Contact) en de EN-versies: nog niet afgerond.
+- Vijf bijkomende Nederlandse reviewpagina’s (Over, Tijdlijn, Achter de muziek, Contact, Cookiebeleid) zijn **technisch opgesteld en lokaal getest**. Inhoudelijke goedkeuring en live-integratie blijven open.
+- **De Engelse versies worden pas na de expliciete go van de eigenaar gemaakt.**
 - Google Search Console / live indexering na publicatie: nog niet van toepassing.
 - Inpassing in Netlify-build / behoud van de bestaande site moet vóór livegang worden bevestigd.
+
+## Aanvullende QA - Nederlandstalige sitepreview
+
+- Home / Tracks: Chromium desktop (1440px) en mobiel (390px), mobiel menu, 10 kaarten, zoekfunctie en jaarfilters: geslaagd.
+- Over, Tijdlijn, Achter de muziek, Contact en Cookiebeleid: statische SEO/taal-/navigatietests en mobiele/desktop screenshot-proeven: geslaagd.
+- Hergebruik tracktemplate via tweede testcompositie met andere slug, video en optionele blokken: geslaagd.
+- CMS ".pages.yml" als geldige YAML uitgelezen (8 contentsecties). **Pages CMS-authenticatie en daadwerkelijk opslaan zijn nog niet getest.**
+- Automatische GitHub Actions workflow op de ontwikkelbranch: bij de vorige versie geslaagd. Na elke push opnieuw valideren.
+- Juridische/privacy-tekst en cookietoestemming bij publicatie opnieuw controleren; de NL cookiepagina is concept.
 
 ## Ontwerpbeslissingen
 

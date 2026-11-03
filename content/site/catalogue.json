@@ -1,12 +1,84 @@
-[
-  {"title":"Migration","slug":"migration","year":2020,"youtube_id":"bcgmBnpzOj8","world":"Natuur","type":"Orkestraal"},
-  {"title":"Dreamcatcher","slug":"dreamcatcher","year":2020,"youtube_id":"ZdDMN1Ewqn4","world":"Amerika","type":"Orkestraal"},
-  {"title":"Orchestral Overture","slug":"orchestral-overture","year":2021,"youtube_id":"CIki-AcoAKg","world":"Symfonisch","type":"Orkestraal"},
-  {"title":"An Elephant's Day In Life","slug":"an-elephants-day-in-life","year":2022,"youtube_id":"gCvYoYYdQKw","world":"Natuur","type":"Orkestraal"},
-  {"title":"Hymn to the Giants","slug":"hymn-to-the-giants","year":2022,"youtube_id":"U6sXyOqlbZY","world":"Symfonisch","type":"Orkestraal"},
-  {"title":"Symphonic Awakening","slug":"symphonic-awakening","year":2023,"youtube_id":"VUcN0n84EQA","world":"Symfonisch","type":"Orkestraal"},
-  {"title":"Pride of the Prairies","slug":"pride-of-the-prairies","year":2023,"youtube_id":"Z-0cfttsGKw","world":"Old West","type":"Filmisch"},
-  {"title":"Turtle Travel","slug":"turtle-travel","year":2024,"youtube_id":"N0ks3Me11C0","world":"Oceaan","type":"Filmisch"},
-  {"title":"Chills of Antarctica","slug":"chills-of-antarctica","year":2024,"youtube_id":"w-CO5e-7aHU","world":"Antarctica","type":"Filmisch"},
-  {"title":"Blue Boy Planet","slug":"blue-boy-planet","year":2026,"youtube_id":"CbFn2igUChI","world":"Ruimte","type":"Orkestraal"}
-]
+{
+  "tracks": [
+    {
+      "title": "Migration",
+      "slug": "migration",
+      "year": 2020,
+      "youtube_id": "bcgmBnpzOj8",
+      "world": "Natuur",
+      "type": "Orkestraal"
+    },
+    {
+      "title": "Dreamcatcher",
+      "slug": "dreamcatcher",
+      "year": 2020,
+      "youtube_id": "ZdDMN1Ewqn4",
+      "world": "Amerika",
+      "type": "Orkestraal"
+    },
+    {
+      "title": "Orchestral Overture",
+      "slug": "orchestral-overture",
+      "year": 2021,
+      "youtube_id": "CIki-AcoAKg",
+      "world": "Symfonisch",
+      "type": "Orkestraal"
+    },
+    {
+      "title": "An Elephant's Day In Life",
+      "slug": "an-elephants-day-in-life",
+      "year": 2022,
+      "youtube_id": "gCvYoYYdQKw",
+      "world": "Natuur",
+      "type": "Orkestraal"
+    },
+    {
+      "title": "Hymn to the Giants",
+      "slug": "hymn-to-the-giants",
+      "year": 2022,
+      "youtube_id": "U6sXyOqlbZY",
+      "world": "Symfonisch",
+      "type": "Orkestraal"
+    },
+    {
+      "title": "Symphonic Awakening",
+      "slug": "symphonic-awakening",
+      "year": 2023,
+      "youtube_id": "VUcN0n84EQA",
+      "world": "Symfonisch",
+      "type": "Orkestraal"
+    },
+    {
+      "title": "Pride of the Prairies",
+      "slug": "pride-of-the-prairies",
+      "year": 2023,
+      "youtube_id": "Z-0cfttsGKw",
+      "world": "Old West",
+      "type": "Filmisch"
+    },
+    {
+      "title": "Turtle Travel",
+      "slug": "turtle-travel",
+      "year": 2024,
+      "youtube_id": "N0ks3Me11C0",
+      "world": "Oceaan",
+      "type": "Filmisch"
+    },
+    {
+      "title": "Chills of Antarctica",
+      "slug": "chills-of-antarctica",
+      "year": 2024,
+      "youtube_id": "w-CO5e-7aHU",
+      "world": "Antarctica",
+      "type": "Filmisch"
+    },
+    {
+      "title": "Blue Boy Planet",
+      "slug": "blue-boy-planet",
+      "year": 2026,
+      "youtube_id": "CbFn2igUChI",
+      "world": "Ruimte",
+      "type": "Orkestraal"
+    }
+  ]
+}

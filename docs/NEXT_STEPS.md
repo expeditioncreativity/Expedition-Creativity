@@ -7,3 +7,12 @@
 5. **Tweetaligheid:** het datamodel heeft een `locale`; EN-publicatie en `hreflang` pas na expliciete toestemming.
 6. **SEO en privacy:** sitemap, schema voor video alleen met echte uploadDate, canonical, cookie-consent, GA4, Search Console; restore meta-omschrijving van Elephant.
 7. **Release:** screenshots en tests per pagina, goedkeuring, gecontroleerde merge en productievalidatie.
+
+
+## Voortgang huidige sessie
+
+- De technische reviewstructuur is uitgerold naar acht Nederlandstalige previewpagina’s. Alle previewpagina’s zijn nog niet gepubliceerd.
+- GitHub Actions controleert automatisch de statische generatie en metadata op de ontwikkelbranch.
+- **Eerste menselijke review**: Blue Boy Planet en de algemene sitevormgeving beoordelen aan de hand van HTML-preview en screenshots.
+- Daarna: CMS autoriseren (Pages CMS via GitHub) en een testwijziging uitsluitend op de ontwikkelbranch opslaan; automatische preview-build controleren.
+- Pas daarna: andere trackteksten valideren, externe video-embeds op een HTTPS-preview testen, analytics/cookietoestemming en SEO-hreflang implementeren na taalakkoord.

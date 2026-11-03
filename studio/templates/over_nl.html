@@ -1,0 +1,5 @@
+{% extends 'base_nl.html' %}
+{% block content %}
+<header class="editorial-hero"><div class="shell"><div class="eyebrow">{{ page.eyebrow }}</div><h1>{{ page.title }}</h1><p class="lead">{{ page.intro }}</p></div></header>
+<main><section class="site-section"><div class="shell editorial-grid"><article class="editorial-article"><div class="eyebrow">MIJN ACHTERGROND</div><h2>{{ page.story_heading }}</h2><div class="editorial-prose">{{ page.story_html | safe }}</div><div class="editorial-quote">“{{ page.quote }}”</div><h2>{{ page.purpose_heading }}</h2><div class="editorial-prose">{{ page.purpose_html | safe }}</div></article><aside class="editorial-side"><div class="eyebrow">EXPEDITION CREATIVITY</div><h3>Music · Picture · More</h3><p>Originele composities met een verhaal, door Mikaël Stroobants.</p><a class="btn btn-primary" href="{{ nav.tracks }}">Ontdek de composities ↗</a></aside></div></section></main>
+{% endblock %}

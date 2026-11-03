@@ -1,0 +1,5 @@
+{% extends 'base_nl.html' %}
+{% block content %}
+<header class="editorial-hero"><div class="shell"><div class="eyebrow">{{ page.eyebrow }}</div><h1>{{ page.title }}</h1><p class="lead">{{ page.intro }}</p></div></header>
+<main><section class="site-section"><div class="shell"><div class="section-intro"><h2>Alle muzikale expedities</h2></div><div class="timeline-list">{% for group in year_groups %}<section class="timeline-year"><h3>{{ group.year }}</h3><div class="timeline-stack">{% for track in group.tracks %}<a class="timeline-card" href="{{ track.href }}"><div class="timeline-cover"><img src="{{ track.thumb }}" loading="lazy" alt="{{ track.title }} — video-miniatuur"></div><div class="timeline-text"><span>{{ track.world }} · {{ track.type }}</span><h4>{{ track.title }}</h4><small>Ontdek de compositie ↗</small></div></a>{% endfor %}</div></section>{% endfor %}</div><p class="content-note">{{ page.note }}</p></div></section></main>
+{% endblock %}
