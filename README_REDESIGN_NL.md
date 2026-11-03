@@ -10,6 +10,8 @@ Dit is **geen live-publicatie**. De bestaande website op `main` blijft onaangero
 - Oorspronkelijke Nederlandse Blue Boy Planet-content als CMS-record in `content/tracks/nl/blue-boy-planet.json` (de pagina blijft in draft en krijgt `noindex`).
 - `Pages CMS`-invulvelden via `.pages.yml`: verhaal, muzikale reis, orkestratie, instrumentatie, partituren, afbeeldingen, YouTube-video, gerelateerde tracks en SEO.
 - Lokale previewbuilder en technische/visuele basistests.
+- **Nederlandstalige Home en Tracks-overzichtspagina**, inclusief tien tracks, zoeken, filteren en sorteren.
+- GitHub Actions bouwcontrole op de ontwikkelbranch. Geen automatische publicatie.
 
 ## Preview genereren
 
@@ -18,7 +20,7 @@ python -m pip install -r requirements.txt
 python scripts/build_site.py --output preview
 ```
 
-Open met een lokale webserver `preview/nl/track-blue-boy-planet/`. De builder zet bewust geen wijzigingen door naar `main` of de livewebsite.
+Open met een lokale webserver de paden `preview/nl/`, `preview/nl/tracks/` en `preview/nl/track-blue-boy-planet/`. De builder zet bewust geen wijzigingen door naar `main` of de livewebsite.
 
 ## CMS gebruiken
 

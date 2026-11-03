@@ -1,0 +1,44 @@
+name: NL design preview — build and validate
+
+on:
+  push:
+    branches:
+      - work/nl-redesign-cms
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python scripts/build_site.py --output preview
+      - run: python tests/test_reusable_template.py
+      - name: Validate NL pages and SEO safeguards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from bs4 import BeautifulSoup
+          for file in sorted(Path('preview/nl').rglob('index.html')):
+              soup=BeautifulSoup(file.read_text(), 'html.parser')
+              assert soup.html.get('lang')=='nl-BE', file
+              assert soup.select_one('meta[name="robots"]').get('content')=='noindex,nofollow',file
+              assert soup.select_one('meta[name="description"]'),file
+              assert soup.select_one('link[rel="canonical"]'),file
+              print('PASS',file)
+          PY
+      - name: Reviewable static prototype (not deployed)
+        uses: actions/upload-artifact@v4
+        with:
+          name: expedition-creativity-nl-preview
+          path: preview/
+          retention-days: 14

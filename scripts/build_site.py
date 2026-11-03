@@ -65,6 +65,7 @@ def build(output:Path, include_drafts:bool=True)->list[Path]:
     output.mkdir(parents=True,exist_ok=True)
     shutil.copytree(BASE/'studio/assets',output/'assets',dirs_exist_ok=True)
     shutil.copytree(MEDIA,output/'media',dirs_exist_ok=True)
+    if (BASE/'studio/assets/site.css').is_file(): shutil.copy2(BASE/'studio/assets/site.css',output/'assets/site.css')
     env=Environment(loader=FileSystemLoader(TEMPLATE),autoescape=select_autoescape(['html']))
     template=env.get_template('track_nl.html')
     built=[]
@@ -91,6 +92,27 @@ def build(output:Path, include_drafts:bool=True)->list[Path]:
         dest.parent.mkdir(parents=True,exist_ok=True)
         dest.write_text('<!doctype html>\n'+str(soup),encoding='utf-8')
         built.append(dest)
+    # Staged NL pages: general site content is an editable record, track metadata is sourced from the existing catalogue.
+    site_file=BASE/'content/site/nl.json'
+    catalogue_file=BASE/'content/site/catalogue.json'
+    if site_file.exists() and catalogue_file.exists():
+        site=json.loads(site_file.read_text(encoding='utf-8'))
+        catalogue=json.loads(catalogue_file.read_text(encoding='utf-8'))
+        for track in catalogue:
+            safe_slug(track['slug'])
+            track['thumb']='https://i.ytimg.com/vi/'+track['youtube_id']+'/hqdefault.jpg'
+            track['href']=('/nl/track-'+track['slug']+'/' if (output/'nl'/('track-'+track['slug'])/'index.html').exists() else 'https://expeditioncreativity.com/track-'+track['slug'])
+        catalogue.sort(key=lambda a: (-int(a['year']),a['title'].casefold()))
+        nav={'home':'/nl/','tracks':'/nl/tracks/'}
+        setups=[('home_nl.html',output/'nl'/'index.html','ec-home',site['home_seo_title'],site['home_seo_description'],'https://expeditioncreativity.com/nl/','../',catalogue[:3]),
+                ('tracks_nl.html',output/'nl'/'tracks'/'index.html','ec-tracks',site['tracks_seo_title'],site['tracks_seo_description'],'https://expeditioncreativity.com/nl/tracks/','../../',catalogue)]
+        for template_name,dest,body_class,seo_title,seo_description,canonical,prefix,featured in setups:
+            dest.parent.mkdir(parents=True,exist_ok=True)
+            markup=env.get_template(template_name).render(content=site,catalogue=catalogue,featured=featured,
+                body_class=body_class,seo_title=seo_title,seo_description=seo_description,canonical=canonical,
+                nav=nav,years=sorted({int(x['year']) for x in catalogue},reverse=True),prefix=prefix)
+            dest.write_text(markup,encoding='utf-8')
+            built.append(dest)
     return built
 
 if __name__=='__main__':

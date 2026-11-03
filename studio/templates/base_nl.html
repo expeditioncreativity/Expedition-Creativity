@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#181818">
+<meta name="robots" content="noindex,nofollow">
+<title>{{ seo_title }}</title>
+<meta name="description" content="{{ seo_description }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_BE">
+<meta property="og:title" content="{{ seo_title }}">
+<meta property="og:description" content="{{ seo_description }}">
+<meta property="og:image" content="https://expeditioncreativity.com/hero-blue-boy-planet.png">
+<link rel="canonical" href="{{ canonical }}">
+<link rel="stylesheet" href="{{ prefix }}assets/track.css">
+<link rel="stylesheet" href="{{ prefix }}assets/site.css">
+</head>
+<body class="{{ body_class }}">
+<nav class="navigation" aria-label="Hoofdnavigatie"><div class="nav-inner shell">
+<a class="brand" href="{{ nav.home }}" aria-label="Expedition Creativity startpagina"><img class="brand-logo" src="{{ prefix }}media/expedition-creativity-original-logo.webp" alt="Origineel Expedition Creativity logo"><span class="brand-text">EXPEDITION<br>CREATIVITY<span>ORIGINAL MUSIC</span></span></a>
+<div class="nav-links" id="nav-links"><a href="{{ nav.home }}" {{ 'class="active"' | safe if body_class == 'ec-home' else '' }}>Startpagina</a><a href="{{ nav.tracks }}" {{ 'class="active"' | safe if body_class == 'ec-tracks' else '' }}>Tracks</a><a href="https://expeditioncreativity.com/timeline">Tijdlijn</a><a href="https://expeditioncreativity.com/about">Mijn verhaal</a><a href="https://expeditioncreativity.com/#behind">Achter de muziek</a><a href="https://expeditioncreativity.com/#contact">Contact</a></div>
+<span class="language">NL</span><button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open het navigatiemenu" aria-expanded="false" aria-controls="nav-links">☰</button>
+</div></nav>
+<div class="preview-ribbon">✦ Nederlandstalig ontwerp</div>
+{% block content %}{% endblock %}
+<footer class="footer"><div class="shell"><div class="footer-top"><a class="brand" href="{{ nav.home }}"><img class="brand-logo" src="{{ prefix }}media/expedition-creativity-original-logo.webp" alt="Origineel Expedition Creativity logo"><span class="brand-text">EXPEDITION<br>CREATIVITY<span>ORIGINAL MUSIC</span></span></a><div class="footer-links"><a href="{{ nav.home }}">Startpagina</a><a href="{{ nav.tracks }}">Tracks</a><a href="https://expeditioncreativity.com/#contact">Contact</a></div></div><div class="footer-bottom"><span>© 2026 Expedition Creativity · Mikaël Stroobants</span><span>Ontwerpversie · Niet gepubliceerd</span></div></div></footer>
+<script>(()=>{let btn=document.getElementById('menu-toggle'),links=document.getElementById('nav-links');if(btn&&links){btn.addEventListener('click',()=>{const open=links.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))})}})();</script>
+{% block scripts %}{% endblock %}
+</body></html>

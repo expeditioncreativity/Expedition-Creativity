@@ -9,6 +9,9 @@ Test: 3 november 2026. Nulmeting van een lokaal, op de bron ontworpen prototype.
 - Geen fictieve videopublicatiedatum verzonnen: `VideoObject` wordt pas toegevoegd als exacte metadata beschikbaar is.
 - Reviewpagina heeft `noindex,nofollow` zolang publicatie niet is goedgekeurd.
 - Interne ankers, echte galerijbestanden en lokale CSS-link bestaan.
+- Een **tweede testcompositie** wordt zonder handmatig kopiëren van HTML gebouwd; optionele secties verdwijnen correct.
+- Nederlandstalige Home en Tracks zijn gegenereerd uit centrale gegevens, met tien echte trackrecords.
+- Tracks: zoeken, jaarfilter en sortering getest in Chromium op desktop en mobiel.
 - Beide gerelateerde composities krijgen echte YouTube-thumbnail-URL's.
 - Geen horizontale overflow op 1440px en 390px. Weergave en galerie-lightbox werken.
 - Mobiel menu werkt; getest in headless Chromium.
@@ -19,7 +22,7 @@ Test: 3 november 2026. Nulmeting van een lokaal, op de bron ontworpen prototype.
 - YouTube-player op een echte HTTPS-Netlify-preview: de fout 153 kan niet volledig vanuit de lokale renderomgeving worden vastgesteld. De pagina heeft een werkende fallback-link naar YouTube.
 - Externe thumbnailafbeeldingen: lokale browser blokkeert netwerkverzoeken; de geldige `i.ytimg.com`-adressen zijn ingevuld maar online laadgedrag nog niet vastgesteld.
 - Pages CMS-accountlogin en GitHub-autorisatie: eigenaar dient toegang te verbinden.
-- Volledige sitebrede NL-redesign en de opbouw van EN-versies: nog niet afgerond.
+- Overige pagina’s (About, Timeline, Behind The Score, Contact) en de EN-versies: nog niet afgerond.
 - Google Search Console / live indexering na publicatie: nog niet van toepassing.
 - Inpassing in Netlify-build / behoud van de bestaande site moet vóór livegang worden bevestigd.
 

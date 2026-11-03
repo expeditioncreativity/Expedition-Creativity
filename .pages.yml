@@ -31,12 +31,12 @@ content:
         label: Taal
         type: select
         options:
-          values: [{value: nl-BE, label: Nederlands (België)}]
+          values: [{name: nl-BE, label: Nederlands (België)}]
       - name: status
         label: Redactionele status
         type: select
         options:
-          values: [{value: draft, label: Concept}, {value: published, label: Goedgekeurd}]
+          values: [{name: draft, label: Concept}, {name: published, label: Goedgekeurd}]
       - name: composer
         label: Componist
         type: string
@@ -86,7 +86,7 @@ content:
         label: YouTube video-ID (11 tekens)
         type: string
       - name: gallery
-        label: Achter de partituur: galerij
+        label: "Achter de partituur: galerij"
         type: object
         list: true
         fields:
@@ -107,3 +107,39 @@ content:
       - name: seo_description
         label: Meta description
         type: text
+
+  - name: site-nl
+    label: Home en navigatie (Nederlands)
+    type: file
+    path: content/site/nl.json
+    format: json
+    fields:
+      - {name: locale, label: Taal, type: string, readonly: true}
+      - {name: site_name, label: Website, type: string}
+      - {name: home_kicker, label: Label boven de titel, type: string}
+      - {name: home_title, label: Home titel, type: string}
+      - {name: home_intro, label: Home introductie, type: text}
+      - {name: home_featured_title, label: Titel uitgelichte composities, type: string}
+      - {name: home_featured_intro, label: Introductie uitgelichte composities, type: text}
+      - {name: home_about_title, label: Titel achter de muziek, type: string}
+      - {name: home_about_intro, label: Introductie achter de muziek, type: text}
+      - {name: home_seo_title, label: Home SEO titel, type: string}
+      - {name: home_seo_description, label: Home meta-omschrijving, type: text}
+      - {name: tracks_title, label: Titel trackoverzicht, type: string}
+      - {name: tracks_intro, label: Trackoverzicht intro, type: text}
+      - {name: tracks_seo_title, label: Tracks SEO titel, type: string}
+      - {name: tracks_seo_description, label: Tracks meta-omschrijving, type: text}
+
+  - name: track-catalogue
+    label: Catalogus & volgorde (nog in ontwikkeling)
+    type: file
+    path: content/site/catalogue.json
+    format: json
+    list: true
+    fields:
+      - {name: title, label: Titel, type: string}
+      - {name: slug, label: URL-sleutel, type: string}
+      - {name: year, label: Jaar, type: number}
+      - {name: youtube_id, label: YouTube video-ID, type: string}
+      - {name: world, label: Wereld of thema, type: string}
+      - {name: type, label: Muziektype, type: string}
