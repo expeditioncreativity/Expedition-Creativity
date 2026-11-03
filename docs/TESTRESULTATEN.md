@@ -45,3 +45,13 @@ Responsieve controles zijn uitgevoerd in browserframes met de genoemde breedtes,
 - Geen Lighthouse-audit, schermlezercontrole, volledige crossbrowsercontrole of test op fysieke mobiele toestellen uitgevoerd.
 - Netlify-productiebranch, actuele accountinstellingen, OAuth en deploypreviewconfiguratie zijn niet via Netlify bevestigd.
 - Er is niets samengevoegd naar `main` en er is geen productiepublicatie uitgevoerd.
+
+## Eerste feedbackronde
+
+- De 12 geautomatiseerde controles zijn opnieuw uitgevoerd en slagen.
+- Carrouselbediening verplaatst het overzicht horizontaal (gemeten scrollLeft 399 px, totale inhoudsbreedte 3851 px versus 1140 px viewport).
+- De permanent zichtbare cookieknop opent de dialoog; Alleen noodzakelijk sluit die correct.
+- Tijdlijn, Contact, Mijn verhaal, Composities en Startpagina bij 360 px framebreedte: documentbreedte en scrollbreedte beide 345 px, dus geen horizontale pagina-overflow.
+- Miniatuurkaders zijn in de browser op 16:9 gecontroleerd: 362 × 203,625 px. De juiste bronafbeelding wordt daarin met cover weergegeven.
+- Externe YouTube-miniaturen waren tijdens deze ronde niet beschikbaar in de testomgeving (naturalWidth 0); de exacte visuele uitsnede van die externe beelden kon daarom niet opnieuw worden beoordeeld. De lokale Blue Boy Planet-afbeelding en het originele logo laden wel.
+- Contactkaarten, nadruk, ruimere uitlijning en tijdlijniconen zijn visueel gecontroleerd. De goedgekeurde Blue Boy Planet-inhoud bleef ongewijzigd.

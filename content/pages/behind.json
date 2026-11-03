@@ -1,8 +1,21 @@
 {
-  "path":"/nl/achter-de-muziek/","title":"Achter de muziek","description":"De instrumenten, opleidingen en klankbibliotheken achter de muziek van Expedition Creativity.","heading":"Van eerste idee.<br><em>Tot orkestrale klank.</em>","lead":"Een blik op de werkplek en de klanken achter de composities.",
-  "sections":[
-    {"title":"Ableton Live","body":"<p>Ableton Live vormt de centrale werkplek voor het componeren, arrangeren en produceren van de muzikale expedities.</p>"},
-    {"title":"Leren en ontdekken","body":"<p>Bij Thinkspace Education volgde ik de opleidingen <em>How to Write Music</em> en <em>Practical Harmony 1</em>.</p>"},
-    {"title":"Het orkestrale klankpalet","body":"<p>De composities krijgen vorm met virtuele instrumenten, waaronder BBC Symphony Orchestra en Abbey Road Originals van Spitfire Audio, Celestial Strings van VSL, de Berlin Series van Orchestral Tools en The Orchestra Elements van Sonuscore.</p>"}
+  "path": "/nl/achter-de-muziek/",
+  "title": "Achter de muziek",
+  "description": "De instrumenten, opleidingen en klankbibliotheken achter de muziek van Expedition Creativity.",
+  "heading": "Van eerste idee.<br><em>Tot orkestrale klank.</em>",
+  "lead": "Een blik op de werkplek en de klanken achter de composities.",
+  "sections": [
+    {
+      "title": "Ableton Live",
+      "body": "<p><strong>Ableton Live</strong> vormt de centrale werkplek voor het <strong>componeren, arrangeren en produceren</strong> van de muzikale expedities.</p>"
+    },
+    {
+      "title": "Leren en ontdekken",
+      "body": "<p>Bij <strong>Thinkspace Education</strong> volgde ik de opleidingen <strong><em>How to Write Music</em></strong> en <strong><em>Practical Harmony 1</em></strong>.</p>"
+    },
+    {
+      "title": "Het orkestrale klankpalet",
+      "body": "<p>De composities krijgen vorm met <strong>virtuele instrumenten</strong>, waaronder <strong>BBC Symphony Orchestra</strong> en Abbey Road Originals van <strong>Spitfire Audio</strong>, Celestial Strings van <strong>VSL</strong>, de Berlin Series van <strong>Orchestral Tools</strong> en The Orchestra Elements van <strong>Sonuscore</strong>.</p>"
+    }
   ]
 }

@@ -1,5 +1,21 @@
 (() => {
   const $ = s => document.querySelector(s);
+  document.querySelectorAll('.brand-logo').forEach(image=>{
+    const fallback=()=>{if(!image.dataset.fallback){image.dataset.fallback='true';image.src='/footer-logo.png';}};
+    image.addEventListener('error',fallback);if(image.complete&&!image.naturalWidth)fallback();
+  });
+  const carousel=$('#track-carousel');
+  if(carousel){
+    const pause=$('[data-carousel-pause]'),reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+    let manualPause=false,hover=false,focus=false,timer;
+    function advance(direction=1){const step=carousel.firstElementChild.getBoundingClientRect().width+22;const end=carousel.scrollWidth-carousel.clientWidth;const next=carousel.scrollLeft+step*direction;carousel.scrollTo({left:next>end+2?0:next<0?end:next,behavior:reduced.matches?'instant':'smooth'});}
+    function schedule(){clearInterval(timer);if(!manualPause&&!hover&&!focus&&!reduced.matches&&!document.hidden)timer=setInterval(()=>advance(),5000);}
+    $('[data-carousel-prev]')?.addEventListener('click',()=>{advance(-1);schedule();});$('[data-carousel-next]')?.addEventListener('click',()=>{advance();schedule();});
+    pause?.addEventListener('click',()=>{manualPause=!manualPause;pause.setAttribute('aria-pressed',String(manualPause));pause.textContent=manualPause?'Hervatten':'Pauzeren';schedule();});
+    carousel.addEventListener('mouseenter',()=>{hover=true;schedule();});carousel.addEventListener('mouseleave',()=>{hover=false;schedule();});carousel.addEventListener('focusin',()=>{focus=true;schedule();});carousel.addEventListener('focusout',event=>{if(!carousel.contains(event.relatedTarget)){focus=false;schedule();}});
+    carousel.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();advance(event.key==='ArrowRight'?1:-1);}});
+    document.addEventListener('visibilitychange',schedule);reduced.addEventListener('change',schedule);schedule();
+  }
   const toggle=$('#menu-toggle'), links=$('#nav-links');
   function closeMenu(){links?.classList.remove('open');toggle?.setAttribute('aria-expanded','false');toggle?.setAttribute('aria-label','Open het navigatiemenu');}
   toggle?.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Sluit het navigatiemenu':'Open het navigatiemenu');});

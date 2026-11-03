@@ -16,3 +16,14 @@
 - Nederlandse URL-structuur geïmplementeerd; Engelse routes en hreflang wachten op goedkeuring. Bestaande routes blijven behouden.
 - Preview-indexering en Nederlandse preview-analytics uitgeschakeld; productie-analytics blijft achter toestemming en expliciete productieconfiguratie.
 - Twaalf geautomatiseerde controles geslaagd; browsercontroles uitgevoerd voor zoeken, filters, YouTube-speler, galerij en responsieve layouts.
+
+## 2026-11-03 — Eerste feedbackronde
+
+- Tijdlijn aangevuld met kleine, klikbare miniaturen en de bestaande compositie-icoontjes.
+- Algemene inhoudssecties uitgelijnd op dezelfde breedte als de kop; selectieve nadruk toegevoegd in Mijn verhaal en Achter de muziek, zonder de tekstinhoud te herschrijven.
+- Contact hersteld als drie kaarten voor YouTube, LinkedIn en e-mail, met Nederlandse tekst en merkgebonden knoppen.
+- Blijvend zichtbare cookievoorkeurenknop toegevoegd, naast de footerknop en de link naar Cookiebeleid.
+- Startpagina uitgebreid met een horizontale carrousel voor alle tien tracks, zichtbare scrollbar, bediening en automatische voortgang om de vijf seconden. Pauzeert bij hover, focus en verborgen browservenster; respecteert verminderde beweging.
+- Kaartminiaturen in vaste 16:9-kaders geplaatst met cover-uitsnede om de in 4:3-miniaturen ingebakken zwarte balken buiten beeld te houden.
+- Logoherstel via de bestaande lokale logoasset en cacheversies voor stylesheets, script en logo.
+- Twaalf bestaande tests geslaagd; extra browsercontroles voor cookievenster, carrouselbediening en mobiele overflow uitgevoerd.

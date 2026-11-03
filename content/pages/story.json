@@ -6,7 +6,13 @@
   "lead": "Expedition Creativity is de creatieve thuisbasis van Mikaël Stroobants: filmische muziek, orkestrale verhalen en denkbeeldige reizen, geïnspireerd door natuur, avontuur en filmmuziek.",
   "image": "/about-photo.jpg",
   "sections": [
-    {"title":"Mijn muzikale reis","body":"<p>Mijn muzikale reis begon met de hoorn, een instrument dat me leerde hoe melodie, ademhaling en klankkleur emotie kunnen vormgeven.</p><p>Vijftien jaar lang speelde ik in een lokale muziekvereniging. Die ervaring leerde me discipline, samenspel en de vreugde van samen muziek maken.</p><p>Tegelijk groeide mijn passie voor filmmuziek. Componisten als John Williams, Hans Zimmer, James Newton Howard, Harry Gregson-Williams en Howard Shore lieten me horen hoe muziek hele werelden kan bouwen.</p>"},
-    {"title":"Muzikale verhalen","body":"<p>Expedition Creativity brengt die invloeden samen. Elke compositie begint met een scène, een gevoel of een vraag en groeit uit tot een kleine filmische expeditie.</p><p>Of je nu dirigent, filmmaker, muzikant of liefhebber van filmische muziek bent: je bent welkom om op ontdekking te gaan.</p><p><a class=\"btn btn-primary\" href=\"/nl/composities/\">Ontdek de composities ↗</a></p>"}
+    {
+      "title": "Mijn muzikale reis",
+      "body": "<p>Mijn muzikale reis begon met de <strong>hoorn</strong>, een instrument dat me leerde hoe melodie, ademhaling en klankkleur emotie kunnen vormgeven.</p><p><strong>Vijftien jaar</strong> lang speelde ik in een lokale muziekvereniging. Die ervaring leerde me discipline, samenspel en de vreugde van samen muziek maken.</p><p>Tegelijk groeide mijn <strong>passie voor filmmuziek</strong>. Componisten als John Williams, Hans Zimmer, James Newton Howard, Harry Gregson-Williams en Howard Shore lieten me horen <strong>hoe muziek hele werelden kan bouwen</strong>.</p>"
+    },
+    {
+      "title": "Muzikale verhalen",
+      "body": "<p>Expedition Creativity brengt die invloeden samen. Elke compositie begint met <strong>een scène, een gevoel of een vraag</strong> en groeit uit tot een kleine filmische expeditie.</p><p>Of je nu dirigent, filmmaker, muzikant of liefhebber van filmische muziek bent: je bent welkom om op ontdekking te gaan.</p><p><a class=\"btn btn-primary\" href=\"/nl/composities/\">Ontdek de composities ↗</a></p>"
+    }
   ]
 }
