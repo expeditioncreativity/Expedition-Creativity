@@ -10,9 +10,9 @@ const read=path=>readFile(path,'utf8');
 const manifest=JSON.parse(await read(join(out,'build-manifest.json')));
 const pages=await Promise.all(manifest.pages.map(async p=>({...p,html:await read(join(out,p.path,'index.html'))})));
 
-test('17 Dutch pages are built, with Dutch document language and no unresolved slots',()=>{
-  assert.equal(pages.length,17);
-  for(const p of pages){assert.match(p.html,/<html lang="nl">/);assert.doesNotMatch(p.html,/\{\{[A-Z_]+\}\}/);assert.match(p.html,/<h1>/);assert.equal((p.html.match(/<h1>/g)||[]).length,1);}
+test('34 bilingual pages are built with the correct document language and no unresolved slots',()=>{
+  assert.equal(pages.length,34);
+  for(const p of pages){assert.ok(p.html.includes(`<html lang="${p.path.startsWith('/en/')?'en':'nl'}">`));assert.doesNotMatch(p.html,/\{\{[A-Z_]+\}\}/);assert.match(p.html,/<h1>/);assert.equal((p.html.match(/<h1>/g)||[]).length,1);}
 });
 test('all internal links, assets, gallery images and fragment targets exist',async()=>{
   for(const p of pages){
@@ -59,10 +59,20 @@ test('supported CMS formatting is rendered and new prose is escaped',()=>{
 test('CMS writes only to development, excludes approved text and pins its script',async()=>{
   const config=await read(join(root,'admin/config.yml'));assert.match(config,/branch: development\/nl-design-cms/);assert.match(config,/publish_mode: editorial_workflow/);assert.match(config,/filter: \{field: approved, value: false\}/);assert.doesNotMatch(config,/branch: main/);assert.match(await read(join(root,'admin/index.html')),/decap-cms@3\.17\.3/);assert.match(await read(join(root,'admin/index.html')),/integrity="sha384-/);
 });
-test('no untranslated English routes or fictitious alternates are generated',async()=>{
-  assert.ok(pages.every(p=>p.path.startsWith('/nl/')));
-  for(const p of pages)assert.doesNotMatch(p.html,/hreflang="en|href="\/en\//);
-  await assert.rejects(access(join(out,'en')));
+test('language alternates point to existing matching pages in both directions',()=>{
+  for(const p of pages){
+    const alternates=[...p.html.matchAll(/hreflang="(nl|en)" href="https:\/\/expeditioncreativity.com([^"]+)"/g)];
+    assert.equal(alternates.length,2,p.path);
+    for(const [,lang,path] of alternates){assert.ok(path.startsWith('/'+lang+'/'));assert.ok(pages.some(x=>x.path===path),path);}
+  }
+});
+test('English track narrative matches the original published website paragraphs',async()=>{
+  for(const t of tracks){
+    const source=await read(join(root,`track-${t.slug}.html`));
+    const story=source.split('<h2>The Story</h2>')[1].split('<div class="track-card-tags')[0];
+    const english=pages.find(p=>p.path===`/en/tracks/${t.slug}/`).html;
+    for(const paragraph of story.match(/<p>.*?<\/p>/gs)||[])assert.ok(english.includes(paragraph),t.slug);
+  }
 });
 test('a new CMS composition reaches its page, search index, catalogue and sitemap; drafts stay hidden',async()=>{
   const temp=await mkdtemp(join(tmpdir(),'ec-content-test-'));
@@ -71,9 +81,16 @@ test('a new CMS composition reaches its page, search index, catalogue and sitema
     const fixture={...tracks[0],title:'Testcompositie',slug:'testcompositie',approved:false,intro:'Een **nieuw** muzikaal verhaal.',sections:[{id:'verhaal',title:'Het verhaal',body:'### Een begin\n\nEen **origineel** thema.'}],status:'published'};
     await writeFile(join(temp,'content/tracks/testcompositie.json'),JSON.stringify(fixture));
     await writeFile(join(temp,'content/tracks/concept.json'),JSON.stringify({...fixture,slug:'concept',status:'draft'}));
+    await writeFile(join(temp,'content/en/tracks/testcompositie.json'),JSON.stringify({title:'Test composition',slug:'testcompositie',world:'Space',type:'Orchestral music',status:'published',intro:'An **original** story.',sections:[{id:'story',title:'Story',body:'A new beginning.'}]}));
+    await writeFile(join(temp,'content/tracks/zonder-vertaling.json'),JSON.stringify({...fixture,slug:'zonder-vertaling'}));
     execFileSync(process.execPath,[join(temp,'scripts/build.mjs')],{cwd:temp});
     for(const path of ['nl/composities/testcompositie/index.html','nl/composities/index.html','sitemap.xml','assets/search-index.json'])assert.match(await read(join(temp,'dist',path)),/testcompositie/);
     assert.match(await read(join(temp,'dist/nl/composities/testcompositie/index.html')),/<strong>nieuw<\/strong>/);
+    const english=await read(join(temp,'dist/en/tracks/testcompositie/index.html'));
+    assert.match(english,/<strong>original<\/strong>/);assert.ok(english.includes(`data-video="${fixture.video_id}"`));
+    assert.doesNotMatch(await read(join(temp,'dist/nl/composities/zonder-vertaling/index.html')),/hreflang="en"/);
+    await assert.rejects(access(join(temp,'dist/en/tracks/zonder-vertaling/index.html')));
+
     await assert.rejects(access(join(temp,'dist/nl/composities/concept/index.html')));
     assert.doesNotMatch(await read(join(temp,'dist/assets/search-index.json')),/\/concept\//);
   } finally {await rm(temp,{recursive:true,force:true});}

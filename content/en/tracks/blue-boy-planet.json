@@ -1,0 +1,28 @@
+{
+  "title": "Blue Boy Planet",
+  "slug": "blue-boy-planet",
+  "year": 2026,
+  "world": "Space",
+  "type": "Cinematic orchestral music",
+  "video_id": "CbFn2igUChI",
+  "image": "/assets/approved-1.webp",
+  "duration": "4:41",
+  "description": "An emotional cinematic orchestral composition about imagination, wonder, childhood innocence and the idea that love never truly disappears.",
+  "intro": "Emotional Cinematic Space Journey",
+  "sections": [
+    {
+      "id": "story",
+      "title": "The Story",
+      "body": "<p>Blue Boy Planet is inspired by the story of a 6-year-old boy whose journey continues far beyond our world. Through music and visuals, this short film reimagines loss as a cosmic voyage: a young boy decides to leave Earth behind to explore distant planets, galaxies and the mysteries of the universe.</p>"
+    }
+  ],
+  "related": [
+    "chills-of-antarctica",
+    "turtle-travel"
+  ],
+  "status": "published",
+  "approved": false,
+  "seo_title": "Blue Boy Planet | Expedition Creativity",
+  "release_month": 5,
+  "source": "track-blue-boy-planet.html"
+}

@@ -1,5 +1,7 @@
 (() => {
   const $ = s => document.querySelector(s);
+  const en=document.documentElement.lang==='en';
+  const ui=(nl,english)=>en?english:nl;
   document.querySelectorAll('.brand-logo').forEach(image=>{
     const fallback=()=>{if(!image.dataset.fallback){image.dataset.fallback='true';image.src='/footer-logo.png';}};
     image.addEventListener('error',fallback);if(image.complete&&!image.naturalWidth)fallback();
@@ -11,20 +13,20 @@
     function advance(direction=1){const step=carousel.firstElementChild.getBoundingClientRect().width+22;const end=carousel.scrollWidth-carousel.clientWidth;const next=carousel.scrollLeft+step*direction;carousel.scrollTo({left:next>end+2?0:next<0?end:next,behavior:reduced.matches?'instant':'smooth'});}
     function schedule(){clearInterval(timer);if(!manualPause&&!hover&&!focus&&!reduced.matches&&!document.hidden)timer=setInterval(()=>advance(),5000);}
     $('[data-carousel-prev]')?.addEventListener('click',()=>{advance(-1);schedule();});$('[data-carousel-next]')?.addEventListener('click',()=>{advance();schedule();});
-    pause?.addEventListener('click',()=>{manualPause=!manualPause;pause.setAttribute('aria-pressed',String(manualPause));pause.textContent=manualPause?'Hervatten':'Pauzeren';schedule();});
+    pause?.addEventListener('click',()=>{manualPause=!manualPause;pause.setAttribute('aria-pressed',String(manualPause));pause.textContent=manualPause?ui('Hervatten','Resume'):ui('Pauzeren','Pause');schedule();});
     carousel.addEventListener('mouseenter',()=>{hover=true;schedule();});carousel.addEventListener('mouseleave',()=>{hover=false;schedule();});carousel.addEventListener('focusin',()=>{focus=true;schedule();});carousel.addEventListener('focusout',event=>{if(!carousel.contains(event.relatedTarget)){focus=false;schedule();}});
     carousel.addEventListener('keydown',event=>{if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();advance(event.key==='ArrowRight'?1:-1);}});
     document.addEventListener('visibilitychange',schedule);reduced.addEventListener('change',schedule);schedule();
   }
   const toggle=$('#menu-toggle'), links=$('#nav-links');
-  function closeMenu(){links?.classList.remove('open');toggle?.setAttribute('aria-expanded','false');toggle?.setAttribute('aria-label','Open het navigatiemenu');}
-  toggle?.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Sluit het navigatiemenu':'Open het navigatiemenu');});
+  function closeMenu(){links?.classList.remove('open');toggle?.setAttribute('aria-expanded','false');toggle?.setAttribute('aria-label',ui('Open het navigatiemenu','Open navigation menu'));}
+  toggle?.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?ui('Sluit het navigatiemenu','Close navigation menu'):ui('Open het navigatiemenu','Open navigation menu'));});
   document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu();});
   links?.addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
   const play=$('#play-video'), player=$('#player');
   if(play && player){
     const video=play.dataset.video;
-    const fallback=document.createElement('a');fallback.href=`https://www.youtube.com/watch?v=${encodeURIComponent(video)}`;fallback.target='_blank';fallback.rel='noopener noreferrer';fallback.className='video-fallback';fallback.textContent='Bekijk rechtstreeks op YouTube ↗';player.parentElement.append(fallback);
+    const fallback=document.createElement('a');fallback.href=`https://www.youtube.com/watch?v=${encodeURIComponent(video)}`;fallback.target='_blank';fallback.rel='noopener noreferrer';fallback.className='video-fallback';fallback.textContent=ui('Bekijk rechtstreeks op YouTube ↗','Watch directly on YouTube ↗');player.parentElement.append(fallback);
     play.addEventListener('click',()=>{
       const iframe=document.createElement('iframe');iframe.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(video)}?autoplay=1&rel=0`;iframe.title=play.getAttribute('aria-label');iframe.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';iframe.style.cssText='border:0;position:absolute;inset:0;width:100%;height:100%;z-index:4';player.replaceChildren(iframe);track('video_play',{video_id:video});
     });
@@ -40,8 +42,8 @@
     const cards=[...grid.children];const params=new URLSearchParams(location.search);
     [...form.elements].filter(el=>el.name).forEach(el=>{if(params.has(el.name))el.value=params.get(el.name);});
     function filter(){const query=fold($('#query').value.trim()),year=$('#year').value,world=$('#world').value,type=$('#type').value,sort=$('#sort').value||'newest';let count=0;
-      cards.sort((a,b)=>sort==='title'?a.dataset.title.localeCompare(b.dataset.title,'nl'):sort==='oldest'?Number(a.dataset.order)-Number(b.dataset.order):Number(b.dataset.order)-Number(a.dataset.order)).forEach(card=>{const d=card.dataset;card.hidden=!(!query||fold(`${d.title} ${d.world} ${d.type} ${d.year}`).includes(query))||Boolean(year&&d.year!==year)||Boolean(world&&d.world!==world)||Boolean(type&&d.type!==type);if(!card.hidden)count++;grid.append(card);});
-      $('#result-count').textContent=`${count} ${count===1?'compositie':'composities'}`;$('#empty-results').hidden=count!==0;
+      cards.sort((a,b)=>sort==='title'?a.dataset.title.localeCompare(b.dataset.title,en?'en':'nl'):sort==='oldest'?Number(a.dataset.order)-Number(b.dataset.order):Number(b.dataset.order)-Number(a.dataset.order)).forEach(card=>{const d=card.dataset;card.hidden=!(!query||fold(`${d.title} ${d.world} ${d.type} ${d.year}`).includes(query))||Boolean(year&&d.year!==year)||Boolean(world&&d.world!==world)||Boolean(type&&d.type!==type);if(!card.hidden)count++;grid.append(card);});
+      $('#result-count').textContent=`${count} ${count===1?ui('compositie','composition'):ui('composities','compositions')}`;$('#empty-results').hidden=count!==0;
       const next=new URLSearchParams();new FormData(form).forEach((value,key)=>{if(value && !(key==='volgorde'&&value==='newest'))next.set(key,value);});history.replaceState(null,'',location.pathname+(next.size?'?'+next:'')+location.hash);
     }
     form.addEventListener('input',filter);form.addEventListener('change',filter);form.addEventListener('submit',event=>event.preventDefault());form.addEventListener('reset',()=>setTimeout(filter,0));filter();

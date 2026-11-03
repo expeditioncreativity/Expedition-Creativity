@@ -2,10 +2,12 @@ backend:
   name: github
   repo: expeditioncreativity/Expedition-Creativity
   branch: development/nl-design-cms
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+  site_domain: expeditioncreativity.netlify.app
   # Authentication uses the site's Netlify GitHub OAuth configuration.
   # Connecting GitHub to ChatGPT does not configure this independent login.
 publish_mode: editorial_workflow
-local_backend: true
 locale: nl
 media_folder: src/assets/uploads
 public_folder: /assets/uploads
@@ -14,7 +16,7 @@ display_url: /nl/
 logo_url: /assets/logo-original.png
 collections:
   - name: tracks
-    label: Composities
+    label: Composities — Nederlands
     label_singular: Compositie
     folder: content/tracks
     format: json
@@ -26,14 +28,14 @@ collections:
     summary: '{{title}} · {{year}} · {{status}}'
     filter: {field: approved, value: false}
     editor: {preview: false}
-    description: Nieuwe Nederlandstalige composities. Publiceren in dit CMS slaat op in de ontwikkelbranch; de livewebsite wordt pas na afzonderlijke goedkeuring bijgewerkt. Blue Boy Planet is beschermd en wordt hier niet ter bewerking aangeboden.
+    description: Nederlandstalige composities. Publiceren in dit CMS slaat op in de ontwikkelbranch; de livewebsite wordt pas na afzonderlijke goedkeuring bijgewerkt. Blue Boy Planet is beschermd en wordt hier niet ter bewerking aangeboden.
     fields:
       - {label: Titel, name: title, widget: string}
       - {label: URL-naam, name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Gebruik kleine letters, cijfers en koppeltekens.']}
       - {label: Jaar, name: year, widget: number, value_type: int, min: 1900, max: 2200}
       - {label: Uitgavemaand (1–12), name: release_month, widget: number, value_type: int, min: 1, max: 12, required: false}
-      - {label: Wereld, name: world, widget: select, options: [Natuur, Oceaan, Ruimte, Oorsprong, Migratie, Old West]}
-      - {label: Genre, name: type, widget: string, default: Filmische orkestmuziek}
+      - {label: Wereld, name: world, widget: string, hint: "NL: Natuur/Oceaan/Ruimte/Oorsprong/Migratie/Old West. EN: Nature/Ocean/Space/Origins/Migration/Old West."}
+      - {label: Genre, name: type, widget: string, hint: "Gebruik de taal van deze collectie."}
       - {label: YouTube-video-ID, name: video_id, widget: string, pattern: ['^[A-Za-z0-9_-]{11}$', 'Vul alleen het video-ID van 11 tekens in.']}
       - {label: Hoesafbeelding, name: image, widget: image}
       - {label: Duurtijd, name: duration, widget: string, required: false, pattern: ['^[0-9]+:[0-5][0-9]$', 'Gebruik m:ss, bijvoorbeeld 4:41.']}
@@ -60,6 +62,50 @@ collections:
             minimal: true
             buttons: [bold, italic, heading-three]
             editor_components: []
-      - {label: Verwante composities (URL-namen), name: related, widget: list, required: false}
+      - {label: Verwante composities, name: related, widget: relation, collection: tracks, search_fields: [title, slug], value_field: slug, display_fields: [title], multiple: true, required: false}
       - {label: Status, name: status, widget: select, options: [{label: Concept, value: draft}, {label: Zichtbaar in ontwikkeling, value: published}], default: draft}
       - {name: approved, widget: hidden, default: false}
+
+  - name: tracks_en
+    label: Composities — English
+    label_singular: English composition
+    folder: content/en/tracks
+    format: json
+    extension: json
+    create: true
+    delete: false
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{title}} · {{year}} · {{status}}'
+    editor: {preview: false}
+    description: Maak eerst de Nederlandse compositie. Gebruik hier exact dezelfde URL-naam. Video, afbeelding, jaar, maand en duur worden automatisch uit de Nederlandse compositie overgenomen. Alleen Engelse versies met een zichtbare Nederlandse tegenhanger verschijnen in de preview. Bestaande Engelse verhaalteksten zijn overgenomen van de oorspronkelijke website.
+    fields:
+      - {label: Titel, name: title, widget: string}
+      - {label: URL-naam, name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Gebruik kleine letters, cijfers en koppeltekens.']}
+      - {label: Wereld, name: world, widget: string, hint: "NL: Natuur/Oceaan/Ruimte/Oorsprong/Migratie/Old West. EN: Nature/Ocean/Space/Origins/Migration/Old West."}
+      - {label: Genre, name: type, widget: string, hint: "Gebruik de taal van deze collectie."}
+      - {label: SEO-titel, name: seo_title, widget: string, required: false}
+      - {label: Korte beschrijving voor zoekmachines, name: description, widget: text, required: false}
+      - label: Inleiding
+        name: intro
+        widget: markdown
+        required: false
+        minimal: true
+        buttons: [bold, italic]
+        editor_components: []
+      - label: Inhoudssecties
+        name: sections
+        widget: list
+        required: false
+        summary: '{{fields.title}}'
+        fields:
+          - {label: Ankernaam, name: id, widget: string, pattern: ['^[a-z0-9-]+$', 'Gebruik kleine letters en koppeltekens; elke sectie heeft een unieke naam.']}
+          - {label: Titel, name: title, widget: string}
+          - label: Tekst
+            name: body
+            widget: markdown
+            minimal: true
+            buttons: [bold, italic, heading-three]
+            editor_components: []
+      - {label: Verwante composities, name: related, widget: relation, collection: tracks, search_fields: [title, slug], value_field: slug, display_fields: [title], multiple: true, required: false}
+      - {label: Status, name: status, widget: select, options: [{label: Concept, value: draft}, {label: Zichtbaar in ontwikkeling, value: published}], default: draft}

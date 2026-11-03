@@ -27,3 +27,13 @@
 - Kaartminiaturen in vaste 16:9-kaders geplaatst met cover-uitsnede om de in 4:3-miniaturen ingebakken zwarte balken buiten beeld te houden.
 - Logoherstel via de bestaande lokale logoasset en cacheversies voor stylesheets, script en logo.
 - Twaalf bestaande tests geslaagd; extra browsercontroles voor cookievenster, carrouselbediening en mobiele overflow uitgevoerd.
+
+## 3 november 2026 — homepage, Engels en tweetalig CMS
+
+- Meer ruimte onder carrouselbediening; zichtbare gouden play-iconen op de homepagevisual en alle carrouselminiaturen.
+- Dubbele homepage-inleiding vervangen door de eerste verhaalpassage met Lees meer; bestaande kaart behouden.
+- Tijdlijn van nieuw naar oud, inclusief maandvolgorde.
+- 17 Engelse pagina’s toegevoegd met bestaande Engelse trackverhalen, dezelfde templates, taalwissels en wederzijdse hreflang.
+- Twee foutieve oude korte teksten (Dreamcatcher-inleiding en Elephant-SEO-beschrijving) vervangen door bestaande zinnen uit hun eigen trackverhaal. De verhaalteksten zelf zijn ongewijzigd.
+- CMS uitgebreid met Nederlandse/Engelse collecties en gedeelde technische metadata; gebruikshandleiding toegevoegd. OAuth naar vaste Netlify-site ingesteld; echte login en online opslaan nog geblokkeerd door ontbrekende aanmelding.
+- Geen productiepublicatie, merge of wijziging aan oorspronkelijke websitebestanden.

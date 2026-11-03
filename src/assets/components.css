@@ -33,3 +33,8 @@
 .contact-section strong{color:inherit}.editorial-page .prose:has(>.contact-section){max-width:none}
 @media(max-width:900px){.track-carousel .composition-card{flex-basis:calc((100% - 22px)/2)}.contact-cards{grid-template-columns:1fr}.contact-card{padding:25px}.contact-card .btn{max-width:360px}.contact-section{padding:26px}}
 @media(max-width:560px){.timeline-entry{grid-template-columns:48px 90px minmax(0,1fr);gap:12px}.timeline-icon{font-size:23px;width:40px;height:40px}.timeline-entry h2{font-size:22px;overflow-wrap:anywhere}.timeline-entry .section-no{font-size:12px}.timeline-entry .eyebrow{letter-spacing:.08em}.track-carousel .composition-card{flex-basis:82%;min-width:240px}.carousel-heading{align-items:start;flex-direction:column}.cookie-fixed{left:12px;bottom:12px;padding:10px 14px}.contact-section{padding:22px}.contact-card .btn{font-size:12px}.editorial-page .prose{max-width:none}}
+
+/* Homepage review: clear controls and an unmistakable video affordance. */
+.carousel-controls{margin-bottom:22px;gap:10px}
+.preview-play{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--gold,#ddb313);color:#111;font-size:25px;box-shadow:0 3px 20px #0005;pointer-events:none}
+.composition-card:hover .preview-play{background:#ffe170}

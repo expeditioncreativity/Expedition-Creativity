@@ -55,3 +55,12 @@ Responsieve controles zijn uitgevoerd in browserframes met de genoemde breedtes,
 - Miniatuurkaders zijn in de browser op 16:9 gecontroleerd: 362 × 203,625 px. De juiste bronafbeelding wordt daarin met cover weergegeven.
 - Externe YouTube-miniaturen waren tijdens deze ronde niet beschikbaar in de testomgeving (naturalWidth 0); de exacte visuele uitsnede van die externe beelden kon daarom niet opnieuw worden beoordeeld. De lokale Blue Boy Planet-afbeelding en het originele logo laden wel.
 - Contactkaarten, nadruk, ruimere uitlijning en tijdlijniconen zijn visueel gecontroleerd. De goedgekeurde Blue Boy Planet-inhoud bleef ongewijzigd.
+
+## Tweede feedbackronde en Engelse versie — 3 november 2026
+
+- `npm test`: 13 tests, allemaal geslaagd. 34 gegenereerde pagina’s; interne links, assets, fragmenten, documenttaal, metadata en JSON-LD gecontroleerd.
+- Bestaande Nederlandse BBP-tekst en oorspronkelijke bestanden blijven beschermd. Engelse trackverhalen worden per alinea met de oorspronkelijke HTML vergeleken.
+- Wederzijdse hreflang gecontroleerd; een CMS-track zonder Engelse vertaling krijgt geen dode taalwissel. Integratietest maakt een nieuwe tweetalige compositie, erft technische metadata en houdt concepten verborgen.
+- Browser: taalwissel EN→NL werkt, Engelse zoekopdracht `planet` geeft `1 composition`. Homepage, catalogus en tijdlijn op 360px: documentbreedte en scrollbreedte beide 345px, dus geen horizontale pagina-overflow.
+- Visuele homepagecontrole: gouden play-iconen en nieuwe verhaalpassage aanwezig; carrouselbediening heeft extra ondermarge. Tijdlijn begint met Blue Boy Planet, gevolgd door Chills of Antarctica en Turtle Travel.
+- CMS-login en echte online opslaan-/terugleescyclus nog niet voltooid: Netlify toont een aanmeldscherm. Geen credentials of productie-instellingen gewijzigd.

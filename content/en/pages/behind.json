@@ -1,0 +1,22 @@
+{
+  "path": "/nl/achter-de-muziek/",
+  "title": "Behind The Score",
+  "description": "Tools, learning platforms and sample libraries behind the expeditions.",
+  "heading": "From the first idea.<br><em>To orchestral sound.</em>",
+  "lead": "Tools, learning platforms and sample libraries behind the expeditions.",
+  "sections": [
+    {
+      "title": "Ableton Live",
+      "body": "<p>The central creative workspace for composing, arranging and shaping each cinematic expedition. <a href=\"https://www.ableton.com/\" rel=\"noopener\" target=\"_blank\">Ableton Live</a>.</p>"
+    },
+    {
+      "title": "Thinkspace Education",
+      "body": "<p>Online courses and community led by Guy Michelmore, with a broad audiovisual approach to writing music. Completed courses include <strong>How to Write Music</strong> and <strong>Practical Harmony 1</strong>. <a href=\"https://thinkspace.ac.uk/\" rel=\"noopener\" target=\"_blank\">Thinkspace Education</a></p>"
+    },
+    {
+      "title": "Orchestral Sound",
+      "body": "<p>Selected libraries help shape the sound palette: <a href=\"https://www.spitfireaudio.com/\" rel=\"noopener\" target=\"_blank\">Spitfire Audio</a> with BBC Symphony Orchestra and Abbey Road Originals, <a href=\"https://www.vsl.co.at/\" rel=\"noopener\" target=\"_blank\">VSL</a> with Celestial Strings, <a href=\"https://www.orchestraltools.com/\" rel=\"noopener\" target=\"_blank\">Orchestral Tools</a> with Berlin Series, and <a href=\"https://www.sonuscore.com/\" rel=\"noopener\" target=\"_blank\">Sonuscore</a> with The Orchestra Elements.</p>"
+    }
+  ],
+  "source": "index.html#behind"
+}

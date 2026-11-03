@@ -1,0 +1,25 @@
+{
+  "title": "Symphonic Awakening",
+  "slug": "symphonic-awakening",
+  "year": 2023,
+  "world": "Origins",
+  "type": "Cinematic orchestral music",
+  "video_id": "VUcN0n84EQA",
+  "image": "https://i.ytimg.com/vi/VUcN0n84EQA/hqdefault.jpg",
+  "duration": "",
+  "description": "The first steps into orchestral composition and film scoring: a symphonic awakening built around strings, brass and cinematic textures.",
+  "intro": "Strings at Dawn",
+  "sections": [
+    {
+      "id": "story",
+      "title": "The Story",
+      "body": "<p>Symphonic Awakening represents the beginning of a creative journey into orchestral composition and film scoring. Built around strings, brass and cinematic textures, it marks the first chapter of Expedition Creativity: learning how orchestral colours can carry emotion, discovery and storytelling.</p>"
+    }
+  ],
+  "related": [],
+  "status": "published",
+  "approved": false,
+  "release_month": 8,
+  "seo_title": "Symphonic Awakening | Expedition Creativity",
+  "source": "track-symphonic-awakening.html"
+}
