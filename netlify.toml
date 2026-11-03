@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+# The existing production branch and domain settings are managed in Netlify.
+# This development branch does not change them or publish to production.

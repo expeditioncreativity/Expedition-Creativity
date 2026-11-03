@@ -1,0 +1,9 @@
+{
+  "path":"/nl/cookies/","title":"Privacy en cookies","description":"Informatie over cookievoorkeuren, Google Analytics en YouTube op Expedition Creativity.","heading":"Privacy.<br><em>Jouw voorkeur.</em>","lead":"Je kiest zelf of je analytics wilt toestaan.",
+  "sections":[
+    {"title":"Noodzakelijke opslag","body":"<p>De website onthoudt je cookievoorkeur in je browser. Die voorkeur is nodig om je keuze bij een volgend bezoek te respecteren.</p>"},
+    {"title":"Google Analytics","body":"<p>Alleen na je toestemming laden we Google Analytics om bezoeken en het gebruik van de website te meten.</p>"},
+    {"title":"YouTube","body":"<p>Een video maakt pas verbinding met YouTube wanneer je op afspelen klikt. We gebruiken daarvoor het youtube-nocookie.com-domein. Na het afspelen gelden ook de privacyvoorwaarden van YouTube.</p>"},
+    {"title":"Je keuze wijzigen","body":"<p>Je kunt je voorkeur opnieuw instellen met de knop Cookievoorkeuren onderaan elke pagina. Als je analytics intrekt, stopt de website de verdere meting.</p><p>Vragen? <a href=\"mailto:hello@expeditioncreativity.com\">Neem contact op</a>.</p>"}
+  ]
+}

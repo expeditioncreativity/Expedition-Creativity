@@ -1,0 +1,12 @@
+{
+  "name": "expedition-creativity",
+  "private": true,
+  "version": "2026.11.03",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "dev": "node scripts/preview.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
