@@ -1,0 +1,109 @@
+# GitHub-hosted editorial CMS. Open app.pagescms.org, select the development branch.
+media:
+  input: studio/media
+  output: /media
+  categories: [image]
+  extensions: [png, jpg, jpeg, webp]
+  rename: safe
+content:
+  - name: tracks-nl
+    label: Composities (Nederlands)
+    type: collection
+    path: content/tracks/nl
+    format: json
+    filename: "{slug}.json"
+    view:
+      primary: title
+      fields: [title, status, year, genre]
+      sort: [title, year]
+      search: [title, genre]
+    fields:
+      - name: title
+        label: Compositietitel
+        type: string
+        required: true
+      - name: slug
+        label: Slug (zonder track-)
+        type: string
+        required: true
+        pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
+      - name: locale
+        label: Taal
+        type: select
+        options:
+          values: [{value: nl-BE, label: Nederlands (België)}]
+      - name: status
+        label: Redactionele status
+        type: select
+        options:
+          values: [{value: draft, label: Concept}, {value: published, label: Goedgekeurd}]
+      - name: composer
+        label: Componist
+        type: string
+      - name: year
+        label: Jaar
+        type: number
+      - name: duration
+        label: Duur (mm:ss)
+        type: string
+      - name: genre
+        label: Genre
+        type: string
+      - name: eyebrow
+        label: Korte typering boven de titel
+        type: string
+      - name: intro
+        label: Korte introductie
+        type: rich-text
+        options: {format: markdown}
+      - name: story
+        label: Het verhaal achter de muziek
+        type: rich-text
+        options: {format: markdown}
+      - name: journey
+        label: De muzikale reis
+        type: rich-text
+        options: {format: markdown}
+      - name: orchestration
+        label: Orkestratie
+        type: rich-text
+        options: {format: markdown}
+      - name: instrumentation
+        label: Instrumentatie
+        type: rich-text
+        options: {format: markdown}
+      - name: performance
+        label: Partituren en uitvoering (optioneel)
+        type: rich-text
+        options: {format: markdown}
+      - name: score_available
+        label: Partituur beschikbaar op aanvraag
+        type: boolean
+      - name: hero_image
+        label: Artwork / hero
+        type: image
+      - name: youtube_id
+        label: YouTube video-ID (11 tekens)
+        type: string
+      - name: gallery
+        label: Achter de partituur: galerij
+        type: object
+        list: true
+        fields:
+          - {name: image, label: Afbeelding, type: image}
+          - {name: alt, label: Alt-tekst, type: string}
+          - {name: caption, label: Bijschrift, type: string}
+      - name: related
+        label: Ontdek meer muziek
+        type: object
+        list: true
+        fields:
+          - {name: title, label: Titel, type: string}
+          - {name: slug, label: Slug, type: string}
+          - {name: youtube_id, label: YouTube video-ID, type: string}
+      - name: seo_title
+        label: SEO-paginatitel
+        type: string
+      - name: seo_description
+        label: Meta description
+        type: text

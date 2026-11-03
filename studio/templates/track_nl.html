@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="nl-BE">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="#121212" name="theme-color"/>
+<!-- ONTWERPPREVIEW: verwijder noindex pas na expliciete goedkeuring en correcte publicatie. -->
+<meta content="noindex,nofollow" name="robots"/>
+<title>{{ page.seo_title }}</title>
+<meta content="{{ page.seo_description }}" name="description"/>
+
+<meta content="music.song" property="og:type"/><meta content="nl_BE" property="og:locale"/><meta content="{{ page.seo_title }}" property="og:title"/><meta content="{{ page.seo_description }}" property="og:description"/><meta content="{{ page.og_image }}" property="og:image"/><meta content="summary_large_image" name="twitter:card"/><link href="{{ page.canonical }}" rel="canonical"/><link href="{{ assets.css }}" rel="stylesheet"/><script type="application/ld+json">{{ page.json_ld | safe }}</script></head>
+<body>
+<nav aria-label="Hoofdnavigatie" class="navigation">
+<div class="nav-inner shell">
+<a aria-label="Expedition Creativity - naar startpagina" class="brand" href="https://expeditioncreativity.com/">
+<img alt="Expedition Creativity — origineel logo" class="brand-logo" src="{{ assets.logo }}"/>
+<span class="brand-text">EXPEDITION<br/>CREATIVITY<span>ORIGINAL MUSIC</span></span>
+</a>
+<div class="nav-links" id="nav-links">
+<a href="https://expeditioncreativity.com/">Home</a>
+<a class="active" href="https://expeditioncreativity.com/tracks">Tracks</a>
+<a href="https://expeditioncreativity.com/timeline">Tijdlijn</a>
+<a href="https://expeditioncreativity.com/#journey">Mijn verhaal</a>
+<a href="https://expeditioncreativity.com/#behind">Achter de muziek</a>
+<a href="https://expeditioncreativity.com/#contact">Contact</a>
+</div>
+<span aria-label="Nederlandse preview" class="language">NL</span>
+<button aria-controls="nav-links" aria-expanded="false" aria-label="Open het navigatiemenu" class="menu-toggle" id="menu-toggle">☰</button>
+</div>
+</nav>
+<div aria-label="Ontwerpversie, niet live" class="preview-ribbon">✦ Nederlandstalig ontwerp</div>
+<header class="hero" id="boven" style="--hero-image: url('{{ assets.hero_image }}')">
+<div class="shell hero-grid">
+<div class="hero-copy">
+<div class="eyebrow">{{ page.eyebrow }}</div>
+<h1>{{ page.title_first }}<br/><em>{{ page.title_last }}</em></h1>
+<p class="lead">{{ page.intro_html | safe }}</p>
+<div class="pills">{% for tag in page.tags %}<span class="pill">{{ tag }}</span>{% endfor %}</div>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#luisteren"><span aria-hidden="true">▶</span> Bekijk de compositie</a>
+<a class="btn btn-outline" href="#verhaal">Ontdek het verhaal <span aria-hidden="true">↓</span></a>
+</div>
+</div>
+<div class="video-card" id="luisteren">
+<div class="player" id="player">
+<img alt="{{ page.title }} — artwork" height="816" src="{{ assets.hero_image }}" width="1450"/>
+<button aria-label="Speel Blue Boy Planet af via YouTube" class="play" id="play-video" type="button"><svg aria-hidden="true" fill="currentColor" viewbox="0 0 24 24"><path d="m7 3 14 9L7 21V3Z"></path></svg></button>
+<span class="duration">{{ page.duration }}</span>
+</div>
+<div class="video-caption"><b>{{ page.title }} · Officiële video</b><span>YouTube · {{ page.year }}</span><a class="play-fallback" href="https://www.youtube.com/watch?v={{ page.youtube_id }}" rel="noopener noreferrer" target="_blank">Werkt de speler niet? Bekijk de video rechtstreeks op YouTube ↗</a></div>
+</div>
+</div>
+</header>
+<div class="site-trail"><div class="shell"><a href="https://expeditioncreativity.com/">Home</a><span>›</span><a href="https://expeditioncreativity.com/tracks">Tracks</a><span>›</span><span>{{ page.title }}</span></div></div>
+<main>
+<div class="shell main-wrap">
+<article class="content">
+<section class="content-section" id="verhaal">
+<div class="section-header"><span class="section-no">01</span><h2>Het verhaal achter de muziek</h2></div>
+<div class="prose">{{ page.story_html | safe }}</div>
+</section>
+<section class="content-section" id="reis">
+<div class="section-header"><span class="section-no">02</span><h2>De muzikale reis</h2></div>
+<div class="prose">{{ page.journey_html | safe }}</div>
+</section>
+<section class="content-section" id="orkestratie">
+<div class="section-header"><span class="section-no">03</span><h2>Orkestratie en instrumentatie</h2></div>
+<div class="prose">{{ page.orchestration_html | safe }}</div>
+<div class="instrument-box">
+<h3>Instrumentatie</h3>
+<div class="prose">{{ page.instrumentation_html | safe }}</div>
+</div>
+</section>
+<section class="content-section" id="gegevens">
+<div class="section-header"><span class="section-no">04</span><h2>Compositiegegevens</h2></div>
+<div class="fact-grid">
+<div class="fact"><small>Componist</small><strong>{{ page.composer }}</strong></div>
+<div class="fact"><small>Duurtijd</small><strong>{{ page.duration }}</strong></div>
+<div class="fact"><small>Jaar van uitvoering</small><strong>{{ page.year }}</strong></div>
+<div class="fact"><small>Genre</small><strong>{{ page.genre }}</strong></div>
+</div>
+</section>
+<section class="content-section" id="partituren">
+<div class="section-header"><span class="section-no">05</span><h2>Partituren en uitvoering</h2></div>
+<div class="performance">
+<div class="eyebrow" style="margin-bottom:17px">Voor dirigenten en muzikanten</div>
+<div class="prose">{{ page.performance_html | safe }}</div>
+<a class="btn btn-primary" href="https://expeditioncreativity.com/#contact">Contact opnemen <span aria-hidden="true">↗</span></a>
+</div>
+</section>
+<section class="content-section" id="achter-de-partituur">
+<div class="section-header"><span class="section-no">06</span><h2>Achter de partituur</h2></div>
+<div class="gallery">{% for item in page.gallery %}
+<button type="button" class="{{ 'art' if loop.first else 'daw' }}" data-lightbox="{{ item.src }}" data-caption="{{ item.caption }}" aria-label="Vergroot afbeelding {{ loop.index }}"><img src="{{ item.src }}" alt="{{ item.alt }}" loading="lazy"></button>
+{% endfor %}</div>
+</section>
+</article>
+<aside aria-label="Snelmenu" class="sidebar">
+<div class="sidecard"><h3>Op deze pagina</h3>
+<a href="#verhaal"><span class="index">01</span>Het verhaal</a>
+<a href="#reis"><span class="index">02</span>De muzikale reis</a>
+<a href="#orkestratie"><span class="index">03</span>Orkestratie</a>
+<a href="#gegevens"><span class="index">04</span>Compositiegegevens</a>
+<a href="#partituren"><span class="index">05</span>Partituren &amp; uitvoering</a>
+<a href="#achter-de-partituur"><span class="index">06</span>Achter de partituur</a>
+<a href="#meer-muziek"><span class="index">07</span>Ontdek meer muziek</a>
+</div>
+<div class="side-cta"><small>Geïnteresseerd in een uitvoering?</small><h3>Breng deze muziek tot leven.</h3><p>Partituren zijn op aanvraag beschikbaar. Neem gerust contact op om de mogelijkheden te bespreken.</p><a class="btn btn-primary" href="https://expeditioncreativity.com/#contact">Vraag de partituur aan ↗</a></div>
+</aside>
+</div>
+<section class="related-band" id="meer-muziek">
+<div class="shell">
+<div class="related-intro"><div><div class="eyebrow" style="color:#9d7a12">07 · Verder op ontdekking</div><h2>Ontdek meer muziek</h2><p>Meer horen? Beluister zeker ook deze tracks:</p></div><a class="related-link" href="https://expeditioncreativity.com/tracks">Bekijk alle composities ↗</a></div>
+<div class="related-grid">{% for item in page.related %}
+<a class="related-card" href="{{ item.href }}" aria-label="Ontdek {{ item.title }}"><div class="related-img"><img src="{{ item.thumbnail }}" alt="Miniatuur van {{ item.title }}" loading="lazy"></div><div class="related-body"><small>Expedition Creativity</small><h3>{{ item.title }}</h3><span>Ontdek de compositie ↗</span></div></a>
+{% endfor %}</div>
+</div>
+</section>
+</main>
+<footer class="footer"><div class="shell"><div class="footer-top"><a class="brand" href="https://expeditioncreativity.com/"><img alt="Expedition Creativity — origineel logo" class="brand-logo" src="{{ assets.logo }}"/><span class="brand-text">EXPEDITION<br/>CREATIVITY<span>ORIGINAL MUSIC</span></span></a><div class="footer-links"><a href="https://expeditioncreativity.com/tracks">Tracks</a><a href="https://www.youtube.com/@expeditioncreativity" rel="noopener noreferrer" target="_blank">YouTube ↗</a><a href="https://expeditioncreativity.com/#contact">Contact</a></div></div><div class="footer-bottom"><span>© 2026 Expedition Creativity · Alle rechten voorbehouden.</span><span>Nederlandstalige ontwerpversie · Niet gepubliceerd</span></div></div></footer>
+<dialog id="lightbox"><img alt="" id="lightbox-image" src=""/><div class="dialog-actions"><p id="lightbox-caption"></p><button aria-label="Sluit vergroting" id="lightbox-close" type="button">Sluiten ✕</button></div></dialog>
+<a aria-label="Ga naar de muziekvideo" class="mobile-listen" href="#luisteren">▶  Beluister {{ page.title }}</a>
+<script>
+  (() => {
+    const play = document.getElementById('play-video');
+    const player = document.getElementById('player');
+    if (play && player) play.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/{{ page.youtube_id }}?autoplay=1&rel=0';
+      iframe.title = 'Blue Boy Planet — Mikaël Stroobants';
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+      iframe.style.cssText = 'border:0;position:absolute;inset:0;width:100%;height:100%;z-index:4';
+      player.replaceChildren(iframe);
+    });
+    const toggle = document.getElementById('menu-toggle');
+    const links = document.getElementById('nav-links');
+    toggle?.addEventListener('click', () => { const open = links.classList.toggle('open'); toggle.setAttribute('aria-expanded', String(open)); toggle.setAttribute('aria-label', open ? 'Sluit het navigatiemenu' : 'Open het navigatiemenu'); });
+    const dialog = document.getElementById('lightbox');
+    document.querySelectorAll('[data-lightbox]').forEach(btn => btn.addEventListener('click', () => {
+      const img = document.getElementById('lightbox-image');
+      img.src = btn.dataset.lightbox;
+      img.alt = btn.querySelector('img')?.alt || '';
+      document.getElementById('lightbox-caption').textContent = btn.dataset.caption || '';
+      dialog.showModal();
+    }));
+    document.getElementById('lightbox-close')?.addEventListener('click', () => dialog.close());
+    dialog?.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    const sections = [...document.querySelectorAll('main section[id]')];
+    const sideLinks = [...document.querySelectorAll('.sidecard a[href^="#"]')];
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.filter(e => e.isIntersecting).forEach(e => sideLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id)));
+      }, {rootMargin:'-25% 0px -63% 0px'});
+      sections.forEach(s => io.observe(s));
+    }
+  })();
+</script>
+</body>
+</html>
