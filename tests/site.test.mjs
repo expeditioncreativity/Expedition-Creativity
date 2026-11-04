@@ -71,7 +71,7 @@ test('English track narrative matches the original published website paragraphs'
     const source=await read(join(root,`track-${t.slug}.html`));
     const story=source.split('<h2>The Story</h2>')[1].split('<div class="track-card-tags')[0];
     const english=pages.find(p=>p.path===`/en/tracks/${t.slug}/`).html;
-    for(const paragraph of story.match(/<p>.*?<\/p>/gs)||[])assert.ok(english.includes(paragraph),t.slug);
+    for(const paragraph of story.match(/<p>.*?<\/p>/gs)||[])assert.ok(english.replaceAll('&#39;',"'").replaceAll('&quot;','"').includes(paragraph),t.slug);
   }
 });
 test('a new CMS composition reaches its page, search index, catalogue and sitemap; drafts stay hidden',async()=>{
@@ -81,7 +81,7 @@ test('a new CMS composition reaches its page, search index, catalogue and sitema
     const fixture={...tracks[0],title:'Testcompositie',slug:'testcompositie',approved:false,intro:'Een **nieuw** muzikaal verhaal.',sections:undefined,story:'### Een begin\n\nEen **origineel** thema.',journey:'Een reis.',instrumentation:'Hoorn en strijkers.',performance:{availability:'unspecified',contact_cta:false},behind:'Een schets.',gallery:[{image:tracks[0].image,alt:'Testbeeld',caption:'Testonderschrift'}],status:'published'};
     await writeFile(join(temp,'content/tracks/testcompositie.json'),JSON.stringify(fixture));
     await writeFile(join(temp,'content/tracks/concept.json'),JSON.stringify({...fixture,slug:'concept',status:'draft'}));
-    await writeFile(join(temp,'content/en/tracks/testcompositie.json'),JSON.stringify({title:'Test composition',slug:'testcompositie',world:'Space',type:'Orchestral music',status:'published',intro:'An **original** story.',story:'A new **beginning**.',journey:'A journey.',instrumentation:'Horn and strings.',behind:'A sketch.',translation_status:'complete'}));
+    await writeFile(join(temp,'content/en/tracks/testcompositie.json'),JSON.stringify({title:'Test composition',slug:'testcompositie',world:'Space',type:'Orchestral music',status:'published',intro:'An **original** story.',story:'A new **beginning**.',journey:'A journey.',instrumentation:'Horn and strings.',behind:'A sketch.',gallery:[{image:tracks[0].image,alt:'Test artwork',caption:'Test caption'}],translation_status:'complete'}));
     await writeFile(join(temp,'content/tracks/zonder-vertaling.json'),JSON.stringify({...fixture,slug:'zonder-vertaling'}));
     execFileSync(process.execPath,[join(temp,'scripts/build.mjs')],{cwd:temp});
     for(const path of ['nl/composities/testcompositie/index.html','nl/composities/index.html','sitemap.xml','assets/search-index.json'])assert.match(await read(join(temp,'dist',path)),/testcompositie/);
@@ -108,7 +108,7 @@ test('migration retains all existing section text, ordering, media, metadata and
   const before=JSON.parse(execFileSync('git',['show',`4192984ad07417ef6eff25d781e10e192ecda27a:${path}`],{cwd:root,encoding:'utf8'}));
   const after=JSON.parse(await readFile(`${root}/${path}`,'utf8'));
   for(const [key,value] of Object.entries(before))if(key!=='sections')assert.deepEqual(after[key],value,`${path}: ${key}`);
-  assert.deepEqual(render(after,folder.includes('/en/')?'en':'nl').map(({id,body})=>({id,body})),(before.sections||[]).map(({id,body})=>({id,body})),path);
+  assert.deepEqual(render(after,folder.includes('/en/')?'en':'nl').map(({id,body})=>({id,body:body.replaceAll('&#39;',"'").replaceAll('&quot;','"').replace(/>\s+</g,'><')})),(before.sections||[]).map(({id,body})=>({id,body:body.replace(/>\s+</g,'><')})),path);
  }
 });
 test('fixed sections omit empty content and do not invent availability',()=>{
@@ -156,7 +156,7 @@ test('full English Blue Boy Planet preserves the source structure, emphasis, ima
  const en=JSON.parse(await read(join(root,'content/en/tracks/blue-boy-planet.json')));
  assert.deepEqual(missingTranslationSections(nl,en),[]);
  const a=render(nl),b=render(en,'en');assert.equal(a.length,b.length);
- for(let i=0;i<a.length;i++)for(const tag of ['p','h3','strong','em','img']){
+ for(let i=0;i<a.length;i++)for(const tag of ['p','h3','strong','em','img','a']){
   const count=body=>(body.match(new RegExp(`<${tag}(?:>|\\s)`,'g'))||[]).length;
   assert.equal(count(a[i].body),count(b[i].body),`${i} ${tag}`);
  }

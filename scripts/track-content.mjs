@@ -36,6 +36,7 @@ export function validateEditorial(t){
 export function translationSourceHash(nl){return createHash('sha256').update(JSON.stringify(Object.fromEntries(['intro','sections','description','seo_title'].map(key=>[key,nl[key]])))).digest('hex');}
 export function missingTranslationSections(nl,en){
  const source=nl.sections?Object.fromEntries(nl.sections.map(s=>[({'verhaal':'story','reis':'journey','orkestratie':'orchestration','partituren':'performance','achter-de-partituur':'behind'})[s.id]||s.id,s.body])):nl;
+ if(nl.sections){source.instrumentation=(source.orchestration?.match(/<div class="instrument-box">[\s\S]*/)||[])[0]||'';}
  const missing=['intro','story','journey','orchestration','instrumentation','performance','behind'].filter(key=>{
   const original=key==='intro'?nl.intro:source[key];
   const populated=key==='performance'?hasContent(original?.body||original)||original?.contact_cta||original?.availability&&original.availability!=='unspecified':key==='behind'?hasContent(original)||(nl.gallery||[]).length:hasContent(original);
@@ -44,6 +45,8 @@ export function missingTranslationSections(nl,en){
   return populated&&!translated;
  });
  if((hasContent(nl.intro)||nl.sections?.some(s=>hasContent(s.body))||['story','journey','orchestration'].some(k=>hasContent(nl[k])))&&en.translation_status!=='complete')missing.push('translation_review');
+ const sourceGallery=nl.sections?[...(source.behind||'').matchAll(/data-caption="([^"]*)"/g)].map(m=>({caption:m[1]})):(nl.gallery||[]);
+ if(sourceGallery.length>(en.gallery||[]).length||sourceGallery.some((item,i)=>item.caption&&!hasContent(en.gallery?.[i]?.caption)))missing.push('gallery_translation');
  if(en.translation_source_hash&&en.translation_source_hash!==translationSourceHash(nl))missing.push('source_changed');
  return missing;
 }

@@ -17,7 +17,7 @@ Alle tien composities gebruiken één tracktemplate in NL en EN, met vaste volgo
 
 ## Volledige Blue Boy Planet-vertaling
 
-Alle paragrafen, H3's, vet/cursief, instrumentatie, uitvoeringsnuance (virtuele opname, geen live-opname; partijen in overleg), drie galerijafbeeldingen met alt-teksten en onderschriften, CTA's en SEO zijn vertaald. De Nederlandse JSON en inhoudsvergrendeling zijn ongewijzigd. De eerdere korte Engelse tekst is bewaard in `previous_english`, niet zichtbaar op de website.
+Alle paragrafen, H3's, vet/cursief, instrumentatie, uitvoeringsnuance (virtuele opname, geen live-opname; partijen in overleg), drie galerijafbeeldingen met alt-teksten en onderschriften, CTA's en SEO zijn vertaald. De Nederlandse JSON en inhoudsvergrendeling zijn ongewijzigd. De Engelse invoervelden bevatten bewerkbare Markdown, zonder HTML-code in de rich-texteditor. De eerdere korte Engelse tekst is bewaard in `previous_english`, niet zichtbaar op de website.
 
 ## Vertaalbeheer
 

@@ -150,6 +150,7 @@ collections:
         value: on_request
       - label: Niet beschikbaar
         value: unavailable
+      required: false
     - label: Toelichting
       name: body
       widget: markdown
@@ -352,6 +353,7 @@ collections:
         value: on_request
       - label: Niet beschikbaar
         value: unavailable
+      required: false
     - label: Toelichting
       name: body
       widget: markdown

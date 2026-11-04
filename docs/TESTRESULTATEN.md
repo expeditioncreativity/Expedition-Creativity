@@ -93,3 +93,14 @@ Deze aanvulling vervangt eerdere CMS-statusmeldingen waar die afwijken.
 ## Volledige Blue Boy Planet en uniforme tracks
 
 `npm test`: 22 geslaagd. Volledige Engelse referentie heeft per onderdeel evenveel paragrafen, H3's, strong/em en afbeeldingen als de goedgekeurde NL-versie. Nederlandse bron/lock ongewijzigd; oorspronkelijke Engelse verhalen van negen andere tracks gecontroleerd. Oude BBP-samenvatting gearchiveerd. Lege editor-HTML, incomplete vertaling, gewijzigde bronhash, sectienummering en navigatie expliciet getest. Een onvolledige Engelse BBP verdwijnt zonder buildfout of dode links; NL blijft beschikbaar.
+
+### Browser- en CMS-controle van deze update
+
+- Netlify-preview van commit d3cffd3 succesvol; rootredirect landt op `/en/`. Via Lees meer de volledige Engelse referentie geopend. Alle secties en subkoppen aanwezig.
+- Desktop: hero, logo, video-ID, sectienavigatie en galerie gecontroleerd. Drie galeriebeelden laden op 1450px; vergrootvenster opent met vertaald onderschrift.
+- Mobiel: EN/NL naast elkaar in 390px-frames (375px bruikbare viewport door browser-scrollbar), beide documentbreedtes gelijk aan de viewport, zes inhoudssecties, dezelfde video. Geen horizontale overflow.
+- Echte CMS-test op bijgewerkte configuratie: nieuw concept `cms-templatecontrole-20261104`, GitHub-commit 7ad105e. H3, vet en cursief exact opgeslagen. Het echte JSON-bestand in tijdelijke projectkopie gebouwd: verborgen als concept, correct gerenderd na uitsluitend lokale testactivatie.
+- Bestaande Engelse Chills of Antarctica als workflowconcept bewerkt: alleen SEO-titel aangepast en neutrale partiturenoptie gekozen, commit e01fa92. Na herladen en GitHub-vergelijking bleven alle oorspronkelijke inhoudsvelden exact behouden. Deze workflowwijziging is niet samengevoegd.
+- Editorcontrole ontdekte zichtbare HTML-code in oude rich-textvelden. De Engelse velden zijn daarom naar echte Markdown gemigreerd, inclusief volledige BBP-vertaling; behoud van gerenderde paragrafen en opmaak is getest. Nederlandse BBP-bron blijft onaangeroerd. Lege partiturenbeschikbaarheid is ook bij oudere items optioneel, zodat een SEO-bewerking niet om fictieve informatie vraagt.
+
+De testconcepten en de SEO-testwijziging blijven ongepubliceerd in de CMS-workflow. Ze horen niet bij een productie-release en mogen niet automatisch worden samengevoegd. Er zijn geen productie-instellingen via het Netlify-account gewijzigd.

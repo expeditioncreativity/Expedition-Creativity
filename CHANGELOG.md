@@ -63,3 +63,4 @@
 - Volledige EN/NL-pariteit gecontroleerd op paragrafen, H3's, nadruk en afbeeldingen. De andere negen Engelse verhalen behouden.
 - CMS-vertaalcontrole voorkomt dat gedeeltelijke/onbeoordeelde vertalingen als volledig worden aangeboden. Geen automatische tekstoverschrijving.
 - Overzicht van alle composities en resterende redactionele aanvullingen toegevoegd; 22 tests slagen.
+- Engelse bronvelden verliesvrij naar bewerkbare Markdown omgezet nadat de editorcontrole zichtbare HTML-code aantoonde. Echte nieuwe conceptopslag met H3/vet/cursief en bestaande-compositiebewerking gecontroleerd via GitHub.

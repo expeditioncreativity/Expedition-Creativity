@@ -40,3 +40,5 @@ Kies bij de Engelse compositie **Vertaalcontrole → Volledige vertaling van Ned
 Tracks met oorspronkelijke Engelse tekst maar zonder Nederlandse verhaalbron behouden de status **Bestaande Engelse brontekst**. Voeg eerst de ontbrekende Nederlandse bron toe en controleer daarna de vertaling. Zie TRACKCONTROLE.md voor de actuele inhoud per compositie. Er vindt geen automatische overschrijving van vertalingen plaats.
 
 De eerdere korte Engelse Blue Boy Planet-tekst is gearchiveerd. De nieuwe volledige vertaling gebruikt de vaste invoervelden. De bronhash van deze beschermde referentie wordt bij een goedgekeurde bronwijziging technisch bijgewerkt na inhoudelijke controle van de vertaling.
+
+Bestaande Engelse teksten staan nu in gewone bewerkbare Markdown. In rich-textmodus zie je tekst en opmaak in plaats van HTML-tags. De Nederlandse goedgekeurde BBP-pagina blijft beschermd. De testconcepten `cms-controletest` en `cms-templatecontrole-20261104`, plus de ongepubliceerde SEO-test van Chills of Antarctica, zijn controle-items en hoeven niet te worden gepubliceerd.
