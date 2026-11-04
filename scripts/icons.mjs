@@ -1,0 +1,2 @@
+const arrow='<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>';
+export function linkIcons(html){let raw=false;return html.split(/(<[^>]+>)/g).map(part=>{if(part.startsWith('<')){if(/^<(script|style)\b/i.test(part))raw=true;if(/^<\/(script|style)>/i.test(part))raw=false;return part;}return raw?part:part.replace(/↗[\ufe0e\ufe0f]?/g,arrow);}).join('');}

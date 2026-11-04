@@ -1,9 +1,25 @@
 {
-  "path":"/nl/cookies/","title":"Privacy en cookies","description":"Informatie over cookievoorkeuren, Google Analytics en YouTube op Expedition Creativity.","heading":"Privacy.<br><em>Jouw voorkeur.</em>","lead":"Je kiest zelf of je analytics wilt toestaan.",
-  "sections":[
-    {"title":"Noodzakelijke opslag","body":"<p>De website onthoudt je cookievoorkeur in je browser. Die voorkeur is nodig om je keuze bij een volgend bezoek te respecteren.</p>"},
-    {"title":"Google Analytics","body":"<p>Alleen na je toestemming laden we Google Analytics om bezoeken en het gebruik van de website te meten.</p>"},
-    {"title":"YouTube","body":"<p>Een video maakt pas verbinding met YouTube wanneer je op afspelen klikt. We gebruiken daarvoor het youtube-nocookie.com-domein. Na het afspelen gelden ook de privacyvoorwaarden van YouTube.</p>"},
-    {"title":"Je keuze wijzigen","body":"<p>Je kunt je voorkeur opnieuw instellen met de knop Cookievoorkeuren onderaan elke pagina. Als je analytics intrekt, stopt de website de verdere meting.</p><p>Vragen? <a href=\"mailto:hello@expeditioncreativity.com\">Neem contact op</a>.</p>"}
+  "path": "/nl/cookies/",
+  "title": "Privacy en cookies",
+  "description": "Informatie over cookievoorkeuren, Google Analytics en YouTube op Expedition Creativity.",
+  "heading": "Privacy.<br><em>Jouw voorkeur.</em>",
+  "lead": "Je kiest zelf of je analytics en externe video’s toestaat.",
+  "sections": [
+    {
+      "title": "Noodzakelijke opslag",
+      "body": "<p>We onthouden alleen je privacykeuze lokaal in deze browser. Die noodzakelijke voorkeur bevat geen bezoekers-ID en wordt niet naar een trackingdienst verstuurd.</p>"
+    },
+    {
+      "title": "Google Analytics",
+      "body": "<p>Google Analytics wordt uitsluitend geladen wanneer je analytics toestaat. Bij Alles weigeren laden we de analyticscode niet en worden geen nieuwe analyticscookies geplaatst door deze website.</p>"
+    },
+    {
+      "title": "YouTube",
+      "body": "<p>Hoesafbeeldingen worden door deze website zelf geladen. De YouTube-speler en zijn scripts laden alleen na afzonderlijke toestemming voor YouTube-video’s en wanneer je een video start. We gebruiken de privacyvriendelijke youtube-nocookie.com-speler; dit betekent niet dat YouTube tijdens het afspelen geen gegevens verwerkt. Je kunt ook rechtstreeks naar YouTube gaan; daar gelden de keuzes en voorwaarden van YouTube zelf.</p>"
+    },
+    {
+      "title": "Je keuze wijzigen",
+      "body": "<p>Via de vaste knop Cookievoorkeuren kun je alles weigeren, afzonderlijke categorieën kiezen of alles toestaan. Bij intrekken stopt de speler, verwijderen we de analyticscookies die op ons eigen domein bereikbaar zijn en herladen we de pagina om geladen trackingcode te stoppen.</p><p>Wij kunnen bestaande cookies of opslag van andere domeinen, zoals youtube.com, niet vanuit onze website verwijderen. Die kun je verwijderen via de instellingen van je browser.</p><p>Vragen? <a href=\"mailto:hello@expeditioncreativity.com\">Neem contact op</a>.</p>"
+    }
   ]
 }
