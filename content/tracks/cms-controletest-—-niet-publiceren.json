@@ -1,0 +1,24 @@
+{
+  "journey": "Test van de muzikale reis.",
+  "legacy_sections": [],
+  "release_month": 11,
+  "slug": "cms-controletest-20261104",
+  "performance": {
+    "availability": "unspecified",
+    "contact_cta": false
+  },
+  "content_version": 2,
+  "world": "Ruimte",
+  "status": "draft",
+  "section_order": [],
+  "duration": "4:41",
+  "story": "Technische concepttest van het vaste verhaalveld.",
+  "seo_title": "CMS controletest",
+  "approved": false,
+  "title": "CMS controletest — niet publiceren",
+  "type": "Orkestmuziek",
+  "image": "/assets/approved-1.webp",
+  "year": 2026,
+  "section_meta": {},
+  "video_id": "CbFn2igUChI"
+}
