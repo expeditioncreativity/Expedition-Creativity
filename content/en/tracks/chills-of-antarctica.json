@@ -1,30 +1,33 @@
 {
-  "title": "Chills of Antarctica",
-  "slug": "chills-of-antarctica",
-  "year": 2024,
-  "world": "Nature",
-  "type": "Cinematic orchestral music",
-  "video_id": "w-CO5e-7aHU",
-  "image": "https://i.ytimg.com/vi/w-CO5e-7aHU/hqdefault.jpg",
-  "duration": "",
-  "description": "A short but captivating symphonic journey through majestic glaciers, Antarctic wildlife and the fragile beauty of nature.",
-  "intro": "A Journey Through Ice and Life",
-  "related": [],
-  "status": "published",
-  "approved": false,
+  "translation_status": "legacy_source",
   "release_month": 10,
-  "seo_title": "Chills of Antarctica | Expedition Creativity",
-  "source": "track-chills-of-antarctica.html",
+  "related": [],
+  "slug": "chills-of-antarctica",
+  "intro": "A Journey Through Ice and Life",
+  "performance": {
+    "availability": "unspecified"
+  },
   "content_version": 2,
+  "world": "Nature",
+  "status": "published",
+  "section_order": [
+    "story"
+  ],
+  "duration": "",
+  "story": "<p>Chills of Antarctica explores the breathtaking beauty of Antarctic landscapes, glaciers and wildlife. The music supports a documentary-like journey while also highlighting the need for care and action in the face of climate change.</p>",
+  "seo_title": "Chills of Antarctica – Cinematic Orchestral Music | Expedition Creativity",
+  "approved": false,
+  "title": "Chills of Antarctica",
+  "type": "Cinematic orchestral music",
+  "source": "track-chills-of-antarctica.html",
+  "image": "https://i.ytimg.com/vi/w-CO5e-7aHU/hqdefault.jpg",
+  "description": "A short but captivating symphonic journey through majestic glaciers, Antarctic wildlife and the fragile beauty of nature.",
+  "year": 2024,
   "section_meta": {
     "story": {
       "id": "story",
       "title": "The Story"
     }
   },
-  "section_order": [
-    "story"
-  ],
-  "story": "<p>Chills of Antarctica explores the breathtaking beauty of Antarctic landscapes, glaciers and wildlife. The music supports a documentary-like journey while also highlighting the need for care and action in the face of climate change.</p>",
-  "translation_status": "legacy_source"
+  "video_id": "w-CO5e-7aHU"
 }
