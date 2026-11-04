@@ -1,3 +1,16 @@
+## Review eerste liveversie — 2026-11-04, PR #7
+
+- `npm test`: 28 tests geslaagd. Inclusief 5 privacytests (standaard weigering, onafhankelijk opslaan, productie-/domeinguard, GA-cookienamen, opslagfout bij intrekken), 34 gegenereerde pagina’s, goedgekeurde NL-brontekst en oorspronkelijke bestanden onveranderd, alle links/ankers, volledige EN Blue Boy Planet, CMS-drafts en vertaaldekking.
+- `git diff --check`: geslaagd.
+- Netlify-preview van de bestaande ontwikkelbranch: build geslaagd. Alle 10 covers geladen via eigen domein; 10 playknoppen in EN-overzicht. Geen directe browserverzoeken naar ytimg nodig.
+- Browser: na alles weigeren geen Google-/YouTube-scripts of YouTube-iframe. Na expliciete YouTube-toestemming wordt de speler op dezelfde overzichtspagina geopend, analytics blijft uit. Na intrekken en herladen zijn YouTube-scripts en -iframe verwijderd. Keuze blijft zichtbaar bij opnieuw openen van voorkeuren.
+- Footer desktop: alle vier links hebben font-weight 400 en dezelfde verticale positie. Eén voorkeurenlauncher en een werkende ankerlink naar boven.
+- Mobiele layout in 390px-brede browserframes, NL en EN Blue Boy Planet: geen horizontale overflow. Na sprong naar #luisteren blijft hero.scrollTop 0; afstand tussen videokaart en herorand is 32px. Oorzaak oude lege ruimte was de scrollbare overflow:hidden-container; overflow:clip verhelpt dit.
+- Videobediening: YouTube API en iframe laden op Netlify; playVideo wordt aangeroepen, fallback naar gedempt starten en knop Geluid aan werken. De testbrowser blijft bij currentTime 0 / readyState 0: daadwerkelijke streaming en direct hoorbaar afspelen zijn NIET bevestigd. Er is een zichtbare herstart-/YouTube-fallback bij stilstaand laden.
+- Geen fysiek iOS/Safari-apparaat getest. Dit blijft een controlepunt voor beoordeling, vooral videostart met geluid. Browsers kunnen hiervoor een extra handeling vragen.
+- Netlify voegt aan deploypreviews zijn eigen reviewtoolbar toe. Dit staat los van de analyticscode van de website en wordt niet in productie uitgerold.
+- Geen merge, productiedeploy of wijziging van de livewebsite uitgevoerd voor deze review.
+
 # Testresultaten — 3 november 2026
 
 ## Geautomatiseerd

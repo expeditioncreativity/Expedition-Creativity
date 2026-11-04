@@ -1,3 +1,14 @@
+## 2026-11-04 — feedback eerste liveversie (concept PR #7)
+
+- Footer heeft één vaste cookievoorkeurenknop, uitgelijnde links met gelijke opmaak en een terug-naar-bovenlink.
+- Emoji-pijlen vervangen door monochrome SVG-iconen, zonder goedgekeurde bronteksten te herschrijven.
+- Playknoppen toegevoegd aan alle tien compositiekaarten. Startpagina en carousel spelen op dezelfde pagina af; de afzonderlijke tekstlink opent de compositie.
+- YouTube IFrame API met autoplay, playsinline, browserfallback voor geluid en zichtbare herstart-/externe link bij laadproblemen.
+- Mobiele ankersprong: overflow:clip voorkomt scrollen binnen de hero en de lege ruimte onder de video.
+- Afzonderlijke, standaard uitgeschakelde keuzes voor analytics en YouTube; expliciet alles weigeren. Intrekken stopt de speler, wist bereikbare eigen GA-cookies en herlaadt.
+- Bestaande covers worden op het eigen domein via Netlify Image CDN geladen. Het oorspronkelijke beeld en de contentmetadata blijven bewaard.
+- Cookiebeleid in NL en EN afgestemd op het werkelijke gedrag.
+
 # Changelog
 
 ## 2026-11-03 — Nederlandse ontwikkelversie

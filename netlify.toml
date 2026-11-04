@@ -11,3 +11,7 @@
 # Takes effect only after an explicitly approved production release.
 [context.production.environment]
   SITE_MODE = "production"
+
+# Only existing cover URLs; the CDN fetches them server-side.
+[images]
+  remote_images = ['https://i\.ytimg\.com/vi/[A-Za-z0-9_-]{11}/(hqdefault|maxresdefault)\.jpg']

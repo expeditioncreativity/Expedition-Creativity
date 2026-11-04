@@ -1,3 +1,4 @@
+import {readConsent,saveConsent,deniedConsent,analyticsAllowed,analyticsCookieNames} from './privacy.js';
 (() => {
   const $ = s => document.querySelector(s);
   const en=document.documentElement.lang==='en';
@@ -29,14 +30,59 @@
   toggle?.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?ui('Sluit het navigatiemenu','Close navigation menu'):ui('Open het navigatiemenu','Open navigation menu'));});
   document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu();});
   links?.addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
-  const play=$('#play-video'), player=$('#player');
-  if(play && player){
-    const video=play.dataset.video;
-    const fallback=document.createElement('a');fallback.href=`https://www.youtube.com/watch?v=${encodeURIComponent(video)}`;fallback.target='_blank';fallback.rel='noopener noreferrer';fallback.className='video-fallback';fallback.textContent=ui('Bekijk rechtstreeks op YouTube ↗','Watch directly on YouTube ↗');player.parentElement.append(fallback);
-    play.addEventListener('click',()=>{
-      const iframe=document.createElement('iframe');iframe.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(video)}?autoplay=1&rel=0`;iframe.title=play.getAttribute('aria-label');iframe.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';iframe.style.cssText='border:0;position:absolute;inset:0;width:100%;height:100%;z-index:4';player.replaceChildren(iframe);track('video_play',{video_id:video});
-    });
+  // Only the consented player connects to YouTube. Card playback stays on this page.
+  let choice;try{choice=readConsent(localStorage);}catch{choice=deniedConsent();}
+  const privacyDialog=$('#cookie-dialog'),videoDialog=$('#video-dialog');
+  const inlinePlayer=$('#player'),inlinePoster=inlinePlayer?.innerHTML;
+  let ytPromise,activePlayer,activeSlot,pendingVideo,playToken=0,fallbackTimer,stallTimer,gaLoaded=false;
+  const externalIcon='<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>';
+  function clearAnalyticsCookies(){for(const name of analyticsCookieNames(document.cookie))for(const domain of ['',location.hostname,'.'+location.hostname])for(const path of ['/','/nl','/en','/nl/','/en/'])document.cookie=`${name}=; Max-Age=0; path=${path};${domain?' domain='+domain+';':''} SameSite=Lax`;}
+  function openPrivacy(forVideo=false){$('#consent-analytics').checked=choice.analytics;$('#consent-media').checked=choice.media;$('#cookie-video-request').hidden=!forVideo;if(!privacyDialog.open)privacyDialog.showModal();}
+  function controls(slot){return slot===inlinePlayer?$('#inline-video-controls'):videoDialog.querySelector('.video-controls');}
+  function stopVideo(){playToken++;clearTimeout(fallbackTimer);clearTimeout(stallTimer);activePlayer?.destroy?.();activePlayer=null;if(activeSlot===inlinePlayer&&inlinePlayer)inlinePlayer.innerHTML=inlinePoster;if(activeSlot&&activeSlot!==inlinePlayer)activeSlot.replaceChildren();activeSlot=null;}
+  function playerAPI(){
+    if(window.YT?.Player)return Promise.resolve(window.YT);
+    if(!ytPromise)ytPromise=new Promise((resolve,reject)=>{const script=document.createElement('script');let timeout;const failed=()=>{clearTimeout(timeout);script.remove();ytPromise=null;reject(Error('Video unavailable'));};window.onYouTubeIframeAPIReady=()=>{clearTimeout(timeout);resolve(window.YT);};script.src='https://www.youtube.com/iframe_api';script.dataset.mediaApi='true';script.onerror=failed;timeout=setTimeout(failed,10000);document.head.append(script);});
+    return ytPromise;
   }
+  async function startVideo(video,slot){
+    if(!choice.media){pendingVideo={video,slot};$('#consent-video-external').href=`https://www.youtube.com/watch?v=${encodeURIComponent(video.id)}`;openPrivacy(true);return;}
+    stopVideo();activeSlot=slot;const token=playToken;const panel=controls(slot),status=panel.querySelector('[data-video-status]'),sound=panel.querySelector('[data-video-sound]'),retry=panel.querySelector('[data-video-retry]');
+    sound.hidden=true;retry.hidden=true;status.textContent=ui('Video laden…','Loading video…');
+    panel.querySelector('.video-fallback').href=`https://www.youtube.com/watch?v=${encodeURIComponent(video.id)}`;
+    if(slot!==inlinePlayer){$('#video-title').textContent=video.title;if(!videoDialog.open)videoDialog.showModal();}
+    try{
+      const YT=await playerAPI();if(token!==playToken||!choice.media)return;
+      const mount=document.createElement('div');slot.replaceChildren(mount);
+      function mutedFallback(event){if(token!==playToken||!choice.media)return;event.target.mute();event.target.playVideo();sound.hidden=false;status.textContent=ui('Je browser start zonder geluid. Zet het geluid aan om te luisteren.','Your browser starts playback muted. Turn sound on to listen.');}
+      activePlayer=new YT.Player(mount,{host:'https://www.youtube-nocookie.com',videoId:video.id,width:'100%',height:'100%',playerVars:{autoplay:1,playsinline:1,rel:0,origin:location.origin},events:{
+        onReady:event=>{if(token!==playToken||!choice.media){event.target.destroy();return;}event.target.playVideo();stallTimer=setTimeout(()=>{if(token===playToken&&event.target.getCurrentTime()===0){status.textContent=ui('De video start nog niet. Probeer opnieuw of open de video op YouTube.','The video has not started. Retry or open it on YouTube.');retry.hidden=false;}},12000);fallbackTimer=setTimeout(()=>{if(token===playToken&&event.target.getPlayerState()!==1)mutedFallback(event);},1800);},
+        onAutoplayBlocked:mutedFallback,
+        onStateChange:event=>{if(token!==playToken)return;if(event.data===1){clearTimeout(fallbackTimer);retry.hidden=true;const muted=event.target.isMuted();sound.hidden=!muted;if(!muted)status.textContent=ui('Video wordt afgespeeld.','Video is playing.');}},
+        onError:()=>{status.textContent=ui('Afspelen lukt hier niet. Open de video op YouTube.','Playback is unavailable here. Open the video on YouTube.');retry.hidden=false;}
+      }});
+      sound.onclick=()=>{activePlayer?.unMute();activePlayer?.playVideo();sound.hidden=true;status.textContent=ui('Geluid ingeschakeld.','Sound enabled.');};
+      retry.onclick=()=>{activePlayer?.playVideo();};
+      track('video_play',{video_id:video.id});
+    }catch{status.textContent=ui('De video kon niet laden. Open de video op YouTube.','The video could not load. Open the video on YouTube.');}
+  }
+  function requestVideo(event){const button=event.target.closest('[data-video]');if(!button)return;const slot=button.id==='play-video'?inlinePlayer:$('#dialog-player');startVideo({id:button.dataset.video,title:button.dataset.videoTitle||button.getAttribute('aria-label')},slot);}
+  document.addEventListener('click',requestVideo);
+  if(inlinePlayer){const panel=document.createElement('div');panel.className='video-controls';panel.id='inline-video-controls';panel.innerHTML=`<p data-video-status aria-live="polite"></p><button type="button" class="btn btn-primary" data-video-sound hidden>${ui('Geluid aan','Enable sound')}</button><button type="button" class="btn btn-outline" data-video-retry hidden>${ui('Start video','Start video')}</button><a class="video-fallback" href="https://www.youtube.com/watch?v=${encodeURIComponent($('#play-video').dataset.video)}" target="_blank" rel="noopener noreferrer">${ui('Open op YouTube','Open on YouTube')} ${externalIcon}</a>`;inlinePlayer.parentElement.append(panel);}
+  $('[data-video-close]')?.addEventListener('click',()=>videoDialog.close());videoDialog?.addEventListener('close',stopVideo);
+  document.querySelectorAll('[data-cookie-settings]').forEach(button=>button.addEventListener('click',()=>{pendingVideo=null;openPrivacy();}));
+  document.querySelectorAll('[data-consent]').forEach(button=>button.addEventListener('click',()=>{
+    const previous=choice,value=button.dataset.consent;
+    const selected=value==='accepted'?{analytics:true,media:true}:value==='rejected'?{analytics:false,media:false}:{analytics:$('#consent-analytics').checked,media:$('#consent-media').checked};
+    try{choice=saveConsent(localStorage,selected);}catch{choice={...selected,decided:true};}
+    window['ga-disable-G-G9HM3R866P']=!choice.analytics;
+    if(!choice.analytics)clearAnalyticsCookies();
+    privacyDialog.close();
+    // Unload already-running third-party code when permission is withdrawn.
+    if(previous.analytics&&!choice.analytics||previous.media&&!choice.media){stopVideo();videoDialog.close();location.reload();return;}
+    loadAnalytics();const pending=pendingVideo;pendingVideo=null;if(pending&&choice.media)startVideo(pending.video,pending.slot);
+  }));
+  privacyDialog.addEventListener('cancel',()=>{pendingVideo=null;});
   const lightbox=$('#lightbox');
   document.querySelectorAll('[data-lightbox]').forEach(btn=>btn.addEventListener('click',()=>{const image=$('#lightbox-image');image.src=btn.dataset.lightbox;image.alt=btn.querySelector('img')?.alt||'';$('#lightbox-caption').textContent=btn.dataset.caption||'';lightbox.showModal();}));
   $('#lightbox-close')?.addEventListener('click',()=>lightbox.close());lightbox?.addEventListener('click',event=>{if(event.target===lightbox)lightbox.close();});
@@ -54,13 +100,9 @@
     }
     form.addEventListener('input',filter);form.addEventListener('change',filter);form.addEventListener('submit',event=>event.preventDefault());form.addEventListener('reset',()=>setTimeout(filter,0));filter();
   }
-  const KEY='ec_cookie_consent_v1',dialog=$('#cookie-dialog');let gaLoaded=false;
-  const consent=()=>{try{return localStorage.getItem(KEY);}catch{return null;}};
-  const production=()=>document.body.dataset.siteMode==='production' && location.hostname==='expeditioncreativity.com';
-  function loadAnalytics(){if(gaLoaded||!production()||consent()!=='accepted')return;gaLoaded=true;window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};window.gtag('consent','default',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});const script=document.createElement('script');script.async=true;script.src='https://www.googletagmanager.com/gtag/js?id=G-G9HM3R866P';document.head.append(script);window.gtag('js',new Date());window.gtag('config','G-G9HM3R866P');}
-  function track(name,params){if(production()&&consent()==='accepted'&&gaLoaded)window.gtag?.('event',name,params);}
-  document.querySelectorAll('[data-cookie-settings]').forEach(button=>button.addEventListener('click',()=>dialog.showModal()));
-  document.querySelectorAll('[data-consent]').forEach(button=>button.addEventListener('click',()=>{const value=button.dataset.consent;try{localStorage.setItem(KEY,value);}catch{}window['ga-disable-G-G9HM3R866P']=value!=='accepted';if(value!=='accepted'){window.gtag?.('consent','update',{analytics_storage:'denied'});document.cookie.split(';').map(c=>c.trim().split('=')[0]).filter(n=>n==='_ga'||n.startsWith('_ga_')).forEach(name=>{for(const domain of ['',location.hostname,'.'+location.hostname])document.cookie=`${name}=; Max-Age=0; path=/;${domain?' domain='+domain+';':''} SameSite=Lax`;});}else{window.gtag?.('consent','update',{analytics_storage:'granted'});loadAnalytics();}dialog.close();}));
+  function loadAnalytics(){if(gaLoaded||!analyticsAllowed(choice,document.body.dataset.siteMode,location.hostname))return;gaLoaded=true;window['ga-disable-G-G9HM3R866P']=false;window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments);};window.gtag('consent','default',{analytics_storage:'granted',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});const script=document.createElement('script');script.async=true;script.src='https://www.googletagmanager.com/gtag/js?id=G-G9HM3R866P';document.head.append(script);window.gtag('js',new Date());window.gtag('config','G-G9HM3R866P');}
+  function track(name,params){if(gaLoaded&&analyticsAllowed(choice,document.body.dataset.siteMode,location.hostname))window.gtag?.('event',name,params);}
   document.addEventListener('click',event=>{const a=event.target.closest('a');if(!a)return;if(a.href.startsWith('mailto:'))track('email_click',{link_url:a.href});else if(a.href.includes('youtube.com'))track('youtube_click',{link_url:a.href});else if(a.href.includes('linkedin.com'))track('linkedin_click',{link_url:a.href});});
-  if(!consent()&&production())dialog.showModal();loadAnalytics();
+  window['ga-disable-G-G9HM3R866P']=!choice.analytics;if(!choice.analytics)clearAnalyticsCookies();
+  if(!choice.decided)openPrivacy();loadAnalytics();
 })();

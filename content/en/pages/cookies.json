@@ -3,23 +3,23 @@
   "title": "Privacy and cookies",
   "description": "Cookie preferences, Google Analytics and YouTube on Expedition Creativity.",
   "heading": "Privacy.<br><em>Your choice.</em>",
-  "lead": "You choose whether to allow analytics.",
+  "lead": "You choose whether to allow analytics and external videos.",
   "sections": [
     {
       "title": "Essential storage",
-      "body": "<p>The website remembers your cookie preference in your browser so it can respect your choice on your next visit.</p>"
+      "body": "<p>We only remember your privacy choice locally in this browser. This essential preference contains no visitor ID and is not sent to a tracking service.</p>"
     },
     {
       "title": "Google Analytics",
-      "body": "<p>Google Analytics is loaded only with your consent to measure visits and website usage. No advertising cookies are used.</p>"
+      "body": "<p>Google Analytics is loaded only when you allow analytics. Reject all prevents this website from loading analytics code or setting new analytics cookies.</p>"
     },
     {
       "title": "YouTube",
-      "body": "<p>A video connects to YouTube only when you click play. We use youtube-nocookie.com for the player. YouTube’s privacy terms also apply after playback begins.</p>"
+      "body": "<p>Cover images are served by this website. The YouTube player and its scripts load only after separate permission for YouTube videos and when you start a video. We use the privacy-enhanced youtube-nocookie.com player; this does not mean YouTube processes no data during playback. You can also go directly to YouTube, where YouTube’s own choices and terms apply.</p>"
     },
     {
       "title": "Change your preference",
-      "body": "<p>You can reopen Cookie preferences at the bottom of every page. Withdrawing analytics consent stops further measurement.</p><p>Questions? <a href=\"mailto:hello@expeditioncreativity.com\">Get in touch</a>.</p>"
+      "body": "<p>Use the permanent Cookie preferences button to reject all, choose individual categories or accept all. Withdrawing permission stops the player, removes analytics cookies accessible on our own domain and reloads the page to stop previously loaded tracking code.</p><p>We cannot remove existing cookies or storage belonging to other domains, such as youtube.com, from our website. You can remove those using your browser settings.</p><p>Questions? <a href=\"mailto:hello@expeditioncreativity.com\">Get in touch</a>.</p>"
     }
   ],
   "source": "Adapted to the consent behaviour of the new site; based on cookie-policy.html"

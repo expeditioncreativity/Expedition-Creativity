@@ -1,4 +1,5 @@
 import test from 'node:test';
+import {linkIcons} from '../scripts/icons.mjs';
 import assert from 'node:assert/strict';
 import {readFile,readdir,access} from 'node:fs/promises';
 import {join,extname} from 'node:path';
@@ -19,7 +20,7 @@ test('all internal links, assets, gallery images and fragment targets exist',asy
     for(const [,attr,value] of p.html.matchAll(/\b(href|src|data-lightbox)="([^"]+)"/g)){
       if(value.startsWith('#')) {assert.ok(p.html.includes(`id="${value.slice(1)}"`),`${p.path} ${value}`);continue;}
       if(!value.startsWith('/'))continue;
-      const url=new URL(value,'https://example.test');const target=join(out,url.pathname,extname(url.pathname)?'':'index.html');
+      const url=new URL(value,'https://example.test');if(url.pathname==='/.netlify/images'){assert.match(url.searchParams.get('url'),/^https:\/\/i\.ytimg\.com\/vi\/[\w-]{11}\/hqdefault\.jpg$/);continue;}const target=join(out,url.pathname,extname(url.pathname)?'':'index.html');
       await assert.doesNotReject(access(target),`${p.path} ${attr} ${value}`);
     }
   }
@@ -30,7 +31,7 @@ test('approved Blue Boy Planet narrative, subheads, emphasis and galleries survi
   assert.equal(track.intro,approved.intro);assert.deepEqual(track.sections,approved.sections);
   const page=pages.find(p=>p.path.includes('blue-boy-planet')).html;
   assert.ok(page.includes(approved.intro));
-  for(const section of approved.sections)assert.ok(page.includes(section.body.replaceAll('https://expeditioncreativity.com/contact','/nl/contact/')),section.title);
+  for(const section of approved.sections)assert.ok(page.includes(linkIcons(section.body.replaceAll('https://expeditioncreativity.com/contact','/nl/contact/'))),section.title);
 });
 test('existing tracked website pages, CSS, search and media remain byte-for-byte unchanged',async()=>{
   const names=execFileSync('git',['ls-tree','-r','--name-only','0dd6134ac3022fb0a3f50fa45171368319631e76'],{cwd:root,encoding:'utf8'}).trim().split('\n');
@@ -195,4 +196,21 @@ test('a partial English BBP cannot surface as a full translation and leaves NL a
   assert.match(await read(join(temp,'dist/_redirects')),/\/track-blue-boy-planet.html \/nl\/composities\/blue-boy-planet\/ 301!/);
   assert.doesNotMatch(await read(join(temp,'dist/en/index.html')),/href="\/en\/tracks\/blue-boy-planet\//);
  }finally{await rm(temp,{recursive:true,force:true});}
+});
+
+test('review fixes: one preference launcher, explicit independent opt-ins, back to top and no emoji arrows',()=>{
+  for(const p of pages){
+    assert.equal((p.html.match(/data-cookie-settings/g)||[]).length,1,p.path);
+    assert.match(p.html,/data-consent="rejected"/);assert.match(p.html,/data-consent="custom"/);assert.match(p.html,/data-consent="accepted"/);
+    assert.match(p.html,/id="consent-analytics" type="checkbox">/);assert.match(p.html,/id="consent-media" type="checkbox">/);
+    assert.match(p.html,/class="back-to-top" href="#top"/);assert.doesNotMatch(p.html,/↗/);
+    assert.doesNotMatch(p.html,/<(?:img|script|iframe)[^>]+src="https:\/\//);
+    assert.doesNotMatch(p.html,/url\(['"]?https:\/\//);
+  }
+  for(const path of ['/nl/composities/','/en/tracks/']){
+    const html=pages.find(p=>p.path===path).html;
+    assert.equal((html.match(/class="related-img card-play"/g)||[]).length,10);
+    assert.equal((html.match(/class="preview-play"/g)||[]).length,10);
+    assert.equal((html.match(/class="track-detail-link"/g)||[]).length,10);
+  }
 });
