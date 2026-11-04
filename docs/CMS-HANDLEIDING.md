@@ -29,6 +29,6 @@ De mobiele editor gebruikt een kleine CSS-aanpassing voor de vastgezette Decap-v
 
 ## Aanmeldstatus en publicatie
 
-Op 4 november 2026 bereikt de Netlify OAuth-route het normale GitHub-inlogscherm. De projecteigenaar heeft de werkende editor al gebruikt. In deze nieuwe agentsessie ontbreekt nog een aangemelde GitHub-browsersessie voor de online opslaan-/terugleestest; de geïsoleerde editorcontrole en de bestands-/rendertests zijn daarvan gescheiden (zie TESTRESULTATEN.md).
+Op 4 november 2026 zijn de echte GitHub-aanmelding, conceptopslag en het teruglezen na herladen geslaagd. Het testitem **CMS controletest — niet publiceren** blijft ongepubliceerd in de workflow. De werkelijk opgeslagen JSON is ook getest op conceptuitsluiting en correcte paginarendering in een tijdelijke projectkopie.
 
 OAuth-geheimen horen uitsluitend in beveiligde providerinstellingen, nooit in Git of chat. Alleen een merge naar `main` en productiepublicatie vereisen afzonderlijke publicatiegoedkeuring; die worden niet door deze workflow uitgevoerd.

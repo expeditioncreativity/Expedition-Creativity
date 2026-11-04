@@ -46,3 +46,5 @@
 - Meerdere galerijafbeeldingen met alt-tekst, onderschriften en vergrootweergave; optionele OG-afbeelding.
 - Mobiele beheerinterface aangepast aan smalle schermen; handleiding uitgebreid.
 - Zestien geautomatiseerde controles geslaagd. Online CMS-opslag blijft een afzonderlijke acceptatiestap totdat deze browsersessie is aangemeld.
+
+- Online acceptatietest afgerond: GitHub-login, echte conceptopslag, teruglezen na herladen en rendering van daadwerkelijk opgeslagen JSON gecontroleerd. Het testitem blijft ongepubliceerd.

@@ -76,3 +76,12 @@ Deze aanvulling vervangt eerdere CMS-statusmeldingen waar die afwijken.
 - Mobiele editor gecontroleerd in een 390 × 844 iframe. Oorspronkelijke 800px-minimumbreedte gecorrigeerd met admin/editor.css; documentbreedte en viewport beide 390px. Velden en opslagknop zichtbaar zonder horizontaal scrollen. Desktopformulier eveneens gecontroleerd.
 - Online Netlify OAuth verwijst naar het normale GitHub-inlogscherm met de bestaande app. Voor deze browsersessie ontbreken nog de login en vervolgens de echte editorial-workflow-opslag-/terugleescontrole. Dit acceptatiepunt blijft open; geen succes geclaimd op basis van de testbackend.
 - Alleen ontwikkelbranch/PR #3. Geen merge naar main of productiepublicatie uitgevoerd. Handmatige goedkeuring blijft nodig voor livepublicatie en eventuele wijziging van beschermde compositieteksten.
+
+## 4 november 2026 — online acceptatietest afgerond
+
+- Na aanmelding met GitHub: echte CMS-collecties zichtbaar; een nieuwe compositie met vaste velden opgeslagen. De editor bevestigt **Item opgeslagen** en **Status: Concept**.
+- Volledig herladen en opnieuw gelezen: titel, URL-naam, jaar, maand, duur, verhaal, reis en SEO-titel behouden.
+- GitHub bevestigt commit `b59862d` op de door Decap beheerde editorial-workflowbranch `cms/tracks/cms-controletest-—-niet-publiceren`, gebaseerd op de ontwikkelversie. Dit is de normale conceptworkflow; geen samenvoeging naar development of main uitgevoerd.
+- Het werkelijk opgeslagen JSON-bestand uit GitHub in een tijdelijke projectkopie gebouwd: conceptpagina en zoekresultaat ontbreken zoals bedoeld. Alleen in die tijdelijke kopie status op zichtbaar gezet: verhaal, reis en automatische gegevens renderen correct; lege partituren worden verborgen.
+- Het herkenbare testitem **CMS controletest — niet publiceren** blijft als ongepubliceerd concept in de workflow staan. Geen testcontent toegevoegd aan de gepubliceerde website.
+- Hiermee is de eerder vermelde blokkade van de online opslag-/terugleestest opgeheven. De eerdere 16 geautomatiseerde controles blijven geslaagd.
