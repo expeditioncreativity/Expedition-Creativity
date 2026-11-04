@@ -33,8 +33,8 @@ test('approved Blue Boy Planet narrative, subheads, emphasis and galleries survi
   assert.ok(page.includes(approved.intro));
   for(const section of approved.sections)assert.ok(page.includes(linkIcons(section.body.replaceAll('https://expeditioncreativity.com/contact','/nl/contact/'))),section.title);
 });
-test('existing tracked website pages, CSS, search and media remain byte-for-byte unchanged',async()=>{
-  const names=execFileSync('git',['ls-tree','-r','--name-only','0dd6134ac3022fb0a3f50fa45171368319631e76'],{cwd:root,encoding:'utf8'}).trim().split('\n');
+test('original reusable media remain byte-for-byte unchanged after legacy cleanup',async()=>{
+  const names=execFileSync('git',['ls-tree','-r','--name-only','0dd6134ac3022fb0a3f50fa45171368319631e76'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(name=>/\.(png|jpe?g|ico|svg|webmanifest)$/i.test(name));
   for(const name of names){const before=execFileSync('git',['show',`0dd6134ac3022fb0a3f50fa45171368319631e76:${name}`],{cwd:root,maxBuffer:30*1024*1024});const now=await readFile(join(root,name));assert.ok(before.equals(now),name);}
 });
 test('metadata and structured composition/recording data are present and parseable',()=>{
@@ -69,7 +69,7 @@ test('language alternates point to existing matching pages in both directions',(
 });
 test('English track narrative matches the original published website paragraphs',async()=>{
   for(const t of tracks.filter(t=>t.slug!=='blue-boy-planet')){
-    const source=await read(join(root,`track-${t.slug}.html`));
+    const source=execFileSync('git',['show',`0dd6134ac3022fb0a3f50fa45171368319631e76:track-${t.slug}.html`],{cwd:root,encoding:'utf8',maxBuffer:30*1024*1024});
     const story=source.split('<h2>The Story</h2>')[1].split('<div class="track-card-tags')[0];
     const english=pages.find(p=>p.path===`/en/tracks/${t.slug}/`).html;
     for(const paragraph of story.match(/<p>.*?<\/p>/gs)||[])assert.ok(english.replaceAll('&#39;',"'").replaceAll('&quot;','"').includes(paragraph),t.slug);
@@ -188,7 +188,6 @@ test('a partial English BBP cannot surface as a full translation and leaves NL a
  const temp=await mkdtemp(join(tmpdir(),'ec-partial-translation-'));
  try{
   for(const dir of ['scripts','src','admin','content','tests'])await cp(join(root,dir),join(temp,dir),{recursive:true});
-  await cp(join(root,'track-blue-boy-planet.html'),join(temp,'track-blue-boy-planet.html'));
   const file=join(temp,'content/en/tracks/blue-boy-planet.json');const en=JSON.parse(await read(file));en.journey='';await writeFile(file,JSON.stringify(en));
   execFileSync(process.execPath,[join(temp,'scripts/build.mjs')],{cwd:temp});
   await assert.rejects(access(join(temp,'dist/en/tracks/blue-boy-planet/index.html')));
@@ -213,4 +212,14 @@ test('review fixes: one preference launcher, explicit independent opt-ins, back 
     assert.equal((html.match(/class="preview-play"/g)||[]).length,10);
     assert.equal((html.match(/class="track-detail-link"/g)||[]).length,10);
   }
+});
+
+
+test('obsolete root pages and their scripts are absent; all current pages still exist',async()=>{
+  assert.deepEqual((await readdir(root)).filter(name=>name.endsWith('.html')),[]);
+  assert.deepEqual((await readdir(out)).filter(name=>name.endsWith('.html')),[]);
+  for(const name of ['style.css','search.js','README_V7_1_4_PLAYBUTTON_README_CLEANUP.txt']){await assert.rejects(access(join(root,name)));await assert.rejects(access(join(out,name)));}
+  assert.equal(manifest.legacyRoutesPreserved,15);
+  for(const p of manifest.pages)await access(join(out,p.path,'index.html'));
+  await access(join(out,'admin/index.html'));
 });

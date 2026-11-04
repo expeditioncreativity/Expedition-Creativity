@@ -1,3 +1,11 @@
+## Opschoning oude website — 4 november 2026
+
+- Verwijdering op expliciet verzoek van de eigenaar: 15 oude root-HTML-pagina’s, style.css, search.js en de oude versie-readme.
+- `npm test`: 29/29 geslaagd. Nieuwe controle bevestigt dat oude bestanden in bron én publicatiemap ontbreken. Alle 34 actuele pagina’s en admin/index.html blijven aanwezig.
+- Productiebuild vóór/na vergeleken via SHA-256: 34/34 pagina’s identiek. Alle 51 redirectregels eveneens byte voor byte identiek.
+- Media blijven byte voor byte ongewijzigd. De controle van oorspronkelijke Engelse tekst gebruikt de oude bron in de Git-geschiedenis, niet verwijderde runtime-bestanden.
+- `git diff --check`: geslaagd. Geen inhoudelijke of visuele wijzigingen.
+
 ## Review eerste liveversie — 2026-11-04, PR #7
 
 - `npm test`: 28 tests geslaagd. Inclusief 5 privacytests (standaard weigering, onafhankelijk opslaan, productie-/domeinguard, GA-cookienamen, opslagfout bij intrekken), 34 gegenereerde pagina’s, goedgekeurde NL-brontekst en oorspronkelijke bestanden onveranderd, alle links/ankers, volledige EN Blue Boy Planet, CMS-drafts en vertaaldekking.

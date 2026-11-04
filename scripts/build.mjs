@@ -51,8 +51,8 @@ const lock=await json('tests/approved-blue-boy-planet.json');
 const approved=allTracks.find(t=>t.slug==='blue-boy-planet');
 if(approved.intro!==lock.intro || JSON.stringify(approved.sections)!==JSON.stringify(lock.sections))throw Error('Approved Blue Boy Planet text changed; explicit editorial approval required.');
 await rm(out,{recursive:true,force:true});await mkdir(out,{recursive:true});
-// Preserve all existing routes and files until the separately approved language migration.
-for(const entry of await readdir(root,{withFileTypes:true}))if(entry.isFile() && /\.(html|css|js|png|jpe?g|ico|svg|webmanifest|xml|txt)$/i.test(entry.name))await cp(join(root,entry.name),join(out,entry.name));
+// Only reusable public media are copied. Pages, scripts and styles come from src/content.
+for(const entry of await readdir(root,{withFileTypes:true}))if(entry.isFile() && /\.(png|jpe?g|ico|svg|webmanifest)$/i.test(entry.name))await cp(join(root,entry.name),join(out,entry.name));
 await cp(join(root,'src/assets'),join(out,'assets'),{recursive:true});
 await cp(join(root,'admin'),join(out,'admin'),{recursive:true});
 const base=await read('src/templates/base.html');const trackTemplate=await read('src/templates/track.html');
@@ -113,9 +113,10 @@ await writeFile(join(out,language==='en'?'assets/search-index-en.json':'assets/s
 }
 await renderLanguage('nl',tracks);
 await renderLanguage('en',englishTracks.sort((a,b)=>(b.year*12+(b.release_month||0))-(a.year*12+(a.release_month||0))||a.title.localeCompare(b.title,'en')));
-const existingRootFiles=await readdir(root);
-const legacyMap=[['/','index.html'],['/tracks','tracks.html'],['/timeline','timeline.html'],['/about','about.html'],['/cookie-policy','cookie-policy.html'],...allTracks.filter(t=>existingRootFiles.includes('track-'+t.slug+'.html')).map(t=>['/track-'+t.slug,'track-'+t.slug+'.html'])];
-// English is the chosen default. Forced rules override preserved legacy HTML on Netlify.
+// Historical aliases must survive removal of their obsolete source files.
+const legacyTrackSlugs=["an-elephants-day-in-life", "blue-boy-planet", "chills-of-antarctica", "dreamcatcher", "hymn-to-the-giants", "migration", "orchestral-overture", "pride-of-the-prairies", "symphonic-awakening", "turtle-travel"];
+const legacyMap=[['/','index.html'],['/tracks','tracks.html'],['/timeline','timeline.html'],['/about','about.html'],['/cookie-policy','cookie-policy.html'],...legacyTrackSlugs.map(slug=>['/track-'+slug,'track-'+slug+'.html'])];
+// English is the chosen default. Old URLs redirect without deploying old HTML.
 const redirects=[['/','/en/'],['/index.html','/en/'],['/index','/en/']];
 const destinations={'/tracks':'/en/tracks/','/timeline':'/en/timeline/','/about':'/en/about/','/cookie-policy':'/en/cookie-policy/'};
 for(const [old,file] of legacyMap.slice(1)){

@@ -1,3 +1,11 @@
+## 2026-11-04 — oude websitebestanden verwijderd op verzoek
+
+- 15 oude HTML-pagina’s, de oude style.css/search.js en de verouderde versie-readme verwijderd.
+- De build publiceert alleen actuele templates/content en herbruikbare media; oude HTML wordt niet meer meegekopieerd.
+- Alle 51 bestaande doorverwijzingen blijven ongewijzigd; verwijdering van een bronbestand verwijdert geen oude URL-alias.
+- Engelse inhoud blijft beheerd in content/en; inhoudstests vergelijken met de oorspronkelijke bron in Git-geschiedenis.
+- 29 tests geslaagd. Alle 34 productiepagina’s zijn byte voor byte gelijk aan de versie vóór deze opschoning. Logo’s, afbeeldingen en CMS behouden.
+
 ## 2026-11-04 — feedback eerste liveversie (concept PR #7)
 
 - Footer heeft één vaste cookievoorkeurenknop, uitgelijnde links met gelijke opmaak en een terug-naar-bovenlink.

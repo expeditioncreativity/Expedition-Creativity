@@ -1,6 +1,6 @@
 # Expedition Creativity — Tweetalige ontwikkeling
 
-Werkbranch: `development/nl-design-cms`. Bestaande productiebestanden en routes zijn behouden. Niet samenvoegen of publiceren zonder expliciete toestemming van Mikaël Stroobants.
+Werkbranch: `development/nl-design-cms`. De vernieuwde NL/EN-website is live. Oude HTML-pagina’s, hun stylesheet en zoekcode zijn verwijderd; hun URL’s blijven via 301-doorverwijzingen werken. Niet samenvoegen of publiceren zonder expliciete toestemming van Mikaël Stroobants.
 
 ## Lokaal bekijken
 
@@ -53,17 +53,17 @@ Decap CMS is vastgezet op versie 3.17.3 met een gecontroleerde SHA-384-integrite
 | Achter de muziek | `/nl/achter-de-muziek/` | `/en/behind-the-score/` |
 | Contact | `/nl/contact/` | `/en/contact/` |
 
-Er worden 34 pagina’s onder `/nl/` en `/en/` gegenereerd, met taalwissels en wederzijdse hreflang-verwijzingen naar bestaande pagina’s. De Engelse compositieteksten komen ongewijzigd uit de oorspronkelijke HTML-bestanden; `content/en/` bevat de bronverwijzingen. Beide talen gebruiken dezelfde templates en stijlen. De oorspronkelijke routes blijven behouden; redirects en de uiteindelijke standaardtaal worden pas bij goedgekeurde publicatie ingesteld.
+Er worden 34 pagina’s onder `/nl/` en `/en/` gegenereerd, met taalwissels en wederzijdse hreflang-verwijzingen naar bestaande pagina’s. De Engelse compositieteksten zijn eerder gemigreerd naar `content/en/`. De bronverwijzingen verwijzen naar de oorspronkelijke HTML-bestanden, die herstelbaar zijn via de Git-geschiedenis (commit `0dd6134ac3022fb0a3f50fa45171368319631e76`). Die bestanden zijn geen runtime-afhankelijkheid. Beide talen gebruiken dezelfde templates en stijlen. Engels is de standaardtaal; de 51 bestaande 301-regels sturen oude URL’s door naar de passende nieuwe pagina’s. Deze regels staan los van de aanwezigheid van oude bestanden.
 
 Voor negen andere composities bevat de nieuwe Nederlandse template voorlopig alleen titel, video en bekende gegevens. Er zijn geen Nederlandse verhalende teksten verzonnen of Engelse compositieteksten herschreven. De goedgekeurde Nederlandse uitwerking van deze composities ontbreekt nog.
 
 ## Publicatie en metingen
 
-Standaardbouw is een ontwikkelbuild: `noindex, nofollow`, `robots.txt` blokkeert indexering, en analytics is uitgeschakeld op de gegenereerde pagina's. De oorspronkelijke pagina's zijn bewust ongewijzigd gekopieerd en bevatten hun oorspronkelijke scripts; hun analyticsgedrag is niet herbouwd. De gegenereerde Netlify-headers blokkeren indexering van de gehele preview.
+Standaardbouw is een ontwikkelbuild: `noindex, nofollow`, `robots.txt` blokkeert indexering, en analytics is uitgeschakeld op de gegenereerde pagina's. Oude HTML, scripts, stijlen en versie-readmes worden niet meer naar de publicatiemap gekopieerd. De gegenereerde Netlify-headers blokkeren indexering van de gehele preview.
 
-De productiecode voor de gegenereerde pagina's gebruikt het bestaande GA4-ID `G-G9HM3R866P` en laadt pas na toestemming. In de browser kan toestemming ook worden ingetrokken. YouTube laadt pas na een expliciete afspeelklik via `youtube-nocookie.com`; er is een rechtstreekse videolink als alternatief.
+De productiecode voor de gegenereerde pagina's gebruikt het bestaande GA4-ID `G-G9HM3R866P` en laadt pas na toestemming. In de browser kan toestemming ook worden ingetrokken. YouTube laadt pas na afzonderlijke toestemming én een expliciete afspeelklik via `youtube-nocookie.com`; er is een rechtstreekse videolink als alternatief.
 
-Een geïndexeerde productiebuild vereist zowel `SITE_MODE=production` als de Netlify-context `CONTEXT=production`. Deze configuratie is niet geactiveerd. Doe dat pas als onderdeel van een expliciet goedgekeurde publicatie, na controle van CMS-login, redactie, redirects, canonicals, analytics en de definitieve homepagekeuze. De Netlify-productiebranch en domeinkoppelingen zijn niet gecontroleerd via het Netlify-account en zijn niet gewijzigd.
+Een geïndexeerde productiebuild vereist zowel `SITE_MODE=production` als de Netlify-context `CONTEXT=production`. Deze configuratie is actief voor productie. Netlify publiceert uitsluitend na expliciete goedkeuring; de productie is vergrendeld op de laatst goedgekeurde deploy.
 
 ## Onderhoud
 
