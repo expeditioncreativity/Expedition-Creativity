@@ -34,12 +34,12 @@ import {readConsent,saveConsent,deniedConsent,analyticsAllowed,analyticsCookieNa
   let choice;try{choice=readConsent(localStorage);}catch{choice=deniedConsent();}
   const privacyDialog=$('#cookie-dialog'),videoDialog=$('#video-dialog');
   const inlinePlayer=$('#player'),inlinePoster=inlinePlayer?.innerHTML;
-  let ytPromise,activePlayer,activeSlot,pendingVideo,playToken=0,fallbackTimer,gaLoaded=false;
+  let ytPromise,activePlayer,activeSlot,pendingVideo,playToken=0,fallbackTimer,stallTimer,gaLoaded=false;
   const externalIcon='<svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M7 17 17 7M7 7h10v10"/></svg>';
   function clearAnalyticsCookies(){for(const name of analyticsCookieNames(document.cookie))for(const domain of ['',location.hostname,'.'+location.hostname])for(const path of ['/','/nl','/en','/nl/','/en/'])document.cookie=`${name}=; Max-Age=0; path=${path};${domain?' domain='+domain+';':''} SameSite=Lax`;}
   function openPrivacy(forVideo=false){$('#consent-analytics').checked=choice.analytics;$('#consent-media').checked=choice.media;$('#cookie-video-request').hidden=!forVideo;if(!privacyDialog.open)privacyDialog.showModal();}
   function controls(slot){return slot===inlinePlayer?$('#inline-video-controls'):videoDialog.querySelector('.video-controls');}
-  function stopVideo(){playToken++;clearTimeout(fallbackTimer);activePlayer?.destroy?.();activePlayer=null;if(activeSlot===inlinePlayer&&inlinePlayer)inlinePlayer.innerHTML=inlinePoster;if(activeSlot&&activeSlot!==inlinePlayer)activeSlot.replaceChildren();activeSlot=null;}
+  function stopVideo(){playToken++;clearTimeout(fallbackTimer);clearTimeout(stallTimer);activePlayer?.destroy?.();activePlayer=null;if(activeSlot===inlinePlayer&&inlinePlayer)inlinePlayer.innerHTML=inlinePoster;if(activeSlot&&activeSlot!==inlinePlayer)activeSlot.replaceChildren();activeSlot=null;}
   function playerAPI(){
     if(window.YT?.Player)return Promise.resolve(window.YT);
     if(!ytPromise)ytPromise=new Promise((resolve,reject)=>{const script=document.createElement('script');let timeout;const failed=()=>{clearTimeout(timeout);script.remove();ytPromise=null;reject(Error('Video unavailable'));};window.onYouTubeIframeAPIReady=()=>{clearTimeout(timeout);resolve(window.YT);};script.src='https://www.youtube.com/iframe_api';script.dataset.mediaApi='true';script.onerror=failed;timeout=setTimeout(failed,10000);document.head.append(script);});
@@ -56,7 +56,7 @@ import {readConsent,saveConsent,deniedConsent,analyticsAllowed,analyticsCookieNa
       const mount=document.createElement('div');slot.replaceChildren(mount);
       function mutedFallback(event){if(token!==playToken||!choice.media)return;event.target.mute();event.target.playVideo();sound.hidden=false;status.textContent=ui('Je browser start zonder geluid. Zet het geluid aan om te luisteren.','Your browser starts playback muted. Turn sound on to listen.');}
       activePlayer=new YT.Player(mount,{host:'https://www.youtube-nocookie.com',videoId:video.id,width:'100%',height:'100%',playerVars:{autoplay:1,playsinline:1,rel:0,origin:location.origin},events:{
-        onReady:event=>{if(token!==playToken||!choice.media){event.target.destroy();return;}event.target.playVideo();fallbackTimer=setTimeout(()=>{if(token===playToken&&event.target.getPlayerState()!==1)mutedFallback(event);},1800);},
+        onReady:event=>{if(token!==playToken||!choice.media){event.target.destroy();return;}event.target.playVideo();stallTimer=setTimeout(()=>{if(token===playToken&&event.target.getCurrentTime()===0){status.textContent=ui('De video start nog niet. Probeer opnieuw of open de video op YouTube.','The video has not started. Retry or open it on YouTube.');retry.hidden=false;}},12000);fallbackTimer=setTimeout(()=>{if(token===playToken&&event.target.getPlayerState()!==1)mutedFallback(event);},1800);},
         onAutoplayBlocked:mutedFallback,
         onStateChange:event=>{if(token!==playToken)return;if(event.data===1){clearTimeout(fallbackTimer);retry.hidden=true;const muted=event.target.isMuted();sound.hidden=!muted;if(!muted)status.textContent=ui('Video wordt afgespeeld.','Video is playing.');}},
         onError:()=>{status.textContent=ui('Afspelen lukt hier niet. Open de video op YouTube.','Playback is unavailable here. Open the video on YouTube.');retry.hidden=false;}

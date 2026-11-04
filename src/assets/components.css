@@ -55,3 +55,6 @@ html[lang="en"] .gallery button::after{content:"View image ↗"}@media(max-width
 .gallery button::after{content:'Vergroot afbeelding'}html[lang="en"] .gallery button::after{content:'View image'}
 @media(max-width:830px){.hero-grid{display:flex;flex-direction:column;align-items:stretch;min-height:0}.hero-grid .video-card{margin:0;max-width:none;transform:none;flex:none}.footer-bottom .back-to-top{margin-top:10px}}
 @media(max-width:570px){.gallery button::after,html[lang="en"] .gallery button::after{content:'+'}.footer{padding-bottom:88px}#cookie-dialog{padding:24px}.privacy-actions{flex-direction:column}.privacy-actions .btn{flex:auto;width:100%}}
+/* Hidden overflow is scrollable by fragment navigation and left a blank hero
+   after #luisteren. Clip keeps the decorative background without inner scroll. */
+.hero{overflow:clip}

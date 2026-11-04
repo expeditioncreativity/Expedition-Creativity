@@ -19,3 +19,7 @@ test('tracking requires explicit analytics opt-in AND production context AND the
 test('withdrawal targets GA cookies without deleting unrelated first-party preferences',()=>{
   assert.deepEqual(analyticsCookieNames('_ga=abc; _ga_G9HM3R866P=abc; _gid=x; _gat=1; _gat_custom=1; session=keep; ec_privacy_v2=keep'),['_ga','_ga_G9HM3R866P','_gid','_gat','_gat_custom']);
 });
+
+test('a failed preference write cannot preserve a previous analytics opt-in',()=>{
+  const s=storage();saveConsent(s,{analytics:true,media:true});s.setItem=()=>{throw Error('quota exceeded');};saveConsent(s,{analytics:false,media:false});assert.equal(readConsent(s).analytics,false);assert.equal(readConsent(s).media,false);
+});
