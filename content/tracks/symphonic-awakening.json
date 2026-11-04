@@ -9,9 +9,11 @@
   "duration": "",
   "description": "",
   "intro": "",
-  "sections": [],
   "related": [],
   "status": "published",
   "approved": false,
-  "release_month": 8
+  "release_month": 8,
+  "content_version": 2,
+  "section_meta": {},
+  "section_order": []
 }

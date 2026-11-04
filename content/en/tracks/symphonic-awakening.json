@@ -9,17 +9,21 @@
   "duration": "",
   "description": "The first steps into orchestral composition and film scoring: a symphonic awakening built around strings, brass and cinematic textures.",
   "intro": "Strings at Dawn",
-  "sections": [
-    {
-      "id": "story",
-      "title": "The Story",
-      "body": "<p>Symphonic Awakening represents the beginning of a creative journey into orchestral composition and film scoring. Built around strings, brass and cinematic textures, it marks the first chapter of Expedition Creativity: learning how orchestral colours can carry emotion, discovery and storytelling.</p>"
-    }
-  ],
   "related": [],
   "status": "published",
   "approved": false,
   "release_month": 8,
   "seo_title": "Symphonic Awakening | Expedition Creativity",
-  "source": "track-symphonic-awakening.html"
+  "source": "track-symphonic-awakening.html",
+  "content_version": 2,
+  "section_meta": {
+    "story": {
+      "id": "story",
+      "title": "The Story"
+    }
+  },
+  "section_order": [
+    "story"
+  ],
+  "story": "<p>Symphonic Awakening represents the beginning of a creative journey into orchestral composition and film scoring. Built around strings, brass and cinematic textures, it marks the first chapter of Expedition Creativity: learning how orchestral colours can carry emotion, discovery and storytelling.</p>"
 }

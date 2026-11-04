@@ -37,3 +37,12 @@
 - Twee foutieve oude korte teksten (Dreamcatcher-inleiding en Elephant-SEO-beschrijving) vervangen door bestaande zinnen uit hun eigen trackverhaal. De verhaalteksten zelf zijn ongewijzigd.
 - CMS uitgebreid met Nederlandse/Engelse collecties en gedeelde technische metadata; gebruikshandleiding toegevoegd. OAuth naar vaste Netlify-site ingesteld; echte login en online opslaan nog geblokkeerd door ontbrekende aanmelding.
 - Geen productiepublicatie, merge of wijziging aan oorspronkelijke websitebestanden.
+
+## 4 november 2026 — vaste CMS-tracktemplate
+
+- Generieke sectielijst vervangen door vaste NL/EN-verhaalvelden, reis, orkestratie, instrumentatie, partituren/uitvoering, galerij, relaties en SEO.
+- Automatische compositiegegevens en sectienavigatie; lege optionele onderdelen verborgen; beschikbaarheid en contactknop zonder onbevestigde standaardclaims.
+- Bestaande inhoud verliesvrij gemigreerd; goedgekeurde Nederlandse Blue Boy Planet ongewijzigd en vergrendeld.
+- Meerdere galerijafbeeldingen met alt-tekst, onderschriften en vergrootweergave; optionele OG-afbeelding.
+- Mobiele beheerinterface aangepast aan smalle schermen; handleiding uitgebreid.
+- Zestien geautomatiseerde controles geslaagd. Online CMS-opslag blijft een afzonderlijke acceptatiestap totdat deze browsersessie is aangemeld.

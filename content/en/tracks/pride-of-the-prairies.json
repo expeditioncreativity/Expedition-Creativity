@@ -9,17 +9,21 @@
   "duration": "",
   "description": "A western-inspired orchestral ride through untamed landscapes where wild horses roam freely across vast plains.",
   "intro": "Western Orchestral Journey",
-  "sections": [
-    {
-      "id": "story",
-      "title": "The Story",
-      "body": "<p>Inspired by the Western plains on which wild horses roam freely, Pride of the Prairies combines rhythmic percussion, melodic violin motifs and whistling solo trumpets into a cinematic orchestral journey through untamed landscapes.</p>"
-    }
-  ],
   "related": [],
   "status": "published",
   "approved": false,
   "release_month": 11,
   "seo_title": "Pride of the Prairies | Expedition Creativity",
-  "source": "track-pride-of-the-prairies.html"
+  "source": "track-pride-of-the-prairies.html",
+  "content_version": 2,
+  "section_meta": {
+    "story": {
+      "id": "story",
+      "title": "The Story"
+    }
+  },
+  "section_order": [
+    "story"
+  ],
+  "story": "<p>Inspired by the Western plains on which wild horses roam freely, Pride of the Prairies combines rhythmic percussion, melodic violin motifs and whistling solo trumpets into a cinematic orchestral journey through untamed landscapes.</p>"
 }

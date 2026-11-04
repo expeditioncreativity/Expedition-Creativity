@@ -38,3 +38,6 @@
 .carousel-controls{margin-bottom:22px;gap:10px}
 .preview-play{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--gold,#ddb313);color:#111;font-size:25px;box-shadow:0 3px 20px #0005;pointer-events:none}
 .composition-card:hover .preview-play{background:#ffe170}
+
+/* Fixed CMS gallery; approved legacy gallery keeps its existing layout. */
+.editorial-gallery{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.editorial-gallery figure{margin:0;min-width:0}.editorial-gallery .gallery-image{display:block;width:100%;aspect-ratio:16/9}.editorial-gallery figcaption{font-size:13px;line-height:1.6;color:#666;padding:8px 0;overflow-wrap:anywhere}@media(max-width:560px){.editorial-gallery{grid-template-columns:1fr}}

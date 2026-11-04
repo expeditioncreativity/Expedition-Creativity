@@ -1,27 +1,34 @@
 # Composities beheren
 
-De editor is beschikbaar onder `/admin/` in de ontwikkelpreview. De aanmelding via GitHub moet eerst eenmalig aan Netlify worden gekoppeld; zie de status in README.md.
+Open `/admin/` in de ontwikkelpreview en meld aan met GitHub. De editor schrijft uitsluitend naar `development/nl-design-cms`. De GitHub-koppeling van ChatGPT en de browsersessie van de editor zijn afzonderlijke aanmeldingen.
 
 ## Nieuwe compositie
 
-1. Open **Composities — Nederlands** en kies een nieuwe compositie.
-2. Vul titel, URL-naam (bijvoorbeeld `nieuwe-expeditie`), jaar, maand, wereld, genre, YouTube-ID en afbeelding in. Upload bij voorkeur een afbeelding zonder ingebakken zwarte balken, in 16:9.
-3. Voeg de inleiding en inhoudssecties toe. Elke sectie krijgt een unieke ankernaam. Vet, cursief en subkoppen worden ondersteund.
-4. Sla op als concept. Kies **Zichtbaar in ontwikkeling** wanneer de inhoud in de preview mag verschijnen. De editorial workflow bewaart wijzigingen ter beoordeling.
-5. Publiceren in de editor schrijft uitsluitend naar `development/nl-design-cms`. De gekoppelde Netlify-preview wordt daarna opnieuw opgebouwd. De livewebsite blijft afhankelijk van een afzonderlijk goedgekeurde merge/publicatie.
+1. Kies **Composities — Nederlands → Item van type Compositie maken**. Vul de basisgegevens in: titel, URL-naam, jaar, maand, duur, wereld, genre, YouTube-ID en cover. Gebruik een cover zonder zwarte balken, bij voorkeur 16:9.
+2. De vaste velden **Het verhaal achter de muziek**, **Een muzikale reis**, **Orkestratie** en **Instrumentatie** staan al klaar. Gebruik de knoppen voor vet/cursief en kies H3 in het menu Hoofdtekst. In Markdown kan dat met `**vet**`, `*cursief*` en `### Subkop`.
+3. **Compositiegegevens** worden automatisch uit de basisgegevens opgebouwd. Je hoeft geen sectiekoppen, ankers of technische gegevens opnieuw in te voeren.
+4. Kies bij **Partituren & uitvoering** alleen een bevestigde beschikbaarheid. Standaard is niets vermeld en staat de contactknop uit. Vul eventueel toelichting in.
+5. Vul **Achter de partituur** in en voeg desgewenst meerdere afbeeldingen toe. Iedere afbeelding vraagt een beschrijvende alt-tekst; een onderschrift is optioneel. De website biedt een vergrootweergave.
+6. Kies bestaande composities bij **Ontdek meer muziek**. Ook de beschermde Blue Boy Planet kan als verwijzing worden gekozen. Vul eventueel SEO-titel, metabeschrijving en een aparte deelafbeelding in; zonder deelafbeelding wordt de cover gebruikt.
+7. Laat **Status: Concept** staan bij een proef of onvolledige compositie. Sla op via de editorial workflow. Concepten verschijnen niet op de website, in zoekresultaten of in de sitemap.
+8. Voor weergave in de ontwikkelpreview: zet de contentstatus op **Zichtbaar in ontwikkeling** en publiceer de gereviewde wijziging binnen het CMS. Dit voegt de wijziging samen naar de ontwikkelbranch. Het is geen toestemming of handeling om de livewebsite te publiceren.
+
+Lege optionele onderdelen en hun navigatielinks worden niet getoond. De vaste volgorde en nummering worden automatisch opgebouwd. Bestaande gemigreerde sectietitels en ankers blijven bewaard.
 
 ## Engelse versie
 
-Open **Composities — English** en gebruik exact dezelfde URL-naam als de Nederlandse compositie. Vul de Engelse titel, wereld, genre, beschrijving, inleiding en secties in. Video, afbeelding, jaar, maand en duur worden automatisch uit de Nederlandse versie overgenomen. Beide taalversies kunnen dus nooit per ongeluk verschillende video's afspelen.
+Maak eerst de Nederlandse compositie. Kies **Composities — English** en gebruik exact dezelfde URL-naam. Dezelfde vaste tekstvelden staan klaar. Jaar, maand, duur, video en cover komen automatisch uit de Nederlandse bron; voer die niet opnieuw in. Titel, wereld, genre, verhaal en SEO zijn taalgebonden.
 
-Een Engelse versie verschijnt alleen als de Nederlandse compositie zichtbaar is en ook de Engelse status op **Zichtbaar in ontwikkeling** staat. Zonder Engelse versie verschijnt geen taalwissel naar een ontbrekende trackpagina.
+Een Engelse pagina verschijnt pas wanneer beide taalversies zichtbaar zijn. Zonder vertaling verschijnt geen taalwissel naar een ontbrekende pagina. Bestaande Engelse teksten zijn overgenomen van de oorspronkelijke website.
 
-## Controle
+## Controle en bescherming
 
-Controleer na opslaan de trackpagina, de compositiekaart, zoeken/filteren, de tijdlijn en de taalwissel. Nederlandse Blue Boy Planet-teksten zijn beschermd en worden niet in de Nederlandse editor aangeboden. Wijzig die alleen na expliciete redactionele goedkeuring.
+Controleer de previewpagina, mobiele weergave, sectielinks, galerij, compositiekaart, zoeken/filteren, tijdlijn en taalwissel. Nederlandse Blue Boy Planet-teksten zijn beschermd, uitgesloten van de bewerkbare collectie en bewaakt door een buildcontrole. De bestaande teksten zijn niet herschreven.
 
-## Aanmelding afronden
+De mobiele editor gebruikt een kleine CSS-aanpassing voor de vastgezette Decap-versie 3.17.3. Controleer die opnieuw bij een CMS-upgrade.
 
-De backend gebruikt Netlify OAuth voor GitHub, met de vaste site-ID `expeditioncreativity.netlify.app`; dit voorkomt dat een wisselende deploy-preview-host als apart OAuth-project wordt behandeld. De officiële configuratie staat beschreven op https://decapcms.org/docs/github-backend/ en https://decapcms.org/docs/backends-overview/.
+## Aanmeldstatus en publicatie
 
-Nog nodig: aanmelden bij het Netlify-project, de bestaande OAuth-provider controleren of configureren, en vervolgens een echte CMS-concept-opslag en terugleescontrole uitvoeren. Eventuele OAuth-clientgeheimen horen uitsluitend in de beveiligde providerinstellingen, nooit in Git of chat. Een nieuwe OAuth-toestemming of credential-aanmaak moet door de eigenaar worden goedgekeurd/uitgevoerd.
+Op 4 november 2026 bereikt de Netlify OAuth-route het normale GitHub-inlogscherm. De projecteigenaar heeft de werkende editor al gebruikt. In deze nieuwe agentsessie ontbreekt nog een aangemelde GitHub-browsersessie voor de online opslaan-/terugleestest; de geïsoleerde editorcontrole en de bestands-/rendertests zijn daarvan gescheiden (zie TESTRESULTATEN.md).
+
+OAuth-geheimen horen uitsluitend in beveiligde providerinstellingen, nooit in Git of chat. Alleen een merge naar `main` en productiepublicatie vereisen afzonderlijke publicatiegoedkeuring; die worden niet door deze workflow uitgevoerd.

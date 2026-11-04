@@ -57,7 +57,7 @@ test('supported CMS formatting is rendered and new prose is escaped',()=>{
   assert.equal(markdown('### Titel\n\nEen **belangrijk** en *zacht* thema.'),'<h3 class="subhead">Titel</h3>\n<p>Een <strong>belangrijk</strong> en <em>zacht</em> thema.</p>');assert.match(markdown('Tekst met <script>alert(1)</script>'),/&lt;script&gt;/);
 });
 test('CMS writes only to development, excludes approved text and pins its script',async()=>{
-  const config=await read(join(root,'admin/config.yml'));assert.match(config,/branch: development\/nl-design-cms/);assert.match(config,/publish_mode: editorial_workflow/);assert.match(config,/filter: \{field: approved, value: false\}/);assert.doesNotMatch(config,/branch: main/);assert.match(await read(join(root,'admin/index.html')),/decap-cms@3\.17\.3/);assert.match(await read(join(root,'admin/index.html')),/integrity="sha384-/);
+  const config=await read(join(root,'admin/config.yml'));assert.match(config,/branch: development\/nl-design-cms/);assert.match(config,/publish_mode: editorial_workflow/);assert.match(config,/filter:\s+field: approved\s+value: false/);assert.doesNotMatch(config,/branch: main/);assert.match(await read(join(root,'admin/index.html')),/decap-cms@3\.17\.3/);assert.match(await read(join(root,'admin/index.html')),/integrity="sha384-/);
 });
 test('language alternates point to existing matching pages in both directions',()=>{
   for(const p of pages){
@@ -78,20 +78,51 @@ test('a new CMS composition reaches its page, search index, catalogue and sitema
   const temp=await mkdtemp(join(tmpdir(),'ec-content-test-'));
   try {
     for(const dir of ['scripts','src','admin','content','tests'])await cp(join(root,dir),join(temp,dir),{recursive:true});
-    const fixture={...tracks[0],title:'Testcompositie',slug:'testcompositie',approved:false,intro:'Een **nieuw** muzikaal verhaal.',sections:[{id:'verhaal',title:'Het verhaal',body:'### Een begin\n\nEen **origineel** thema.'}],status:'published'};
+    const fixture={...tracks[0],title:'Testcompositie',slug:'testcompositie',approved:false,intro:'Een **nieuw** muzikaal verhaal.',sections:undefined,story:'### Een begin\n\nEen **origineel** thema.',journey:'Een reis.',instrumentation:'Hoorn en strijkers.',performance:{availability:'unspecified',contact_cta:false},behind:'Een schets.',gallery:[{image:tracks[0].image,alt:'Testbeeld',caption:'Testonderschrift'}],status:'published'};
     await writeFile(join(temp,'content/tracks/testcompositie.json'),JSON.stringify(fixture));
     await writeFile(join(temp,'content/tracks/concept.json'),JSON.stringify({...fixture,slug:'concept',status:'draft'}));
-    await writeFile(join(temp,'content/en/tracks/testcompositie.json'),JSON.stringify({title:'Test composition',slug:'testcompositie',world:'Space',type:'Orchestral music',status:'published',intro:'An **original** story.',sections:[{id:'story',title:'Story',body:'A new beginning.'}]}));
+    await writeFile(join(temp,'content/en/tracks/testcompositie.json'),JSON.stringify({title:'Test composition',slug:'testcompositie',world:'Space',type:'Orchestral music',status:'published',intro:'An **original** story.',story:'A new **beginning**.'}));
     await writeFile(join(temp,'content/tracks/zonder-vertaling.json'),JSON.stringify({...fixture,slug:'zonder-vertaling'}));
     execFileSync(process.execPath,[join(temp,'scripts/build.mjs')],{cwd:temp});
     for(const path of ['nl/composities/testcompositie/index.html','nl/composities/index.html','sitemap.xml','assets/search-index.json'])assert.match(await read(join(temp,'dist',path)),/testcompositie/);
     assert.match(await read(join(temp,'dist/nl/composities/testcompositie/index.html')),/<strong>nieuw<\/strong>/);
+    const rendered=await read(join(temp,'dist/nl/composities/testcompositie/index.html'));
+    assert.match(rendered,/<figcaption>Testonderschrift<\/figcaption>/);assert.match(rendered,/Hoorn en strijkers/);assert.doesNotMatch(rendered,/id="partituren"/);
+    const ids=['verhaal','reis','orkestratie','gegevens','achter-de-partituur'];for(let i=1;i<ids.length;i++)assert.ok(rendered.indexOf(`id="${ids[i-1]}"`)<rendered.indexOf(`id="${ids[i]}"`));
     const english=await read(join(temp,'dist/en/tracks/testcompositie/index.html'));
-    assert.match(english,/<strong>original<\/strong>/);assert.ok(english.includes(`data-video="${fixture.video_id}"`));
+    assert.match(english,/<strong>original<\/strong>/);assert.match(english,/<strong>beginning<\/strong>/);assert.ok(english.includes(`data-video="${fixture.video_id}"`));
     assert.doesNotMatch(await read(join(temp,'dist/nl/composities/zonder-vertaling/index.html')),/hreflang="en"/);
     await assert.rejects(access(join(temp,'dist/en/tracks/zonder-vertaling/index.html')));
 
     await assert.rejects(access(join(temp,'dist/nl/composities/concept/index.html')));
     assert.doesNotMatch(await read(join(temp,'dist/assets/search-index.json')),/\/concept\//);
   } finally {await rm(temp,{recursive:true,force:true});}
+});
+
+import {trackSections,validateEditorial} from '../scripts/track-content.mjs';
+const render=(t,lang='nl')=>trackSections(t,lang,{markdown,escapeHtml});
+test('migration retains all existing section text, ordering, media, metadata and SEO',async()=>{
+ for(const folder of ['content/tracks','content/en/tracks'])for(const file of await readdir(`${root}/${folder}`)){
+  const path=`${folder}/${file}`;
+  const before=JSON.parse(execFileSync('git',['show',`4192984ad07417ef6eff25d781e10e192ecda27a:${path}`],{cwd:root,encoding:'utf8'}));
+  const after=JSON.parse(await readFile(`${root}/${path}`,'utf8'));
+  for(const [key,value] of Object.entries(before))if(key!=='sections')assert.deepEqual(after[key],value,`${path}: ${key}`);
+  assert.deepEqual(render(after,folder.includes('/en/')?'en':'nl').map(({id,title,body})=>({id,title,body})),before.sections||[],path);
+ }
+});
+test('fixed sections omit empty content and do not invent availability',()=>{
+ assert.deepEqual(render({story:' ',performance:{availability:'unspecified',contact_cta:false},gallery:[]}),[]);
+ const t={story:'### Begin\n\nEen **thema**.',journey:'Reis',instrumentation:'Hoorn',performance:{availability:'on_request',body:'Toelichting',contact_cta:true},behind:'Werkplek',gallery:[{image:'/assets/approved-1.webp',alt:'Werkplek',caption:'Eerste schets'}]};
+ const sections=render(t);
+ assert.deepEqual(sections.map(s=>s.id),['verhaal','reis','orkestratie','partituren','achter-de-partituur']);
+ assert.match(sections[0].body,/<h3 class="subhead">Begin<\/h3>/);assert.match(sections[0].body,/<strong>thema<\/strong>/);
+ assert.match(sections[2].body,/Instrumentatie/);assert.match(sections[3].body,/\/nl\/contact\//);
+ assert.match(sections[4].body,/<figcaption>Eerste schets<\/figcaption>/);assert.match(sections[4].body,/alt="Werkplek"/);
+ assert.match(render(t,'en')[3].body,/\/en\/contact\//);
+});
+test('invalid gallery, availability and field types fail before rendering',()=>{
+ assert.throws(()=>validateEditorial({gallery:[{image:'/a.jpg',alt:''}]}));
+ assert.throws(()=>validateEditorial({gallery:[{image:'javascript:alert(1)',alt:'Test'}]}));
+ assert.throws(()=>validateEditorial({performance:{availability:'invented'}}));
+ assert.throws(()=>validateEditorial({story:42}));
 });

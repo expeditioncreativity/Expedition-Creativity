@@ -9,17 +9,21 @@
   "duration": "",
   "description": "An Elephant's Day In Life follows a young elephant as it slowly awakens on the African savannah at daybreak.",
   "intro": "A Savannah Morning Journey",
-  "sections": [
-    {
-      "id": "story",
-      "title": "The Story",
-      "body": "<p>An Elephant's Day In Life follows a young elephant as it slowly awakens on the African savannah at daybreak. As the morning grows warmer, the elephant gradually comes to life and begins to play with the young friends in the herd. The music follows that gentle transformation: from quiet sunrise, to curiosity and playful movement, and finally back to calm. As the sun sets over the savannah, the herd gathers again, the day fades, and rest returns — ready for another dawn.</p>"
-    }
-  ],
   "related": [],
   "status": "published",
   "approved": false,
   "release_month": 3,
   "seo_title": "An Elephant's Day In Life | Expedition Creativity",
-  "source": "track-an-elephants-day-in-life.html"
+  "source": "track-an-elephants-day-in-life.html",
+  "content_version": 2,
+  "section_meta": {
+    "story": {
+      "id": "story",
+      "title": "The Story"
+    }
+  },
+  "section_order": [
+    "story"
+  ],
+  "story": "<p>An Elephant's Day In Life follows a young elephant as it slowly awakens on the African savannah at daybreak. As the morning grows warmer, the elephant gradually comes to life and begins to play with the young friends in the herd. The music follows that gentle transformation: from quiet sunrise, to curiosity and playful movement, and finally back to calm. As the sun sets over the savannah, the herd gathers again, the day fades, and rest returns — ready for another dawn.</p>"
 }

@@ -1,0 +1,14 @@
+/* Overrides for pinned Decap 3.17.3. Keep the authoring interface usable on phones. */
+@media(max-width:799px){
+  html,body,#nc-root{min-width:0!important;max-width:100%}
+  [class*="EditorContainer"],[class*="ToolbarContainer"]{min-width:0!important}
+  [class*="EditorContainer"]>[class*="ToolbarContainer"]{height:auto;flex-wrap:wrap;position:sticky;top:0;z-index:100}
+  [class*="ToolbarSectionBackLink"]{flex-basis:100%;height:56px;padding:8px 16px}
+  [class*="ToolbarSectionMain"]{min-width:0;padding:8px 16px;height:56px}
+  [class*="ToolbarSectionMeta"]{padding:8px;height:56px}
+  [class*="NoPreviewContainer"]{padding:0!important;width:100%!important}
+  [class*="ControlPaneContainer"]{min-width:0!important;max-width:100%;padding-left:12px!important;padding-right:12px!important;box-sizing:border-box}
+  [class*="ControlTopbar"],[class*="EditorControlBar"]{flex-wrap:wrap;height:auto!important;min-height:32px}
+  [class*="ControlHint"]{overflow-wrap:anywhere}
+  input,textarea,[contenteditable="true"]{font-size:16px!important}
+}

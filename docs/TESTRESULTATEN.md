@@ -64,3 +64,15 @@ Responsieve controles zijn uitgevoerd in browserframes met de genoemde breedtes,
 - Browser: taalwissel EN→NL werkt, Engelse zoekopdracht `planet` geeft `1 composition`. Homepage, catalogus en tijdlijn op 360px: documentbreedte en scrollbreedte beide 345px, dus geen horizontale pagina-overflow.
 - Visuele homepagecontrole: gouden play-iconen en nieuwe verhaalpassage aanwezig; carrouselbediening heeft extra ondermarge. Tijdlijn begint met Blue Boy Planet, gevolgd door Chills of Antarctica en Turtle Travel.
 - CMS-login en echte online opslaan-/terugleescyclus nog niet voltooid: Netlify toont een aanmeldscherm. Geen credentials of productie-instellingen gewijzigd.
+
+## 4 november 2026 — acceptatie vaste CMS-velden
+
+Deze aanvulling vervangt eerdere CMS-statusmeldingen waar die afwijken.
+
+- `npm test`: 16 tests geslaagd; 34 NL/EN-pagina's en 15 bestaande routes behouden.
+- Alle twintig JSON-tracks vergeleken met commit `4192984`: bestaande tekst, sectietitels/ankers/volgorde, media, metadata en SEO zonder verlies. Nederlandse Blue Boy Planet blijft op het oorspronkelijke beschermde model.
+- Nieuwe vaste velden in een tijdelijke projectkopie opgeslagen en teruggelezen door de generator. NL/EN-pagina, automatische gegevens, galerieonderschrift, instrumentatie, sectievolgorde, zoekindex en sitemap gecontroleerd. Concepten blijven verborgen; lege partiturenvelden leveren geen sectie of beschikbaarheidsclaim op.
+- Decap 3.17.3 daadwerkelijk in de browser geopend met dezelfde collecties/velden, maar een geïsoleerde **test-repo**-backend (geen GitHub-toegang). De vaste velden staan standaard klaar en de partiturenopties zijn uitgeklapt. Testcompositie `cms-controletest` opgeslagen en via het collectieoverzicht opnieuw geopend: titel, jaar, verhaal en conceptstatus behouden. Dit is nadrukkelijk geen online GitHub-opslagtest.
+- Mobiele editor gecontroleerd in een 390 × 844 iframe. Oorspronkelijke 800px-minimumbreedte gecorrigeerd met admin/editor.css; documentbreedte en viewport beide 390px. Velden en opslagknop zichtbaar zonder horizontaal scrollen. Desktopformulier eveneens gecontroleerd.
+- Online Netlify OAuth verwijst naar het normale GitHub-inlogscherm met de bestaande app. Voor deze browsersessie ontbreken nog de login en vervolgens de echte editorial-workflow-opslag-/terugleescontrole. Dit acceptatiepunt blijft open; geen succes geclaimd op basis van de testbackend.
+- Alleen ontwikkelbranch/PR #3. Geen merge naar main of productiepublicatie uitgevoerd. Handmatige goedkeuring blijft nodig voor livepublicatie en eventuele wijziging van beschermde compositieteksten.

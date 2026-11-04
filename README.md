@@ -37,7 +37,7 @@ De collectie heeft invoervelden voor metadata, afbeelding, inleiding, secties, g
 
 `admin/config.yml` gebruikt GitHub en `editorial_workflow`, uitsluitend gericht op `development/nl-design-cms`. Publiceren binnen het CMS betekent samenvoegen naar die ontwikkelbranch, niet naar `main`.
 
-**Nog niet operationeel geverifieerd:** de afzonderlijke CMS-login via Netlify/GitHub OAuth. De GitHub-koppeling van ChatGPT verleent het CMS geen eigen login. Het Netlify-project toont in deze browsersessie een inlogscherm; aanmelding is nog nodig. Er zijn geen OAuth-clients, secrets, Netlify-instellingen of rechten aangemaakt of gewijzigd. De CMS-login en een echte opslaan/teruglezen-cyclus moeten op een goedgekeurde testomgeving worden voltooid voordat dit als gebruiksklaar CMS wordt opgeleverd.
+**CMS-controle 4 november:** vaste invoervelden zijn geïmplementeerd voor NL/EN. De eigenaar heeft de OAuth-editor gebruikt; de huidige browser bereikt de normale GitHub-login maar is nog niet aangemeld. De online concept-opslag-/terugleescyclus is daardoor nog niet door deze sessie geverifieerd. Zie `docs/TESTRESULTATEN.md` voor de afzonderlijke editor-, migratie- en rendertests.
 
 Decap CMS is vastgezet op versie 3.17.3 met een gecontroleerde SHA-384-integriteitswaarde. Het wordt alleen op de beheerpagina van de officiële package-CDN geladen. De websitebuild heeft geen CDN- of npm-afhankelijkheid. De lokale proxy is niet actief op de online beheerpagina. Het CMS heeft afzonderlijke Nederlandse en Engelse collecties. Technische trackgegevens worden voor beide talen uit de Nederlandse bron gelezen. Zie `docs/CMS-HANDLEIDING.md`.
 
