@@ -1,0 +1,30 @@
+{
+  "title": "Turtle Travel",
+  "slug": "turtle-travel",
+  "year": 2024,
+  "world": "Ocean",
+  "type": "Cinematic orchestral music",
+  "video_id": "N0ks3Me11C0",
+  "image": "https://i.ytimg.com/vi/N0ks3Me11C0/hqdefault.jpg",
+  "duration": "",
+  "description": "A cinematic ocean journey imagining the first adventure of baby sea turtles as they make their way to the deep blue sea.",
+  "intro": "How to Write Film Music for Sea Turtles?",
+  "related": [],
+  "status": "published",
+  "approved": false,
+  "release_month": 3,
+  "seo_title": "Turtle Travel | Expedition Creativity",
+  "source": "track-turtle-travel.html",
+  "content_version": 2,
+  "section_meta": {
+    "story": {
+      "id": "story",
+      "title": "The Story"
+    }
+  },
+  "section_order": [
+    "story"
+  ],
+  "story": "Turtle Travel imagines a small film score for an imaginary turtle documentary: baby sea turtles hatch on the beach and begin their journey toward the ocean. It explores wonder, movement and the emotional pull of the sea through orchestral storytelling.",
+  "translation_status": "legacy_source"
+}

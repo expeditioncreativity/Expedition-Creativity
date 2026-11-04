@@ -1,0 +1,14 @@
+{
+  "path": "/nl/contact/",
+  "title": "Contact",
+  "description": "Get in touch for collaborations, feedback, commissions and enquiries.",
+  "heading": "An idea.<br><em>A new expedition.</em>",
+  "lead": "For collaborations, feedback, commissions and enquiries.",
+  "sections": [
+    {
+      "title": "Get in touch",
+      "body": "<div class=\"contact-section\"><p>Follow new expeditions, connect professionally or reach out for collaborations, feedback and enquiries.</p><div class=\"contact-cards\"><article class=\"contact-card\"><h3>YouTube</h3><p>Follow new releases, cinematic journeys and behind-the-score content.</p><a class=\"btn youtube\" href=\"https://www.youtube.com/@expeditioncreativity\" target=\"_blank\" rel=\"noopener noreferrer\">▶ Subscribe on YouTube</a></article><article class=\"contact-card\"><h3>LinkedIn</h3><p>Connect professionally and follow creative projects around music, storytelling and composition.</p><a class=\"btn linkedin\" href=\"https://www.linkedin.com/in/mikael-stroobants/\" target=\"_blank\" rel=\"noopener noreferrer\">in Connect on LinkedIn</a></article><article class=\"contact-card\"><h3>Email</h3><p>For collaborations, feedback, commissions and enquiries.</p><a class=\"btn email\" href=\"mailto:hello@expeditioncreativity.com\">✉ hello@expeditioncreativity.com</a></article></div></div>"
+    }
+  ],
+  "source": "index.html#contact"
+}

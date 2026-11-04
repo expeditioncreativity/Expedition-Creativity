@@ -1,0 +1,58 @@
+{
+  "title": "Blue Boy Planet",
+  "slug": "blue-boy-planet",
+  "year": 2026,
+  "world": "Space",
+  "type": "Cinematic orchestral music",
+  "video_id": "CbFn2igUChI",
+  "image": "/assets/approved-1.webp",
+  "duration": "4:41",
+  "description": "Blue Boy Planet is an original cinematic orchestral composition by Mikaël Stroobants about loss, childhood wonder and the discovery of the universe.",
+  "intro": "**Blue Boy Planet** is an original cinematic orchestral composition by Mikaël Stroobants, bringing together **loss, childhood wonder and the discovery of the universe**. Through a musical journey among stars and planets, the work tells a moving story of farewell, imagination and the comfort that memories can offer.",
+  "related": [
+    "chills-of-antarctica",
+    "turtle-travel"
+  ],
+  "status": "published",
+  "approved": false,
+  "seo_title": "Blue Boy Planet – Cinematic Orchestral Music | Expedition Creativity",
+  "release_month": 5,
+  "source": "track-blue-boy-planet.html",
+  "content_version": 2,
+  "section_meta": {},
+  "section_order": [],
+  "story": "The reason I wanted to write this work has its roots in a deeply sad event.\n\n### An unexpected farewell\n\nIn **2025**, a six-year-old boy in my close circle of friends died suddenly. Sudden, fatal brain damage took him from life far too soon.\n\n### A story among the stars\n\nAt the time, I was writing a piece that was still in its early stages. I soon decided that I wanted to respond to this tragic event through music and changed the story behind the piece. **The boy loved planets**; this inspired me to write music centred on exploring space and planets with a child's innocence and wonder, alongside the parents' heartbreaking sense of loss following the boy's **figurative, imagined ‘decision’** to leave Earth.",
+  "journey": "### Beneath a sky full of stars\n\nThe work begins very quietly, with the image of someone looking into space through a telescope—another favourite pastime of the boy who died—searching for celestial objects. **Notes that evoke shooting stars** begin to emerge.\n\n### The approaching departure\n\nGradually, the deeper meaning becomes clear. The strings announce the approaching departure and loss, introducing a more melancholic character. What follows is a stronger statement of the **central theme, played by strings and horn**, alternating with the trumpet section.\n\n### An adventure among the planets\n\nA new theme emerges, carrying the listener into a more joyful passage with a slightly more driving rhythm. It suggests that the boy is no longer about to leave, but is now fully immersed in exploring space. He flies from planet to planet and is clearly happy in his new surroundings. This is precisely why the passage sounds less melancholic and instead **more epic, with abundant percussion and a warm brass sound**.\n\n### One last look at Earth\n\nAs this passage also reaches its climax, the sound slowly fades and a sense of acceptance follows. To the once again more melancholic sounds of **violin, cello and piano**, the boy looks back at Earth with a warm smile. This image gently suggests that, despite the terrible events on Earth, he is happy in his new home among the stars…",
+  "orchestration": "The orchestration of *Blue Boy Planet* plays an essential role in telling the story. The music moves gradually between **innocence, grief, adventure and, finally, acceptance**.\n\n### A universe in sound\n\nThe composition opens with a subtle combination of **atmospheric synthesizers, delicate string textures and shimmering orchestral colours**. Xylophone accents and specially designed spatial sound effects evoke the mysterious beauty of the universe. They create the impression of distant stars and planets moving through space.\n\n### Symphonic emotion\n\nAs the emotional dimension of the story becomes clearer, the orchestration develops into a more expressive, symphonic sound. The strings introduce a growing sense of melancholy, while the warm, lyrical character of the horns adds emotional depth. Trumpets, trombones and low brass gradually broaden the orchestral palette and reinforce the central musical themes.\n\n### A cinematic climax\n\nThe transition into the boy's imagined journey through space brings a noticeable change in timbre and rhythm. **Pizzicato strings** create a lighter, more animated character, complemented by short, articulated passages in the clarinets, flutes and piccolo. As the adventure unfolds, the orchestration grows into a broad, cinematic soundscape. Powerful brass harmonies, layered string parts, timpani, cymbals and cinematic percussion create an increasingly energetic and immersive whole. **Soprano and alto choir textures** add spaciousness and grandeur to the orchestral climax, while subtle electronic bass layers and synthesizers further enhance its cinematic character.\n\n### Returning to silence\n\nAfter this powerful passage, the instrumentation gradually becomes more transparent. The harp and delicate orchestral colours guide the music towards the final, more restrained chapter of the story. At the close, the composition returns to a more intimate musical atmosphere. Piano, lyrical violin lines and cello are supported by soft strings and atmospheric sounds, bringing the imagined journey to a peaceful end.\n\nThroughout *Blue Boy Planet*, the contrast between intimate orchestral passages and sweeping cinematic moments reflects the two emotional dimensions at the heart of the composition: **the grief of loss** and **the comforting image of a child exploring a boundless universe**.",
+  "instrumentation": "The composition combines **symphonic strings**, horns, trumpets, tenor and bass trombones, tubas, flutes, piccolo, clarinets, bassoon, piano, harp, xylophone, timpani, cymbals and **cinematic percussion**. Additional layers include soprano and alto choir, synthesizers, low-frequency drones and specially designed atmospheric sound effects.",
+  "performance": {
+    "availability": "on_request",
+    "contact_cta": true,
+    "body": "*Blue Boy Planet* was composed and produced using virtual orchestral instruments. The current recording is a **digital orchestral simulation (orchestral mock-up)**, rather than a live recording of a symphony orchestra.\n\nThe **score is available on request**. The possibilities for a live performance, any orchestral adaptations and the availability of individual instrumental parts can be discussed together. Are you a conductor, musician or representative of a music association who would like to perform *Blue Boy Planet*? Please feel free to get in touch through the contact page. I would be happy to explore the possibilities with you."
+  },
+  "gallery": [
+    {
+      "image": "/assets/approved-1.webp",
+      "caption": "Blue Boy Planet — original artwork",
+      "alt": "A boy looks out over an imagined alien world, with the words Mam Dad & Me in the landscape."
+    },
+    {
+      "image": "/assets/approved-2.webp",
+      "caption": "Detail of the orchestral arrangement in Ableton Live",
+      "alt": "Screenshot of MIDI clips, harp and percussion in the Ableton Live arrangement."
+    },
+    {
+      "image": "/assets/approved-3.webp",
+      "caption": "Instrument and effects tracks in Ableton Live",
+      "alt": "Screenshot of percussion, synthesizer and effects tracks in the Ableton Live project."
+    }
+  ],
+  "behind": "",
+  "translation_status": "complete",
+  "translation_source_hash": "65e164fefff7dbb04426604167d28058631e258b6aee4cafd05151c6d685f0d1",
+  "previous_english": {
+    "intro": "Emotional Cinematic Space Journey",
+    "story": "<p>Blue Boy Planet is inspired by the story of a 6-year-old boy whose journey continues far beyond our world. Through music and visuals, this short film reimagines loss as a cosmic voyage: a young boy decides to leave Earth behind to explore distant planets, galaxies and the mysteries of the universe.</p>",
+    "source": "track-blue-boy-planet.html"
+  }
+}

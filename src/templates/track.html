@@ -1,0 +1,23 @@
+<header class="hero" id="boven" style="--hero-image:url('{{IMAGE}}')">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Originele compositie · {{TYPE}}</div>
+      <h1>{{TITLE_HTML}}</h1>
+      {{INTRO}}
+      <div class="pills">{{PILLS}}</div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#luisteren"><span aria-hidden="true">▶</span> Bekijk de compositie</a>
+        <a class="btn btn-outline" href="#inhoud">Ontdek het verhaal <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <div class="video-card" id="luisteren">
+      <div class="player" id="player">
+        <img src="{{IMAGE}}" alt="Visual bij {{TITLE}}" width="1450" height="816" fetchpriority="high">
+        <button type="button" class="play" id="play-video" data-video="{{VIDEO_ID}}" aria-label="Speel {{TITLE}} af via YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m7 3 14 9L7 21V3Z"></path></svg></button>
+        {{DURATION}}
+      </div>
+      <div class="video-caption"><b>{{TITLE}} · Officiële video</b><span>YouTube · {{YEAR}}</span></div>
+    </div>
+  </div>
+</header><div class="site-trail"><div class="shell"><a href="/nl/">Startpagina</a><span>›</span><a href="/nl/composities/">Composities</a><span>›</span><span>{{TITLE}}</span></div></div>
+<main id="inhoud"><div class="shell main-wrap"><article class="content">{{SECTIONS}}</article><aside class="sidebar" aria-label="Snelmenu"><div class="sidecard"><h3>Op deze pagina</h3>{{SECTION_LINKS}}</div>{{SCORE_CTA}}</aside></div>{{RELATED}}</main>

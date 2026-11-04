@@ -1,0 +1,19 @@
+{
+  "path": "/nl/mijn-verhaal/",
+  "title": "About",
+  "description": "The musical journey of Mikaël Stroobants, creator of Expedition Creativity.",
+  "heading": "Behind every expedition.<br><em>A storyteller.</em>",
+  "lead": "Expedition Creativity is the personal creative hub of Mikaël Stroobants: cinematic music, orchestral storytelling and imaginative journeys inspired by nature, adventure and film music.",
+  "image": "/about-photo.jpg",
+  "sections": [
+    {
+      "title": "My musical journey",
+      "body": "<p>My musical journey began with the <strong>French horn</strong>, an instrument that taught me how melody, breath and colour can shape emotion.</p><p>For <strong>15 years</strong>, I played in a <strong>local band</strong>. That experience taught me discipline, ensemble playing, live performance and the joy of creating something bigger together.</p><p>At the same time, my passion for <strong>film music</strong> kept growing. Composers like <strong>John Williams</strong>, <strong>Hans Zimmer</strong>, <strong>James Newton Howard</strong>, <strong>Harry Gregson-Williams</strong> and <strong>Howard Shore</strong> showed me how music can build entire worlds.</p><p>Expedition Creativity brings those influences together. Every track starts from a scene, a feeling or a question, and grows into a small cinematic expedition.</p>"
+    },
+    {
+      "title": "Creative Compass",
+      "body": "<h3>Film Music</h3><p>Orchestral storytelling inspired by cinematic composers and emotional world-building.</p><h3>Adventure</h3><p>Each release is shaped like a journey, with its own landscape, characters and atmosphere.</p><h3>Imagination</h3><p>A place for wonder, curiosity and music that invites listeners to explore beyond the obvious.</p>"
+    }
+  ],
+  "source": "about.html"
+}

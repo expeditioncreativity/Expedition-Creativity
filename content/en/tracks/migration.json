@@ -1,0 +1,30 @@
+{
+  "title": "Migration",
+  "slug": "migration",
+  "year": 2020,
+  "world": "Migration",
+  "type": "Cinematic orchestral music",
+  "video_id": "bcgmBnpzOj8",
+  "image": "https://i.ytimg.com/vi/bcgmBnpzOj8/hqdefault.jpg",
+  "duration": "",
+  "description": "A cinematic orchestral journey inspired by the great annual migration of wildebeest, zebras and gazelles from the Serengeti to the Maasai Mara, crossing dangerous landscapes, predators, rivers and changing weather.",
+  "intro": "A cinematic journey across the Serengeti and Maasai Mara",
+  "related": [],
+  "status": "published",
+  "approved": false,
+  "release_month": 3,
+  "seo_title": "Migration | Expedition Creativity",
+  "source": "track-migration.html",
+  "content_version": 2,
+  "section_meta": {
+    "story": {
+      "id": "story",
+      "title": "The Story"
+    }
+  },
+  "section_order": [
+    "story"
+  ],
+  "story": "Migration follows the **great annual trek** of wildebeest, zebras and gazelles from the **Serengeti** in Tanzania to the **Maasai Mara** in Kenya.\n\nAcross roughly **1,000 km**, the journey is shaped by predators, river crossings, weather and climate, turning survival into a cinematic expedition across East Africa.",
+  "translation_status": "legacy_source"
+}

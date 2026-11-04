@@ -1,0 +1,13 @@
+{
+  "path": "/nl/contact/",
+  "title": "Contact",
+  "description": "Neem contact op met Mikaël Stroobants over composities, partituren, uitvoeringen en samenwerkingen.",
+  "heading": "Een idee.<br><em>Een nieuwe expeditie.</em>",
+  "lead": "Voor vragen over composities, partituren, uitvoeringen of een mogelijke samenwerking.",
+  "sections": [
+    {
+      "title": "Neem contact op",
+      "body": "<div class=\"contact-section\"><p>Volg nieuwe expedities, maak professioneel kennis of neem contact op voor <strong>samenwerkingen, feedback en vragen</strong>.</p><div class=\"contact-cards\"><article class=\"contact-card\"><h3>YouTube</h3><p>Volg <strong>nieuwe composities</strong>, filmische reizen en een blik achter de muziek.</p><a class=\"btn youtube\" href=\"https://www.youtube.com/@expeditioncreativity\" target=\"_blank\" rel=\"noopener noreferrer\">▶ Abonneer op YouTube</a></article><article class=\"contact-card\"><h3>LinkedIn</h3><p>Maak professioneel kennis en volg creatieve projecten rond <strong>muziek, verhalen en compositie</strong>.</p><a class=\"btn linkedin\" href=\"https://www.linkedin.com/in/mikael-stroobants/\" target=\"_blank\" rel=\"noopener noreferrer\">in Verbind op LinkedIn</a></article><article class=\"contact-card\"><h3>E-mail</h3><p>Voor <strong>samenwerkingen, feedback, compositieopdrachten en vragen</strong>.</p><a class=\"btn email\" href=\"mailto:hello@expeditioncreativity.com\">✉ hello@expeditioncreativity.com</a></article></div></div>"
+    }
+  ]
+}
