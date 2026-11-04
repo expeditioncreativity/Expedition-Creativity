@@ -48,3 +48,18 @@
 - Zestien geautomatiseerde controles geslaagd. Online CMS-opslag blijft een afzonderlijke acceptatiestap totdat deze browsersessie is aangemeld.
 
 - Online acceptatietest afgerond: GitHub-login, echte conceptopslag, teruglezen na herladen en rendering van daadwerkelijk opgeslagen JSON gecontroleerd. Het testitem blijft ongepubliceerd.
+
+## 4 november 2026 — Engelse standaard en publicatievoorbereiding
+
+- Engels als gekozen standaard, directe legacy-301s, behoud van oude homepage-/videofragmenten.
+- Sitemap beperkt tot nieuwe canonieke routes; Engelse x-default toegevoegd.
+- Productiecontext voorbereid; preview blijft uitgesloten van indexering en analytics.
+- Publicatie- en herstelprocedure toegevoegd; 18 tests geslaagd. Geen livepublicatie.
+
+## 4 november 2026 — volledige Engelse referentie en uniforme tracksecties
+
+- Blue Boy Planet volledig vanuit de goedgekeurde Nederlandse bron vertaald: verhaal, reis, orkestratie, instrumentatie, partituren, media, CTA's en SEO. Nederlandse inhoud ongewijzigd; eerdere Engelse tekst gearchiveerd.
+- Uniforme sectietitels en vaste volgorde; lege rich-textvelden verdwijnen; beschikbare secties en navigatie doorlopend genummerd.
+- Volledige EN/NL-pariteit gecontroleerd op paragrafen, H3's, nadruk en afbeeldingen. De andere negen Engelse verhalen behouden.
+- CMS-vertaalcontrole voorkomt dat gedeeltelijke/onbeoordeelde vertalingen als volledig worden aangeboden. Geen automatische tekstoverschrijving.
+- Overzicht van alle composities en resterende redactionele aanvullingen toegevoegd; 22 tests slagen.

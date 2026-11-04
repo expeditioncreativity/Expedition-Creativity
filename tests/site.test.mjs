@@ -67,7 +67,7 @@ test('language alternates point to existing matching pages in both directions',(
   }
 });
 test('English track narrative matches the original published website paragraphs',async()=>{
-  for(const t of tracks){
+  for(const t of tracks.filter(t=>t.slug!=='blue-boy-planet')){
     const source=await read(join(root,`track-${t.slug}.html`));
     const story=source.split('<h2>The Story</h2>')[1].split('<div class="track-card-tags')[0];
     const english=pages.find(p=>p.path===`/en/tracks/${t.slug}/`).html;
@@ -81,7 +81,7 @@ test('a new CMS composition reaches its page, search index, catalogue and sitema
     const fixture={...tracks[0],title:'Testcompositie',slug:'testcompositie',approved:false,intro:'Een **nieuw** muzikaal verhaal.',sections:undefined,story:'### Een begin\n\nEen **origineel** thema.',journey:'Een reis.',instrumentation:'Hoorn en strijkers.',performance:{availability:'unspecified',contact_cta:false},behind:'Een schets.',gallery:[{image:tracks[0].image,alt:'Testbeeld',caption:'Testonderschrift'}],status:'published'};
     await writeFile(join(temp,'content/tracks/testcompositie.json'),JSON.stringify(fixture));
     await writeFile(join(temp,'content/tracks/concept.json'),JSON.stringify({...fixture,slug:'concept',status:'draft'}));
-    await writeFile(join(temp,'content/en/tracks/testcompositie.json'),JSON.stringify({title:'Test composition',slug:'testcompositie',world:'Space',type:'Orchestral music',status:'published',intro:'An **original** story.',story:'A new **beginning**.'}));
+    await writeFile(join(temp,'content/en/tracks/testcompositie.json'),JSON.stringify({title:'Test composition',slug:'testcompositie',world:'Space',type:'Orchestral music',status:'published',intro:'An **original** story.',story:'A new **beginning**.',journey:'A journey.',instrumentation:'Horn and strings.',behind:'A sketch.',translation_status:'complete'}));
     await writeFile(join(temp,'content/tracks/zonder-vertaling.json'),JSON.stringify({...fixture,slug:'zonder-vertaling'}));
     execFileSync(process.execPath,[join(temp,'scripts/build.mjs')],{cwd:temp});
     for(const path of ['nl/composities/testcompositie/index.html','nl/composities/index.html','sitemap.xml','assets/search-index.json'])assert.match(await read(join(temp,'dist',path)),/testcompositie/);
@@ -99,15 +99,16 @@ test('a new CMS composition reaches its page, search index, catalogue and sitema
   } finally {await rm(temp,{recursive:true,force:true});}
 });
 
-import {trackSections,validateEditorial} from '../scripts/track-content.mjs';
+import {trackSections,validateEditorial,missingTranslationSections,hasContent} from '../scripts/track-content.mjs';
 const render=(t,lang='nl')=>trackSections(t,lang,{markdown,escapeHtml});
 test('migration retains all existing section text, ordering, media, metadata and SEO',async()=>{
  for(const folder of ['content/tracks','content/en/tracks'])for(const file of await readdir(`${root}/${folder}`)){
   const path=`${folder}/${file}`;
+  if(path==='content/en/tracks/blue-boy-planet.json')continue; // Explicit full translation replaces the earlier short English copy; archived separately.
   const before=JSON.parse(execFileSync('git',['show',`4192984ad07417ef6eff25d781e10e192ecda27a:${path}`],{cwd:root,encoding:'utf8'}));
   const after=JSON.parse(await readFile(`${root}/${path}`,'utf8'));
   for(const [key,value] of Object.entries(before))if(key!=='sections')assert.deepEqual(after[key],value,`${path}: ${key}`);
-  assert.deepEqual(render(after,folder.includes('/en/')?'en':'nl').map(({id,title,body})=>({id,title,body})),before.sections||[],path);
+  assert.deepEqual(render(after,folder.includes('/en/')?'en':'nl').map(({id,body})=>({id,body})),(before.sections||[]).map(({id,body})=>({id,body})),path);
  }
 });
 test('fixed sections omit empty content and do not invent availability',()=>{
@@ -125,4 +126,73 @@ test('invalid gallery, availability and field types fail before rendering',()=>{
  assert.throws(()=>validateEditorial({gallery:[{image:'javascript:alert(1)',alt:'Test'}]}));
  assert.throws(()=>validateEditorial({performance:{availability:'invented'}}));
  assert.throws(()=>validateEditorial({story:42}));
+});
+
+test('English default and legacy redirects have real targets and sitemap excludes old URLs',async()=>{
+ const rules=(await read(join(out,'_redirects'))).trim().split('\n').map(line=>line.split(' '));
+ assert.ok(rules.some(([from,to])=>from==='/'&&to==='/en/'));
+ assert.equal(new Set(rules.map(r=>r[0])).size,rules.length);
+ for(const [from,to,status] of rules){assert.equal(status,'301!');assert.ok(pages.some(p=>p.path===to),from);assert.ok(!rules.some(r=>r[0]===to),'redirect chain '+from);}
+ for(const t of tracks)assert.ok(rules.some(([from,to])=>from===`/track-${t.slug}.html`&&to===`/en/tracks/${t.slug}/`));
+ const sitemap=await read(join(out,'sitemap.xml'));assert.equal((sitemap.match(/<loc>/g)||[]).length,34);assert.doesNotMatch(sitemap,/<loc>https:\/\/expeditioncreativity.com\/track-/);
+ for(const p of pages)assert.match(p.html,/hreflang="x-default" href="https:\/\/expeditioncreativity.com\/en\//);
+});
+test('production metadata is enabled only in production context',async()=>{
+ const temp=await mkdtemp(join(tmpdir(),'ec-production-test-'));
+ try{
+  for(const dir of ['scripts','src','admin','content','tests'])await cp(join(root,dir),join(temp,dir),{recursive:true});
+  for(const context of ['deploy-preview','production']){
+   execFileSync(process.execPath,[join(temp,'scripts/build.mjs')],{cwd:temp,env:{...process.env,SITE_MODE:'production',CONTEXT:context}});
+   const html=await read(join(temp,'dist/en/index.html'));
+   assert.ok(html.includes(context==='production'?'content="index, follow"':'content="noindex, nofollow"'));
+   const robots=await read(join(temp,'dist/robots.txt'));
+   assert.ok(robots.includes(context==='production'?'Allow: /':'Disallow: /'));
+  }
+ }finally{await rm(temp,{recursive:true,force:true});}
+});
+
+test('full English Blue Boy Planet preserves the source structure, emphasis, images and performance information',async()=>{
+ const nl=allTracks.find(t=>t.slug==='blue-boy-planet');
+ const en=JSON.parse(await read(join(root,'content/en/tracks/blue-boy-planet.json')));
+ assert.deepEqual(missingTranslationSections(nl,en),[]);
+ const a=render(nl),b=render(en,'en');assert.equal(a.length,b.length);
+ for(let i=0;i<a.length;i++)for(const tag of ['p','h3','strong','em','img']){
+  const count=body=>(body.match(new RegExp(`<${tag}(?:>|\\s)`,'g'))||[]).length;
+  assert.equal(count(a[i].body),count(b[i].body),`${i} ${tag}`);
+ }
+ assert.match(en.performance.body,/virtual orchestral instruments/);assert.match(en.performance.body,/digital orchestral simulation/);assert.match(en.performance.body,/individual instrumental parts/);
+ assert.equal(en.performance.availability,'on_request');assert.equal(en.gallery.length,3);
+ assert.equal(en.previous_english.story,JSON.parse(execFileSync('git',['show','e297864991b1af504fa09c077a2df6b09b6869d0:content/en/tracks/blue-boy-planet.json'],{cwd:root,encoding:'utf8'})).story);
+ const page=pages.find(p=>p.path==='/en/tracks/blue-boy-planet/').html;
+ assert.match(page,/For conductors and musicians/);assert.match(page,/href="\/en\/contact\/"/);assert.match(page,/data-caption="Detail of the orchestral arrangement in Ableton Live"/);
+});
+test('blank rich text, unreviewed/partial translations and empty score CTAs are excluded',()=>{
+ assert.equal(hasContent('<p><br></p>'),false);assert.equal(hasContent('<p>&nbsp;\u200b</p>'),false);
+ assert.deepEqual(render({story:'<p><br></p>',journey:' ',instrumentation:'** **',performance:{body:'<p></p>',availability:'unspecified',contact_cta:false}}),[]);
+ assert.ok(missingTranslationSections({story:'Een volledig verhaal',journey:'Reis'},{story:'Summary',translation_status:'complete'}).includes('journey'));
+ assert.ok(missingTranslationSections({story:'Verhaal'},{story:'Story'}).includes('translation_review'));
+ assert.ok(missingTranslationSections({story:'Verhaal'},{story:'Story',translation_status:'complete',translation_source_hash:'stale'}).includes('source_changed'));
+});
+test('visible track sections and navigation use consecutive numbers in both languages',()=>{
+ for(const p of pages.filter(p=>/\/(tracks|composities)\/.+\//.test(p.path))){
+  const nums=[...p.html.matchAll(/class="section-no">(\d+)<\/span>/g)].map(m=>Number(m[1]));
+  assert.deepEqual(nums,nums.map((_,i)=>i+1),p.path);
+  const nav=[...p.html.matchAll(/class="index">(\d+)<\/span>/g)].map(m=>Number(m[1]));
+  assert.deepEqual(nav,nav.map((_,i)=>i+1),p.path);
+  if(!p.path.includes('blue-boy-planet'))assert.doesNotMatch(p.html,/class="side-cta"/);
+ }
+});
+
+test('a partial English BBP cannot surface as a full translation and leaves NL and legacy links usable',async()=>{
+ const temp=await mkdtemp(join(tmpdir(),'ec-partial-translation-'));
+ try{
+  for(const dir of ['scripts','src','admin','content','tests'])await cp(join(root,dir),join(temp,dir),{recursive:true});
+  await cp(join(root,'track-blue-boy-planet.html'),join(temp,'track-blue-boy-planet.html'));
+  const file=join(temp,'content/en/tracks/blue-boy-planet.json');const en=JSON.parse(await read(file));en.journey='';await writeFile(file,JSON.stringify(en));
+  execFileSync(process.execPath,[join(temp,'scripts/build.mjs')],{cwd:temp});
+  await assert.rejects(access(join(temp,'dist/en/tracks/blue-boy-planet/index.html')));
+  const nl=await read(join(temp,'dist/nl/composities/blue-boy-planet/index.html'));assert.doesNotMatch(nl,/hreflang="en"/);
+  assert.match(await read(join(temp,'dist/_redirects')),/\/track-blue-boy-planet.html \/nl\/composities\/blue-boy-planet\/ 301!/);
+  assert.doesNotMatch(await read(join(temp,'dist/en/index.html')),/href="\/en\/tracks\/blue-boy-planet\//);
+ }finally{await rm(temp,{recursive:true,force:true});}
 });

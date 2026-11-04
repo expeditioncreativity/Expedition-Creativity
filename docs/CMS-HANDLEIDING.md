@@ -32,3 +32,11 @@ De mobiele editor gebruikt een kleine CSS-aanpassing voor de vastgezette Decap-v
 Op 4 november 2026 zijn de echte GitHub-aanmelding, conceptopslag en het teruglezen na herladen geslaagd. Het testitem **CMS controletest — niet publiceren** blijft ongepubliceerd in de workflow. De werkelijk opgeslagen JSON is ook getest op conceptuitsluiting en correcte paginarendering in een tijdelijke projectkopie.
 
 OAuth-geheimen horen uitsluitend in beveiligde providerinstellingen, nooit in Git of chat. Alleen een merge naar `main` en productiepublicatie vereisen afzonderlijke publicatiegoedkeuring; die worden niet door deze workflow uitgevoerd.
+
+## Volledige vertaling en broncontrole
+
+Kies bij de Engelse compositie **Vertaalcontrole → Volledige vertaling van Nederlandse bron** pas wanneer alle beschikbare Nederlandse onderdelen zijn vertaald. Alleen de contentstatus op zichtbaar zetten volstaat niet bij een onvolledige vertaling. Gevulde NL-onderdelen die in EN ontbreken blokkeren de Engelse trackpagina en taalwissel; de opgeslagen Engelse inhoud blijft behouden.
+
+Tracks met oorspronkelijke Engelse tekst maar zonder Nederlandse verhaalbron behouden de status **Bestaande Engelse brontekst**. Voeg eerst de ontbrekende Nederlandse bron toe en controleer daarna de vertaling. Zie TRACKCONTROLE.md voor de actuele inhoud per compositie. Er vindt geen automatische overschrijving van vertalingen plaats.
+
+De eerdere korte Engelse Blue Boy Planet-tekst is gearchiveerd. De nieuwe volledige vertaling gebruikt de vaste invoervelden. De bronhash van deze beschermde referentie wordt bij een goedgekeurde bronwijziging technisch bijgewerkt na inhoudelijke controle van de vertaling.

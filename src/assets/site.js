@@ -1,6 +1,12 @@
 (() => {
   const $ = s => document.querySelector(s);
   const en=document.documentElement.lang==='en';
+  // Browser fragments survive legacy HTTP redirects; route former homepage sections.
+  if(location.pathname==='/en/'){
+    const destination={'#contact':'/en/contact/','#behind':'/en/behind-the-score/','#journey':'/en/about/'}[location.hash];
+    if(destination){location.replace(destination+location.search);return;}
+  }
+  if(location.pathname.startsWith('/en/tracks/')&&location.hash==='#watch')location.hash='luisteren';
   const ui=(nl,english)=>en?english:nl;
   document.querySelectorAll('.brand-logo').forEach(image=>{
     const fallback=()=>{if(!image.dataset.fallback){image.dataset.fallback='true';image.src='/footer-logo.png';}};

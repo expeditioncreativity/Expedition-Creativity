@@ -9,8 +9,8 @@ publish_mode: editorial_workflow
 locale: nl
 media_folder: src/assets/uploads
 public_folder: /assets/uploads
-site_url: /nl/
-display_url: /nl/
+site_url: /en/
+display_url: /en/
 logo_url: /assets/logo-original.png
 collections:
 - name: tracks
@@ -21,7 +21,7 @@ collections:
   extension: json
   create: true
   delete: false
-  slug: '{{slug}}'
+  slug: '{{fields.slug}}'
   identifier_field: title
   summary: '{{title}} · {{fields.year}} · {{status}}'
   filter:
@@ -98,7 +98,7 @@ collections:
     - italic
     - heading-three
     editor_components: []
-  - label: 3. Een muzikale reis
+  - label: 3. De muzikale reis
     name: journey
     widget: markdown
     required: false
@@ -134,7 +134,10 @@ collections:
     widget: object
     collapsed: false
     required: false
-    default: {availability: unspecified, body: "", contact_cta: false}
+    default:
+      availability: unspecified
+      body: ''
+      contact_cta: false
     fields:
     - name: availability
       label: Beschikbaarheid
@@ -251,7 +254,7 @@ collections:
   extension: json
   create: true
   delete: false
-  slug: '{{slug}}'
+  slug: '{{fields.slug}}'
   identifier_field: title
   summary: '{{title}} · {{status}}'
   editor:
@@ -287,7 +290,7 @@ collections:
     - bold
     - italic
     editor_components: []
-  - label: 2. The story behind the music
+  - label: 2. The Story Behind the Music
     name: story
     widget: markdown
     required: false
@@ -297,7 +300,7 @@ collections:
     - italic
     - heading-three
     editor_components: []
-  - label: 3. A musical journey
+  - label: 3. The Musical Journey
     name: journey
     widget: markdown
     required: false
@@ -333,7 +336,10 @@ collections:
     widget: object
     collapsed: false
     required: false
-    default: {availability: unspecified, body: "", contact_cta: false}
+    default:
+      availability: unspecified
+      body: ''
+      contact_cta: false
     fields:
     - name: availability
       label: Beschikbaarheid
@@ -389,7 +395,7 @@ collections:
       label: Onderschrift
       widget: string
       required: false
-  - label: 8. Ontdek meer muziek
+  - label: 8. Discover More Music
     name: related
     widget: relation
     collection: track_choices
@@ -414,6 +420,19 @@ collections:
     widget: image
     required: false
     hint: Zonder keuze wordt de cover gebruikt.
+  - name: translation_status
+    label: Vertaalcontrole
+    widget: select
+    default: incomplete
+    options:
+    - label: Nog onvolledig — niet als vertaling tonen
+      value: incomplete
+    - label: Volledige vertaling van Nederlandse bron
+      value: complete
+    - label: Bestaande Engelse brontekst (NL-verhaal ontbreekt)
+      value: legacy_source
+    hint: Controleer alle onderdelen van de Nederlandse bron. Een Engelse pagina bij een ingevuld Nederlands verhaal verschijnt pas
+      met een volledige vertaling; bestaande teksten worden nooit automatisch overschreven.
   - label: Status
     name: status
     widget: select
@@ -439,6 +458,14 @@ collections:
     widget: hidden
     default: []
     required: false
+  - name: translation_source_hash
+    widget: hidden
+    required: false
+    default: ''
+  - name: previous_english
+    widget: hidden
+    required: false
+    default: {}
 - name: track_choices
   label: Compositiekeuze
   folder: content/tracks

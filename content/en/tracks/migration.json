@@ -25,5 +25,6 @@
   "section_order": [
     "story"
   ],
-  "story": "<p>Migration follows the <strong>great annual trek</strong> of wildebeest, zebras and gazelles from the <strong>Serengeti</strong> in Tanzania to the <strong>Maasai Mara</strong> in Kenya.</p><p>Across roughly <strong>1,000 km</strong>, the journey is shaped by predators, river crossings, weather and climate, turning survival into a cinematic expedition across East Africa.</p>"
+  "story": "<p>Migration follows the <strong>great annual trek</strong> of wildebeest, zebras and gazelles from the <strong>Serengeti</strong> in Tanzania to the <strong>Maasai Mara</strong> in Kenya.</p><p>Across roughly <strong>1,000 km</strong>, the journey is shaped by predators, river crossings, weather and climate, turning survival into a cinematic expedition across East Africa.</p>",
+  "translation_status": "legacy_source"
 }

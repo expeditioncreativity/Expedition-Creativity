@@ -85,3 +85,11 @@ Deze aanvulling vervangt eerdere CMS-statusmeldingen waar die afwijken.
 - Het werkelijk opgeslagen JSON-bestand uit GitHub in een tijdelijke projectkopie gebouwd: conceptpagina en zoekresultaat ontbreken zoals bedoeld. Alleen in die tijdelijke kopie status op zichtbaar gezet: verhaal, reis en automatische gegevens renderen correct; lege partituren worden verborgen.
 - Het herkenbare testitem **CMS controletest — niet publiceren** blijft als ongepubliceerd concept in de workflow staan. Geen testcontent toegevoegd aan de gepubliceerde website.
 - Hiermee is de eerder vermelde blokkade van de online opslag-/terugleestest opgeheven. De eerdere 16 geautomatiseerde controles blijven geslaagd.
+
+## Publicatievoorbereiding — Engels als standaard
+
+`npm test`: 18 geslaagd. Nieuwe controles: unieke 301-regels, bestaande doelen zonder redirectketens, alle oude track-HTML-routes, 34 canonieke sitemap-URLs en Engelse x-default. Productiebuild in tijdelijke kopie getest met zowel deploy-preview als production-context: alleen production is indexeerbaar. GA4-ontvangst op het live domein blijft een controle na expliciet goedgekeurde publicatie.
+
+## Volledige Blue Boy Planet en uniforme tracks
+
+`npm test`: 22 geslaagd. Volledige Engelse referentie heeft per onderdeel evenveel paragrafen, H3's, strong/em en afbeeldingen als de goedgekeurde NL-versie. Nederlandse bron/lock ongewijzigd; oorspronkelijke Engelse verhalen van negen andere tracks gecontroleerd. Oude BBP-samenvatting gearchiveerd. Lege editor-HTML, incomplete vertaling, gewijzigde bronhash, sectienummering en navigatie expliciet getest. Een onvolledige Engelse BBP verdwijnt zonder buildfout of dode links; NL blijft beschikbaar.

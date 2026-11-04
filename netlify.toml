@@ -7,3 +7,7 @@
 
 # The existing production branch and domain settings are managed in Netlify.
 # This development branch does not change them or publish to production.
+
+# Takes effect only after an explicitly approved production release.
+[context.production.environment]
+  SITE_MODE = "production"
