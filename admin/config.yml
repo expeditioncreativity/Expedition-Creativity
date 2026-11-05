@@ -31,8 +31,7 @@ collections:
     value: false
   editor:
     preview: true
-  description: Nederlandstalige composities. Publiceren in dit CMS slaat op in de ontwikkelbranch; de livewebsite wordt pas na afzonderlijke
-    goedkeuring bijgewerkt. Blue Boy Planet is beschermd en wordt hier niet ter bewerking aangeboden.
+  description: "Nederlandstalige composities. Opslaan bewaart een concept. Publiceren werkt de livewebsite bij na de build. Engels wordt afzonderlijk beheerd. Blue Boy Planet is beschermd."
   fields:
   - label: Titel
     name: title
@@ -89,8 +88,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -105,8 +107,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -121,8 +126,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -137,8 +145,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -153,8 +164,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -192,8 +206,11 @@ collections:
       buttons:
       - bold
       - italic
+      - strikethrough
       - heading-three
       - heading-four
+      - heading-five
+      - heading-six
       - bulleted-list
       - numbered-list
       - quote
@@ -214,8 +231,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -336,8 +356,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -352,8 +375,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -368,8 +394,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -384,8 +413,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -400,8 +432,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
@@ -439,8 +474,11 @@ collections:
       buttons:
       - bold
       - italic
+      - strikethrough
       - heading-three
       - heading-four
+      - heading-five
+      - heading-six
       - bulleted-list
       - numbered-list
       - quote
@@ -461,8 +499,11 @@ collections:
     buttons:
     - bold
     - italic
+    - strikethrough
     - heading-three
     - heading-four
+    - heading-five
+    - heading-six
     - bulleted-list
     - numbered-list
     - quote
