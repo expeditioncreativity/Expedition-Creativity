@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: expeditioncreativity/Expedition-Creativity
-  branch: development/nl-design-cms
+  branch: main
   base_url: https://api.netlify.com
   auth_endpoint: auth
   site_domain: expeditioncreativity.netlify.app
@@ -10,8 +10,8 @@ publish_mode: editorial_workflow
 locale: nl
 media_folder: src/assets/uploads
 public_folder: /assets/uploads
-site_url: /en/
-display_url: /en/
+site_url: https://expeditioncreativity.com
+display_url: https://expeditioncreativity.com
 logo_url: /assets/logo-original.png
 collections:
 - name: tracks
@@ -270,7 +270,7 @@ collections:
     options:
     - label: Concept
       value: draft
-    - label: Zichtbaar in ontwikkeling
+    - label: Zichtbaar na publiceren
       value: published
     default: draft
   - name: content_version
@@ -530,7 +530,7 @@ collections:
     options:
     - label: Concept
       value: draft
-    - label: Zichtbaar in ontwikkeling
+    - label: Zichtbaar na publiceren
       value: published
     default: draft
   - name: content_version

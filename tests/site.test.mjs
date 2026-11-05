@@ -57,8 +57,8 @@ test('invalid CMS content fails early instead of generating broken URLs',()=>{
 test('supported CMS formatting is rendered and new prose is escaped',()=>{
   assert.equal(markdown('### Titel\n\nEen **belangrijk** en *zacht* thema.'),'<h3 class="subhead">Titel</h3>\n<p>Een <strong>belangrijk</strong> en <em>zacht</em> thema.</p>');assert.match(markdown('Tekst met <script>alert(1)</script>'),/&lt;script&gt;/);
 });
-test('CMS writes only to development, excludes approved text and pins its script',async()=>{
-  const config=await read(join(root,'admin/config.yml'));assert.match(config,/branch: development\/nl-design-cms/);assert.match(config,/publish_mode: editorial_workflow/);assert.match(config,/filter:\s+field: approved\s+value: false/);assert.doesNotMatch(config,/branch: main/);assert.match(await read(join(root,'admin/index.html')),/decap-cms@3\.17\.3/);assert.match(await read(join(root,'admin/index.html')),/integrity="sha384-/);
+test('CMS publishes to main through editorial workflow, protects approved text and pins its script',async()=>{
+  const config=await read(join(root,'admin/config.yml'));assert.match(config,/branch: main/);assert.match(config,/publish_mode: editorial_workflow/);assert.match(config,/filter:\s+field: approved\s+value: false/);assert.match(await read(join(root,'admin/index.html')),/decap-cms@3\.17\.3/);assert.match(await read(join(root,'admin/index.html')),/integrity="sha384-/);
 });
 test('language alternates point to existing matching pages in both directions',()=>{
   for(const p of pages){
@@ -109,6 +109,7 @@ test('migration retains all existing section text, ordering, media, metadata and
   const before=JSON.parse(execFileSync('git',['show',`4192984ad07417ef6eff25d781e10e192ecda27a:${path}`],{cwd:root,encoding:'utf8'}));
   const after=JSON.parse(await readFile(`${root}/${path}`,'utf8'));
   for(const [key,value] of Object.entries(before))if(key!=='sections')assert.deepEqual(after[key],value,`${path}: ${key}`);
+  if(file==='turtle-travel.json') { assert.ok(after.story?.trim()); continue; } // Owner added NL story; EN translated while retaining original paragraph.
   assert.deepEqual(render(after,folder.includes('/en/')?'en':'nl').map(({id,body})=>({id,body:body.replaceAll('&#39;',"'").replaceAll('&quot;','"').replace(/>\s+</g,'><')})),(before.sections||[]).map(({id,body})=>({id,body:body.replace(/>\s+</g,'><')})),path);
  }
 });
