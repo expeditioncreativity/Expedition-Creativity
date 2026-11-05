@@ -1,3 +1,11 @@
+# 2026-11-05 — CMS-publicatie naar live
+
+- CMS Publiceren richt zich op main; concepten blijven in editorial workflow.
+- Turtle Travel: Nederlandse verhaaltekst van de eigenaar behouden en gepubliceerd.
+- Nieuwe NL-verhaaltekst volledig vertaald in EN; bestaande Engelse alinea behouden.
+- Statuslabels en beheerhandleiding verduidelijkt; absolute website-URL ingesteld.
+- Netlify automatisch publiceren vereist; technische wijzigingen blijven via development en expliciete goedkeuring.
+
 ## 2026-11-05 — CMS-tekstopmaak en inhoudsvoorbeeld (ontwikkeling)
 
 - Verhalende velden in NL/EN uitgebreid met lijsten, genummerde lijsten, citaten, links, inline code en extra tussenkoppen.

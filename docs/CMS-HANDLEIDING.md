@@ -1,6 +1,6 @@
 # Composities beheren
 
-Open `/admin/` in de ontwikkelpreview en meld aan met GitHub. De editor schrijft uitsluitend naar `development/nl-design-cms`. De GitHub-koppeling van ChatGPT en de browsersessie van de editor zijn afzonderlijke aanmeldingen.
+Open `https://expeditioncreativity.com/admin/` en meld aan met GitHub. Het CMS gebruikt `main`: opslaan bewaart een workflowconcept, Publiceren voegt de goedgekeurde inhoud samen naar main. Netlify bouwt en publiceert daarna automatisch. De GitHub-koppeling van ChatGPT en de browsersessie van de editor zijn afzonderlijke aanmeldingen.
 
 ## Nieuwe compositie
 
@@ -11,7 +11,7 @@ Open `/admin/` in de ontwikkelpreview en meld aan met GitHub. De editor schrijft
 5. Vul **Achter de partituur** in en voeg desgewenst meerdere afbeeldingen toe. Iedere afbeelding vraagt een beschrijvende alt-tekst; een onderschrift is optioneel. De website biedt een vergrootweergave.
 6. Kies bestaande composities bij **Ontdek meer muziek**. Ook de beschermde Blue Boy Planet kan als verwijzing worden gekozen. Vul eventueel SEO-titel, metabeschrijving en een aparte deelafbeelding in; zonder deelafbeelding wordt de cover gebruikt.
 7. Laat **Status: Concept** staan bij een proef of onvolledige compositie. Sla op via de editorial workflow. Concepten verschijnen niet op de website, in zoekresultaten of in de sitemap.
-8. Voor weergave in de ontwikkelpreview: zet de contentstatus op **Zichtbaar in ontwikkeling** en publiceer de gereviewde wijziging binnen het CMS. Dit voegt de wijziging samen naar de ontwikkelbranch. Het is geen toestemming of handeling om de livewebsite te publiceren.
+8. Zet de contentstatus op **Zichtbaar na publiceren** en gebruik **Publiceren** wanneer de inhoud live mag. Na een geslaagde Netlify-build verschijnt de wijziging op de website; dit duurt doorgaans enkele minuten. Alleen opslaan publiceert niets. Bij een mislukte build blijft de vorige liveversie staan.
 
 Lege optionele onderdelen en hun navigatielinks worden niet getoond. De vaste volgorde en nummering worden automatisch opgebouwd. Bestaande gemigreerde sectietitels en ankers blijven bewaard.
 
@@ -31,7 +31,7 @@ De mobiele editor gebruikt een kleine CSS-aanpassing voor de vastgezette Decap-v
 
 Op 4 november 2026 zijn de echte GitHub-aanmelding, conceptopslag en het teruglezen na herladen geslaagd. Het testitem **CMS controletest — niet publiceren** blijft ongepubliceerd in de workflow. De werkelijk opgeslagen JSON is ook getest op conceptuitsluiting en correcte paginarendering in een tijdelijke projectkopie.
 
-OAuth-geheimen horen uitsluitend in beveiligde providerinstellingen, nooit in Git of chat. Alleen een merge naar `main` en productiepublicatie vereisen afzonderlijke publicatiegoedkeuring; die worden niet door deze workflow uitgevoerd.
+OAuth-geheimen horen uitsluitend in beveiligde providerinstellingen, nooit in Git of chat. De eigenaar heeft op 5 november 2026 directe CMS-publicatie goedgekeurd. Zijn klik op Publiceren is de toestemming voor die inhoud. Technische wijzigingen blijven op `development/nl-design-cms` en worden alleen na afzonderlijke goedkeuring naar main samengevoegd. Synchroniseer main vóór nieuw technisch werk om CMS-inhoud te behouden. Netlify auto-publishing moet ingeschakeld blijven.
 
 ## Volledige vertaling en broncontrole
 
@@ -43,7 +43,7 @@ De eerdere korte Engelse Blue Boy Planet-tekst is gearchiveerd. De nieuwe volled
 
 Bestaande Engelse teksten staan nu in gewone bewerkbare Markdown. In rich-textmodus zie je tekst en opmaak in plaats van HTML-tags. De Nederlandse goedgekeurde BBP-pagina blijft beschermd. De testconcepten `cms-controletest` en `cms-templatecontrole-20261104`, plus de ongepubliceerde SEO-test van Chills of Antarctica, zijn controle-items en hoeven niet te worden gepubliceerd.
 
-## Uitgebreide tekstopmaak (voorbereid, nog niet live)
+## Uitgebreide tekstopmaak
 
 Gebruik Nederlands als brontaal. Houd dezelfde URL-naam aan in de Engelse collectie. Technische gegevens worden eenmaal beheerd. Beide taalteksten kunnen onafhankelijk worden aangepast.
 
