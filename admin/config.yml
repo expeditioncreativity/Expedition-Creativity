@@ -5,6 +5,7 @@ backend:
   base_url: https://api.netlify.com
   auth_endpoint: auth
   site_domain: expeditioncreativity.netlify.app
+  preview_context: netlify/expeditioncreativity/deploy-preview
 publish_mode: editorial_workflow
 locale: nl
 media_folder: src/assets/uploads
@@ -16,6 +17,7 @@ collections:
 - name: tracks
   label: Composities — Nederlands
   label_singular: Compositie
+  preview_path: nl/composities/{{slug}}/
   folder: content/tracks
   format: json
   extension: json
@@ -28,7 +30,7 @@ collections:
     field: approved
     value: false
   editor:
-    preview: false
+    preview: true
   description: Nederlandstalige composities. Publiceren in dit CMS slaat op in de ontwikkelbranch; de livewebsite wordt pas na afzonderlijke
     goedkeuring bijgewerkt. Blue Boy Planet is beschermd en wordt hier niet ter bewerking aangeboden.
   fields:
@@ -83,50 +85,81 @@ collections:
     name: intro
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
+    - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - label: 2. Het verhaal achter de muziek
     name: story
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - label: 3. De muzikale reis
     name: journey
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - label: 4. Orkestratie — toelichting
     name: orchestration
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - label: Instrumentatie
     name: instrumentation
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
     hint: 5. Compositiegegevens verschijnen automatisch op basis van de basisinformatie; geen dubbele invoer.
   - name: performance
@@ -155,11 +188,17 @@ collections:
       name: body
       widget: markdown
       required: false
-      minimal: true
+      minimal: false
       buttons:
       - bold
       - italic
       - heading-three
+      - heading-four
+      - bulleted-list
+      - numbered-list
+      - quote
+      - link
+      - code
       editor_components: []
     - name: contact_cta
       label: Contactknop tonen
@@ -171,11 +210,17 @@ collections:
     name: behind
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - name: gallery
     label: Afbeeldingen achter de partituur
@@ -250,6 +295,7 @@ collections:
 - name: tracks_en
   label: Composities — English
   label_singular: English composition
+  preview_path: en/tracks/{{slug}}/
   folder: content/en/tracks
   format: json
   extension: json
@@ -259,7 +305,7 @@ collections:
   identifier_field: title
   summary: '{{title}} · {{status}}'
   editor:
-    preview: false
+    preview: true
   description: Maak eerst de Nederlandse compositie. Gebruik hier exact dezelfde URL-naam. Video, afbeelding, jaar, maand en duur worden
     automatisch uit de Nederlandse compositie overgenomen. Alleen Engelse versies met een zichtbare Nederlandse tegenhanger verschijnen
     in de preview. Bestaande Engelse verhaalteksten zijn overgenomen van de oorspronkelijke website.
@@ -286,50 +332,81 @@ collections:
     name: intro
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
+    - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - label: 2. The Story Behind the Music
     name: story
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - label: 3. The Musical Journey
     name: journey
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - label: 4. Orchestration — explanation
     name: orchestration
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - label: Instrumentation
     name: instrumentation
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
     hint: 5. Compositiegegevens verschijnen automatisch op basis van de basisinformatie; geen dubbele invoer.
   - name: performance
@@ -358,11 +435,17 @@ collections:
       name: body
       widget: markdown
       required: false
-      minimal: true
+      minimal: false
       buttons:
       - bold
       - italic
       - heading-three
+      - heading-four
+      - bulleted-list
+      - numbered-list
+      - quote
+      - link
+      - code
       editor_components: []
     - name: contact_cta
       label: Contactknop tonen
@@ -374,11 +457,17 @@ collections:
     name: behind
     widget: markdown
     required: false
-    minimal: true
+    minimal: false
     buttons:
     - bold
     - italic
     - heading-three
+    - heading-four
+    - bulleted-list
+    - numbered-list
+    - quote
+    - link
+    - code
     editor_components: []
   - name: gallery
     label: Afbeeldingen achter de partituur

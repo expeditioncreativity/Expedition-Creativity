@@ -1,3 +1,4 @@
+import {richText} from '../src/assets/rich-text.js';
 import {linkIcons} from './icons.mjs';
 import { trackSections, validateEditorial, missingTranslationSections } from './track-content.mjs';
 import { readFile, writeFile, readdir, mkdir, rm, cp } from 'node:fs/promises';
@@ -17,16 +18,7 @@ const json=async path=>JSON.parse(await read(path));
 const origin='https://expeditioncreativity.com';
 const production=process.env.SITE_MODE==='production' && process.env.CONTEXT==='production';
 const mode=production?'production':'preview';
-export function markdown(text) {
-  // Existing approved HTML is retained verbatim. New content supports the editor's
-  // deliberately small set: paragraphs, h3, bold and italic. Git authors are trusted.
-  if (text.trim().startsWith('<')) return text;
-  return text.split(/\n\s*\n/).filter(Boolean).map(p=>{
-    const heading=p.startsWith('### ');if(heading)p=p.slice(4);
-    const body=e(p).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*]+)\*/g,'<em>$1</em>').replace(/\n/g,' ');
-    return `<${heading?'h3 class="subhead"':'p'}>${body}</${heading?'h3':'p'}>`;
-  }).join('\n');
-}
+export const markdown=richText;
 
 const abs=url=>new URL(url,origin).href;
 const sourceFiles=(await readdir(join(root,'content/tracks'))).filter(x=>x.endsWith('.json'));
