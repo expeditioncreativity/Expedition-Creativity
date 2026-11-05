@@ -42,3 +42,13 @@ Tracks met oorspronkelijke Engelse tekst maar zonder Nederlandse verhaalbron beh
 De eerdere korte Engelse Blue Boy Planet-tekst is gearchiveerd. De nieuwe volledige vertaling gebruikt de vaste invoervelden. De bronhash van deze beschermde referentie wordt bij een goedgekeurde bronwijziging technisch bijgewerkt na inhoudelijke controle van de vertaling.
 
 Bestaande Engelse teksten staan nu in gewone bewerkbare Markdown. In rich-textmodus zie je tekst en opmaak in plaats van HTML-tags. De Nederlandse goedgekeurde BBP-pagina blijft beschermd. De testconcepten `cms-controletest` en `cms-templatecontrole-20261104`, plus de ongepubliceerde SEO-test van Chills of Antarctica, zijn controle-items en hoeven niet te worden gepubliceerd.
+
+## Uitgebreide tekstopmaak (voorbereid, nog niet live)
+
+Gebruik Nederlands als brontaal. Houd dezelfde URL-naam aan in de Engelse collectie. Technische gegevens worden eenmaal beheerd. Beide taalteksten kunnen onafhankelijk worden aangepast.
+
+De verhalende velden ondersteunen vet, cursief, twee niveaus tussenkoppen, lijsten (ook genest), genummerde lijsten, citaten, links en inline code. Titels, URL-namen, alt-teksten, onderschriften en SEO-velden blijven bewust gewone tekst: HTML in metadata wordt niet weergegeven als opmaak.
+
+Het editorpaneel toont een inhoudsvoorbeeld. De deploypreviewlink wijst naar de betreffende track. Nieuwe composities met status concept blijven verborgen op de gegenereerde website; het inhoudsvoorbeeld werkt wel zonder opslaan. Een volledige preview van nieuwe concepten en automatisch vertalen vereisen nog verdere implementatie.
+
+Automatisch vertalen is nog niet aangesloten. Hiervoor is een door de eigenaar gekozen vertaaldienst met een serversleutel nodig. Gewenste vervolgroute: per veld vertalen, opmaak behouden, resultaat als voorstel bekijken, bestaande vertaling uitsluitend bewust vervangen, als concept opslaan, volledige pagina bekijken en pas daarna publicatie bevestigen. De API-sleutel hoort in Netlify-omgevingsvariabelen, nooit in Git of de browser.

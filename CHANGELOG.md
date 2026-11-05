@@ -1,3 +1,10 @@
+## 2026-11-05 — CMS-tekstopmaak en inhoudsvoorbeeld (ontwikkeling)
+
+- Verhalende velden in NL/EN uitgebreid met lijsten, genummerde lijsten, citaten, links, inline code en extra tussenkoppen.
+- Gedeelde renderer met lokaal meegeleverde Marked 18.1.3 en licentie; geen externe scripts nodig op publieke pagina’s.
+- Editorinhoudsvoorbeeld toegevoegd; deploypreviewlinks wijzen naar de track.
+- Automatisch vertalen en de volledige preview van nieuwe concepten zijn nog niet geïmplementeerd: keuze en koppeling van een vertaaldienst ontbreken.
+
 ## 2026-11-04 — oude websitebestanden verwijderd op verzoek
 
 - 15 oude HTML-pagina’s, de oude style.css/search.js en de verouderde versie-readme verwijderd.
