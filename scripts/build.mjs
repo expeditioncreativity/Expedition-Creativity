@@ -49,6 +49,8 @@ for(const entry of await readdir(root,{withFileTypes:true}))if(entry.isFile() &&
 await cp(join(root,'src/assets'),join(out,'assets'),{recursive:true});
 await cp(join(root,'admin'),join(out,'admin'),{recursive:true});
 await buildCms(out);
+// Preview editors must never save into an obsolete development workflow.
+if(!production) await writeFile(join(out,'admin/index.html'),`<!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Open het live CMS</title><script>location.replace('https://expeditioncreativity.com/admin/'+location.hash)</script></head><body><p>Composities beheren gebeurt in het live CMS. Opgeslagen concepten blijven daar ongepubliceerd totdat je op Publiceren klikt.</p><a href="https://expeditioncreativity.com/admin/">Open het live CMS</a></body></html>`);
 const base=await read('src/templates/base.html');const trackTemplate=await read('src/templates/track.html');
 const assetVersion=createHash('sha256').update(await read('src/assets/design-system.css')).update(await read('src/assets/components.css')).update(await read('src/assets/site.js')).update(await read('src/assets/privacy.js')).digest('hex').slice(0,12);
 const englishTracks=(await Promise.all((await readdir(join(root,'content/en/tracks'))).filter(x=>x.endsWith('.json')).map(x=>json('content/en/tracks/'+x)))).filter(t=>t.status==='published'&&tracks.some(n=>n.slug===t.slug)&&missingTranslationSections(tracks.find(n=>n.slug===t.slug),t).length===0).map(t=>{const nl=tracks.find(n=>n.slug===t.slug);return {...t,year:nl.year,release_month:nl.release_month,video_id:nl.video_id,image:nl.image,duration:nl.duration};});
