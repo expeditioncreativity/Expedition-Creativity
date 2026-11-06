@@ -6,7 +6,6 @@ backend:
   auth_endpoint: auth
   site_domain: expeditioncreativity.netlify.app
   preview_context: netlify/expeditioncreativity/deploy-preview
-publish_mode: editorial_workflow
 locale: nl
 media_folder: src/assets/uploads
 public_folder: /assets/uploads
@@ -31,7 +30,7 @@ collections:
     value: false
   editor:
     preview: true
-  description: "Nederlandstalige composities. Opslaan bewaart een concept. Publiceren werkt de livewebsite bij na de build. Engels wordt afzonderlijk beheerd. Blue Boy Planet is beschermd."
+  description: "Nederlandstalige composities. Opslaan publiceert rechtstreeks na de build. Gebruik status concept om een nieuwe compositie verborgen te houden. Engels wordt afzonderlijk beheerd. Blue Boy Planet is beschermd."
   fields:
   - label: Titel
     name: title

@@ -11,8 +11,8 @@ const read=path=>readFile(path,'utf8');
 const manifest=JSON.parse(await read(join(out,'build-manifest.json')));
 const pages=await Promise.all(manifest.pages.map(async p=>({...p,html:await read(join(out,p.path,'index.html'))})));
 
-test('34 bilingual pages are built with the correct document language and no unresolved slots',()=>{
-  assert.equal(pages.length,34);
+test('36 bilingual pages are built with the correct document language and no unresolved slots',()=>{
+  assert.equal(pages.length,36);
   for(const p of pages){assert.ok(p.html.includes(`<html lang="${p.path.startsWith('/en/')?'en':'nl'}">`));assert.doesNotMatch(p.html,/\{\{[A-Z_]+\}\}/);assert.match(p.html,/<h1>/);assert.equal((p.html.match(/<h1>/g)||[]).length,1);}
 });
 test('all internal links, assets, gallery images and fragment targets exist',async()=>{
@@ -57,8 +57,8 @@ test('invalid CMS content fails early instead of generating broken URLs',()=>{
 test('supported CMS formatting is rendered and new prose is escaped',()=>{
   assert.equal(markdown('### Titel\n\nEen **belangrijk** en *zacht* thema.'),'<h3 class="subhead">Titel</h3>\n<p>Een <strong>belangrijk</strong> en <em>zacht</em> thema.</p>');assert.match(markdown('Tekst met <script>alert(1)</script>'),/&lt;script&gt;/);
 });
-test('CMS publishes to main through editorial workflow, protects approved text and pins its script',async()=>{
-  const config=await read(join(root,'admin/config.yml'));assert.match(config,/branch: main/);assert.match(config,/publish_mode: editorial_workflow/);assert.match(config,/filter:\s+field: approved\s+value: false/);assert.match(await read(join(root,'admin/index.html')),/decap-cms@3\.17\.3/);assert.match(await read(join(root,'admin/index.html')),/integrity="sha384-/);
+test('CMS publishes to main directly without editorial workflow, protects approved text and pins its script',async()=>{
+  const config=await read(join(root,'admin/config.yml'));assert.match(config,/branch: main/);assert.doesNotMatch(config,/publish_mode: editorial_workflow/);assert.match(config,/filter:\s+field: approved\s+value: false/);assert.match(await read(join(root,'admin/index.html')),/decap-cms@3\.17\.3/);assert.match(await read(join(root,'admin/index.html')),/integrity="sha384-/);
 });
 test('language alternates point to existing matching pages in both directions',()=>{
   for(const p of pages){
@@ -136,7 +136,7 @@ test('English default and legacy redirects have real targets and sitemap exclude
  assert.equal(new Set(rules.map(r=>r[0])).size,rules.length);
  for(const [from,to,status] of rules){assert.equal(status,'301!');assert.ok(pages.some(p=>p.path===to),from);assert.ok(!rules.some(r=>r[0]===to),'redirect chain '+from);}
  for(const t of tracks)assert.ok(rules.some(([from,to])=>from===`/track-${t.slug}.html`&&to===`/en/tracks/${t.slug}/`));
- const sitemap=await read(join(out,'sitemap.xml'));assert.equal((sitemap.match(/<loc>/g)||[]).length,34);assert.doesNotMatch(sitemap,/<loc>https:\/\/expeditioncreativity.com\/track-/);
+ const sitemap=await read(join(out,'sitemap.xml'));assert.equal((sitemap.match(/<loc>/g)||[]).length,36);assert.doesNotMatch(sitemap,/<loc>https:\/\/expeditioncreativity.com\/track-/);
  for(const p of pages)assert.match(p.html,/hreflang="x-default" href="https:\/\/expeditioncreativity.com\/en\//);
 });
 test('production metadata is enabled only in production context',async()=>{
@@ -181,7 +181,7 @@ test('visible track sections and navigation use consecutive numbers in both lang
   assert.deepEqual(nums,nums.map((_,i)=>i+1),p.path);
   const nav=[...p.html.matchAll(/class="index">(\d+)<\/span>/g)].map(m=>Number(m[1]));
   assert.deepEqual(nav,nav.map((_,i)=>i+1),p.path);
-  if(!p.path.includes('blue-boy-planet'))assert.doesNotMatch(p.html,/class="side-cta"/);
+  if(!p.path.includes('blue-boy-planet')&&!p.path.includes('turtle-travel'))assert.doesNotMatch(p.html,/class="side-cta"/);
  }
 });
 
@@ -224,3 +224,5 @@ test('obsolete root pages and their scripts are absent; all current pages still 
   for(const p of manifest.pages)await access(join(out,p.path,'index.html'));
   await access(join(out,'admin/index.html'));
 });
+
+test('full search includes narrative and fixed pages, excludes search itself',async()=>{const index=JSON.parse(await read(join(out,'assets/full-search.json')));assert.ok(index.some(p=>p.language==='nl'&&p.url.includes('turtle-travel')&&p.text.includes('Celestial')));assert.ok(index.some(p=>p.url==='/nl/achter-de-muziek/'));assert.ok(index.some(p=>p.language==='en'));assert.ok(index.every(p=>!p.url.endsWith('/search/')));for(const p of pages)assert.match(p.html,/class="global-search"/);});

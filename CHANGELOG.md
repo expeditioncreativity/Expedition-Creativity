@@ -1,3 +1,9 @@
+# 2026-11-06 — Zoeken en rechtstreeks publiceren
+
+- Volledige paginateksten doorzoekbaar via de navigatie, met Nederlandse en Engelse resultaatpagina’s.
+- CMS schrijft bij opslaan direct naar main; geen redactionele goedkeuringsstap.
+- H3 krijgt goud; partiturenblok beschikbaar voor alle tracks met status Op aanvraag.
+
 # 2026-11-05 — Editoratelier en herstel verouderde CMS-publicaties
 
 - Laatste Turtle Travel-orkestratie, instrumentatie en uitvoeringsinformatie van development meegenomen, inclusief auteurscorrectie in de muzikale reis.
