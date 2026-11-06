@@ -1,3 +1,12 @@
+# 2026-11-05 — Editoratelier en herstel verouderde CMS-publicaties
+
+- Laatste Turtle Travel-orkestratie, instrumentatie en uitvoeringsinformatie van development meegenomen, inclusief auteurscorrectie in de muzikale reis.
+- Engelse aanvullingen handmatig vertaald; geen automatische vertaaldienst.
+- CMS: modernere antraciet-gouden interface, ruimere rich-textvelden, hulp, woordtellers, doorhalen en extra kopniveaus.
+- Oude ontwikkelbranch-uitleg verwijderd; opslaan/publiceren-meldingen verduidelijkt.
+- Adminbestanden krijgen no-store; nieuwe editors waarschuwen bij een volgende versie zonder ongewenst herladen.
+- 32 geautomatiseerde tests geslaagd.
+
 # 2026-11-05 — CMS-publicatie naar live
 
 - CMS Publiceren richt zich op main; concepten blijven in editorial workflow.

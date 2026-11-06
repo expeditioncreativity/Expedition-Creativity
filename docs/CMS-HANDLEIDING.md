@@ -52,3 +52,12 @@ De verhalende velden ondersteunen vet, cursief, twee niveaus tussenkoppen, lijst
 Het editorpaneel toont een inhoudsvoorbeeld. De deploypreviewlink wijst naar de betreffende track. Nieuwe composities met status concept blijven verborgen op de gegenereerde website; het inhoudsvoorbeeld werkt wel zonder opslaan. Een volledige preview van nieuwe concepten en automatisch vertalen vereisen nog verdere implementatie.
 
 Automatisch vertalen is nog niet aangesloten. Hiervoor is een door de eigenaar gekozen vertaaldienst met een serversleutel nodig. Gewenste vervolgroute: per veld vertalen, opmaak behouden, resultaat als voorstel bekijken, bestaande vertaling uitsluitend bewust vervangen, als concept opslaan, volledige pagina bekijken en pas daarna publicatie bevestigen. De API-sleutel hoort in Netlify-omgevingsvariabelen, nooit in Git of de browser.
+
+
+## Editoratelier en vernieuwen
+
+De editor toont nu een antraciet-gouden kop, hulp bij de werkbalk en woord- en tekentellers per rich-textveld. Naast H3/H4 zijn H5/H6 en doorhalen beschikbaar. Gebruik H3 voor gewone tussenkoppen; extra niveaus alleen voor geneste inhoud.
+
+Sluit oude editor-tabbladen na een technische update en open `/admin/` opnieuw. Een reeds geopende oude editor blijft anders zijn oude configuratie gebruiken. Nieuwe versies worden zonder browsercache geladen; vanaf deze versie verschijnt bij een volgende editorupdate een waarschuwing. Er wordt nooit automatisch herladen: sla eerst op als concept, zodat je geen werk verliest.
+
+De melding na Publiceren bevestigt dat de build is aangevraagd, niet dat die al klaar is. Controleer de livepagina na enkele minuten. Nederlands en Engels blijven onafhankelijke velden zonder automatische vertaling.

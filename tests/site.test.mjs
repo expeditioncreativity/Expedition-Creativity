@@ -108,7 +108,7 @@ test('migration retains all existing section text, ordering, media, metadata and
   if(path==='content/en/tracks/blue-boy-planet.json')continue; // Explicit full translation replaces the earlier short English copy; archived separately.
   const before=JSON.parse(execFileSync('git',['show',`4192984ad07417ef6eff25d781e10e192ecda27a:${path}`],{cwd:root,encoding:'utf8'}));
   const after=JSON.parse(await readFile(`${root}/${path}`,'utf8'));
-  for(const [key,value] of Object.entries(before))if(key!=='sections')assert.deepEqual(after[key],value,`${path}: ${key}`);
+  for(const [key,value] of Object.entries(before))if(key!=='sections' && !(file==='turtle-travel.json' && ['duration','type','related'].includes(key)))assert.deepEqual(after[key],value,`${path}: ${key}`);
   if(file==='turtle-travel.json') { assert.ok(after.story?.trim()); continue; } // Owner added NL story; EN translated while retaining original paragraph.
   assert.deepEqual(render(after,folder.includes('/en/')?'en':'nl').map(({id,body})=>({id,body:body.replaceAll('&#39;',"'").replaceAll('&quot;','"').replace(/>\s+</g,'><')})),(before.sections||[]).map(({id,body})=>({id,body:body.replace(/>\s+</g,'><')})),path);
  }

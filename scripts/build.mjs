@@ -120,6 +120,6 @@ for(const [old,target] of [['/contact','/en/contact/'],['/behind-the-score','/en
 await writeFile(join(out,'_redirects'),redirects.map(([from,to])=>`${from} ${to} 301!`).join('\n')+'\n');
 await writeFile(join(out,'sitemap.xml'),'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+built.map(p=>`<url><loc>${origin}${p.path}</loc></url>`).join('')+'</urlset>');
 await writeFile(join(out,'robots.txt'),production?`User-agent: *\nAllow: /\nDisallow: /admin/\nSitemap: ${origin}/sitemap.xml\n`:'User-agent: *\nDisallow: /\n');
-await writeFile(join(out,'_headers'),`${production?'':'/*\n  X-Robots-Tag: noindex, nofollow\n'}/admin/*\n  X-Robots-Tag: noindex, nofollow\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n`);
+await writeFile(join(out,'_headers'),`${production?'':'/*\n  X-Robots-Tag: noindex, nofollow\n'}/admin/*\n  X-Robots-Tag: noindex, nofollow\n  Cache-Control: no-store, max-age=0\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n`);
 await writeFile(join(out,'build-manifest.json'),JSON.stringify({mode,pages:built,legacyRoutesPreserved:legacyMap.length},null,2));
 console.log(`Built ${built.length} bilingual pages; ${legacyMap.length} existing routes preserved; mode=${mode}.`);
