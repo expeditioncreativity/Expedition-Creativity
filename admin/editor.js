@@ -1,5 +1,5 @@
 (() => {
-  const version = '20261106.3';
+  const version = '20261106.4';
   const help = document.getElementById('ec-help');
   document.getElementById('ec-help-toggle').addEventListener('click', event => {
     help.hidden = !help.hidden;
