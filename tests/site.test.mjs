@@ -57,8 +57,8 @@ test('invalid CMS content fails early instead of generating broken URLs',()=>{
 test('supported CMS formatting is rendered and new prose is escaped',()=>{
   assert.equal(markdown('### Titel\n\nEen **belangrijk** en *zacht* thema.'),'<h3 class="subhead">Titel</h3>\n<p>Een <strong>belangrijk</strong> en <em>zacht</em> thema.</p>');assert.match(markdown('Tekst met <script>alert(1)</script>'),/&lt;script&gt;/);
 });
-test('CMS publishes to main directly without editorial workflow, protects approved text and pins its script',async()=>{
-  const config=await read(join(root,'admin/config.yml'));assert.match(config,/branch: main/);assert.doesNotMatch(config,/publish_mode: editorial_workflow/);assert.match(config,/filter:\s+field: approved\s+value: false/);assert.match(await read(join(root,'admin/index.html')),/decap-cms@3\.17\.3/);assert.match(await read(join(root,'admin/index.html')),/integrity="sha384-/);
+test('CMS saves drafts separately, protects approved text and pins its script',async()=>{
+  const config=await read(join(root,'admin/config.yml'));assert.match(config,/branch: main/);assert.match(config,/publish_mode: editorial_workflow/);assert.match(config,/filter:\s+field: approved\s+value: false/);assert.match(await read(join(root,'scripts/cms-workflow.mjs')),/decap-cms@3\.17\.3/);assert.match(await read(join(root,'scripts/cms-workflow.mjs')),/source integrity mismatch/);
 });
 test('language alternates point to existing matching pages in both directions',()=>{
   for(const p of pages){

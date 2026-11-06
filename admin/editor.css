@@ -62,3 +62,6 @@ input:focus,textarea:focus,[contenteditable="true"]:focus{outline:2px solid #c4a
 /* Decap 3.17 renders an inactive preview refresh button even when preview links
    are disabled. The dedicated live-page link replaces that whole control. */
 [class*="PreviewButtonContainer"] { display: none !important; }
+
+.ec-publish-button:not(:disabled){background:#ddb313!important;color:#202321!important;border-radius:8px!important}
+.ec-publish-button:disabled{opacity:.45;cursor:not-allowed}

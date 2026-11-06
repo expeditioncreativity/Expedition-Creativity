@@ -1,5 +1,5 @@
 (() => {
-  const version = '20261106.2';
+  const version = '20261106.3';
   const help = document.getElementById('ec-help');
   document.getElementById('ec-help-toggle').addEventListener('click', event => {
     help.hidden = !help.hidden;
@@ -16,8 +16,11 @@
   }
   window.addEventListener('hashchange',livePage);livePage();
   const status = document.getElementById('ec-editor-status');
+  // Draft isolation is handled by editorial_workflow; published content is visible
+  // only after the explicit Publish action merges that saved draft into main.
+  window.CMS.registerEventListener({ name: 'preSave', handler: ({entry}) => entry.get('data').set('status', 'published') });
   window.CMS.registerEventListener({ name: 'postSave', handler: () => {
-    status.textContent = 'Opgeslagen in GitHub. Livepublicatie is nog niet bevestigd. Open de livepagina na de build en herlaad die.';
+    status.textContent = 'Concept opgeslagen. De livewebsite is niet gewijzigd. Klik op Publiceren wanneer je klaar bent.';
   }});
   window.CMS.registerEventListener({ name: 'postPublish', handler: () => {
     status.textContent = 'Publicatie aangevraagd. De website wordt bijgewerkt na een geslaagde build; dit kan enkele minuten duren. Herlaad daarna de livepagina.';
