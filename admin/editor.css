@@ -58,3 +58,7 @@ input:focus,textarea:focus,[contenteditable="true"]:focus{outline:2px solid #c4a
  [class*="ToolbarSectionMeta"] a{font-size:12px;overflow-wrap:anywhere;max-width:calc(100% - 60px)}
  .ec-admin-header{gap:8px}#ec-live-page{font-size:11px;max-width:90px}.ec-subtitle{font-size:14px}
 }
+
+/* Decap 3.17 renders an inactive preview refresh button even when preview links
+   are disabled. The dedicated live-page link replaces that whole control. */
+[class*="PreviewButtonContainer"] { display: none !important; }
