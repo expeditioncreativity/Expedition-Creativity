@@ -1,5 +1,5 @@
 (() => {
-  const version = '20261105.2';
+  const version = '20261106.1';
   const help = document.getElementById('ec-help');
   document.getElementById('ec-help-toggle').addEventListener('click', event => {
     help.hidden = !help.hidden;
@@ -10,7 +10,7 @@
   });
   const status = document.getElementById('ec-editor-status');
   window.CMS.registerEventListener({ name: 'postSave', handler: () => {
-    status.textContent = 'Opgeslagen als concept. Gebruik Publiceren wanneer je wijziging live mag.';
+    status.textContent = 'Opgeslagen. De livewebsite wordt na de build bijgewerkt.';
   }});
   window.CMS.registerEventListener({ name: 'postPublish', handler: () => {
     status.textContent = 'Publicatie aangevraagd. De website wordt bijgewerkt na een geslaagde build; dit kan enkele minuten duren. Herlaad daarna de livepagina.';
