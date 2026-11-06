@@ -5,7 +5,8 @@ backend:
   base_url: https://api.netlify.com
   auth_endpoint: auth
   site_domain: expeditioncreativity.netlify.app
-  preview_context: netlify/expeditioncreativity/deploy-preview
+publish_mode: editorial_workflow
+show_preview_links: false
 locale: nl
 media_folder: src/assets/uploads
 public_folder: /assets/uploads
@@ -30,7 +31,7 @@ collections:
     value: false
   editor:
     preview: true
-  description: "Nederlandstalige composities. Opslaan publiceert rechtstreeks na de build. Gebruik status concept om een nieuwe compositie verborgen te houden. Engels wordt afzonderlijk beheerd. Blue Boy Planet is beschermd."
+  description: "Nederlandstalige composities. Opslaan bewaart een concept. Alleen Publiceren werkt de livewebsite bij na de build. Engels wordt afzonderlijk beheerd. Blue Boy Planet is beschermd."
   fields:
   - label: Titel
     name: title
@@ -285,13 +286,8 @@ collections:
     hint: Zonder keuze wordt de cover gebruikt.
   - label: Status
     name: status
-    widget: select
-    options:
-    - label: Concept
-      value: draft
-    - label: Zichtbaar na publiceren
-      value: published
-    default: draft
+    widget: hidden
+    default: published
   - name: content_version
     widget: hidden
     default: 2
@@ -566,13 +562,8 @@ collections:
       met een volledige vertaling; bestaande teksten worden nooit automatisch overschreven.
   - label: Status
     name: status
-    widget: select
-    options:
-    - label: Concept
-      value: draft
-    - label: Zichtbaar na publiceren
-      value: published
-    default: draft
+    widget: hidden
+    default: published
   - name: content_version
     widget: hidden
     default: 2

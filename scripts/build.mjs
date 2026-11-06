@@ -1,3 +1,4 @@
+import {buildCms} from './cms-workflow.mjs';
 import {richText} from '../src/assets/rich-text.js';
 import {linkIcons} from './icons.mjs';
 import { trackSections, validateEditorial, missingTranslationSections } from './track-content.mjs';
@@ -47,6 +48,7 @@ await rm(out,{recursive:true,force:true});await mkdir(out,{recursive:true});
 for(const entry of await readdir(root,{withFileTypes:true}))if(entry.isFile() && /\.(png|jpe?g|ico|svg|webmanifest)$/i.test(entry.name))await cp(join(root,entry.name),join(out,entry.name));
 await cp(join(root,'src/assets'),join(out,'assets'),{recursive:true});
 await cp(join(root,'admin'),join(out,'admin'),{recursive:true});
+await buildCms(out);
 const base=await read('src/templates/base.html');const trackTemplate=await read('src/templates/track.html');
 const assetVersion=createHash('sha256').update(await read('src/assets/design-system.css')).update(await read('src/assets/components.css')).update(await read('src/assets/site.js')).update(await read('src/assets/privacy.js')).digest('hex').slice(0,12);
 const englishTracks=(await Promise.all((await readdir(join(root,'content/en/tracks'))).filter(x=>x.endsWith('.json')).map(x=>json('content/en/tracks/'+x)))).filter(t=>t.status==='published'&&tracks.some(n=>n.slug===t.slug)&&missingTranslationSections(tracks.find(n=>n.slug===t.slug),t).length===0).map(t=>{const nl=tracks.find(n=>n.slug===t.slug);return {...t,year:nl.year,release_month:nl.release_month,video_id:nl.video_id,image:nl.image,duration:nl.duration};});
