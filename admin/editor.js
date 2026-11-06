@@ -6,7 +6,7 @@
     event.currentTarget.setAttribute('aria-expanded', String(!help.hidden));
   });
   document.getElementById('ec-reload').addEventListener('click', () => {
-    if (confirm('Heb je je wijzigingen als concept opgeslagen? Niet-opgeslagen wijzigingen kunnen verloren gaan.')) location.reload();
+    if (confirm('Heb je je wijzigingen opgeslagen? Niet-opgeslagen wijzigingen kunnen verloren gaan.')) location.reload();
   });
   const status = document.getElementById('ec-editor-status');
   window.CMS.registerEventListener({ name: 'postSave', handler: () => {

@@ -224,3 +224,5 @@ test('obsolete root pages and their scripts are absent; all current pages still 
   for(const p of manifest.pages)await access(join(out,p.path,'index.html'));
   await access(join(out,'admin/index.html'));
 });
+
+test('full search includes narrative and fixed pages, excludes search itself',async()=>{const index=JSON.parse(await read(join(out,'assets/full-search.json')));assert.ok(index.some(p=>p.language==='nl'&&p.url.includes('turtle-travel')&&p.text.includes('Celestial')));assert.ok(index.some(p=>p.url==='/nl/achter-de-muziek/'));assert.ok(index.some(p=>p.language==='en'));assert.ok(index.every(p=>!p.url.endsWith('/search/')));for(const p of pages)assert.match(p.html,/class="global-search"/);});

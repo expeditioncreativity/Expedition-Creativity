@@ -61,3 +61,9 @@ De editor toont nu een antraciet-gouden kop, hulp bij de werkbalk en woord- en t
 Sluit oude editor-tabbladen na een technische update en open `/admin/` opnieuw. Een reeds geopende oude editor blijft anders zijn oude configuratie gebruiken. Nieuwe versies worden zonder browsercache geladen; vanaf deze versie verschijnt bij een volgende editorupdate een waarschuwing. Er wordt nooit automatisch herladen: sla eerst op als concept, zodat je geen werk verliest.
 
 De melding na Publiceren bevestigt dat de build is aangevraagd, niet dat die al klaar is. Controleer de livepagina na enkele minuten. Nederlands en Engels blijven onafhankelijke velden zonder automatische vertaling.
+
+## Rechtstreeks publiceren (november 2026)
+
+De redactionele tussenstap is uitgeschakeld. Opslaan schrijft rechtstreeks naar main en start de Netlify-build. Een wijziging is live zodra die build slaagt, meestal na enkele minuten. Er is geen aparte previewgoedkeuring voor je eigen inhoud meer nodig. Status concept verbergt een volledige compositie; gebruik dit niet om wijzigingen aan een bestaande livepagina apart te bewaren. Nederlands en Engels blijven onafhankelijk.
+
+Kies Kop 3 (H3) voor gouden tussenkoppen. Het partiturenblok verschijnt wanneer Beschikbaarheid op Op aanvraag staat. Laat dit leeg als er geen partitureninformatie is.
