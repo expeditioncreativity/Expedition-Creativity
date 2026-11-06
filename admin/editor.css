@@ -47,3 +47,14 @@ input:focus,textarea:focus,[contenteditable="true"]:focus{outline:2px solid #c4a
 }
 
 [class*="ControlTopbar"] label{background:transparent!important;padding:0!important}
+
+#ec-live-page{color:#f4d775;font-size:13px;text-decoration:underline;margin-left:auto}#ec-live-page[hidden]{display:none}
+@media(max-width:799px){
+ [class*="EditorContainer"]>[class*="ToolbarContainer"]{display:flex!important;flex-direction:column!important;align-items:stretch!important;height:auto!important}
+ [class*="ToolbarSectionBackLink"],[class*="ToolbarSectionMain"],[class*="ToolbarSectionMeta"]{position:static!important;width:100%!important;flex:0 0 auto!important;height:auto!important;min-height:48px;box-sizing:border-box;padding:8px 12px!important;border:0!important;display:flex;flex-wrap:wrap;gap:8px}
+ [class*="ToolbarSectionBackLink"] a{white-space:normal!important;font-size:14px!important;line-height:1.4}
+ [class*="ToolbarSectionMain"] button{font-size:14px!important;min-height:40px}
+ [class*="ToolbarSectionMeta"]{justify-content:flex-end}
+ [class*="ToolbarSectionMeta"] a{font-size:12px;overflow-wrap:anywhere;max-width:calc(100% - 60px)}
+ .ec-admin-header{gap:8px}#ec-live-page{font-size:11px;max-width:90px}.ec-subtitle{font-size:14px}
+}

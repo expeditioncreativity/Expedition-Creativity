@@ -1,5 +1,5 @@
 (() => {
-  const version = '20261106.1';
+  const version = '20261106.2';
   const help = document.getElementById('ec-help');
   document.getElementById('ec-help-toggle').addEventListener('click', event => {
     help.hidden = !help.hidden;
@@ -8,9 +8,16 @@
   document.getElementById('ec-reload').addEventListener('click', () => {
     if (confirm('Heb je je wijzigingen opgeslagen? Niet-opgeslagen wijzigingen kunnen verloren gaan.')) location.reload();
   });
+  const liveLink=document.getElementById('ec-live-page');
+  function livePage(){
+    const match=location.hash.match(/^#\/collections\/(tracks|tracks_en)\/entries\/([a-z0-9-]+)$/);
+    liveLink.hidden=!match;
+    if(match) liveLink.href='https://expeditioncreativity.com/'+(match[1]==='tracks'?'nl/composities/':'en/tracks/')+match[2]+'/';
+  }
+  window.addEventListener('hashchange',livePage);livePage();
   const status = document.getElementById('ec-editor-status');
   window.CMS.registerEventListener({ name: 'postSave', handler: () => {
-    status.textContent = 'Opgeslagen. De livewebsite wordt na de build bijgewerkt.';
+    status.textContent = 'Opgeslagen in GitHub. Livepublicatie is nog niet bevestigd. Open de livepagina na de build en herlaad die.';
   }});
   window.CMS.registerEventListener({ name: 'postPublish', handler: () => {
     status.textContent = 'Publicatie aangevraagd. De website wordt bijgewerkt na een geslaagde build; dit kan enkele minuten duren. Herlaad daarna de livepagina.';

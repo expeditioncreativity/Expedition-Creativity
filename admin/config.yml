@@ -5,7 +5,8 @@ backend:
   base_url: https://api.netlify.com
   auth_endpoint: auth
   site_domain: expeditioncreativity.netlify.app
-  preview_context: netlify/expeditioncreativity/deploy-preview
+publish_mode: simple
+show_preview_links: false
 locale: nl
 media_folder: src/assets/uploads
 public_folder: /assets/uploads
