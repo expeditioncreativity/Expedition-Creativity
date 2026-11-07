@@ -340,6 +340,11 @@ collections:
     name: type
     widget: string
     hint: Gebruik de taal van deze collectie.
+  - label: Hoesafbeelding
+    name: image
+    widget: image
+    required: false
+    hint: Beheer deze miniatuur alleen wanneer de Nederlandse versie geen afbeelding bevat.
   - label: Inleiding
     name: intro
     widget: markdown
