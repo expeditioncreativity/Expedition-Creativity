@@ -1,30 +1,41 @@
 {
-  "title": "Pride of the Prairies",
-  "slug": "pride-of-the-prairies",
-  "year": 2023,
-  "world": "Old West",
-  "type": "Cinematic orchestral music",
-  "video_id": "Z-0cfttsGKw",
-  "image": "https://i.ytimg.com/vi/Z-0cfttsGKw/hqdefault.jpg",
-  "duration": "",
-  "description": "A western-inspired orchestral ride through untamed landscapes where wild horses roam freely across vast plains.",
-  "intro": "Western Orchestral Journey",
-  "related": [],
-  "status": "published",
-  "approved": false,
+  "translation_status": "legacy_source",
+  "journey": "Driven by the rhythm of the string section, we are swept away to the **American prairie**. One rhythmic passage quickly flows into another, creating a relentless stream of **short, pulsating notes**. This theme is propelled by a **powerful percussion section**, with timpani, bass drum, and snare drum taking centre stage.\n\nA new theme emerges, introducing us to the **diverse landscapes** of **Arizona** and its surrounding regions. Although this middle section adopts a slightly slower tempo, it also marks the entrance of the heavier brass instruments. Still out of sight, we can already hear the **galloping horses** approaching in the distance. This theme, heard here for the first time, will return later in the composition, providing a recognisable rhythmic motif.\n\nFinally... a moment to catch our breath. The galloping horses have come to a **standstill**, making way for a slower musical passage built around an entirely new theme. The **majestic mountain ranges** and untouched wilderness are once again brought vividly to life. But the tranquillity is short-lived...\n\nWith a series of powerful timpani strikes, a familiar theme returns, and the music surges forward once more. The wild horses break into a gallop again, now coming fully into view as they thunder across the vast open plains. The composition concludes with the same driving energy and tempo with which it began, because the **Wild West** is no place for the faint-hearted...",
+  "orchestration": "The **strings** provide a continuous foundation, featuring first and second violins, violas, cellos, and double basses. Separate legato and sustained passages are complemented by shorter articulations such as spiccato, pizzicato, and staccato. Additional ensemble layers reinforce the middle and lower registers, including combinations of cellos and double basses.\n\nThe **woodwinds** consist of flute, piccolo, oboe, clarinet, and bassoon. They are used both melodically, through longer flowing lines, and rhythmically, in short, articulated passages. The flutter-tongued flute layer adds a lighter, more agile colour to the orchestration.\n\nThe **brass section** plays a prominent role, featuring **French horns**, **trumpets**, **tenor** and **bass trombones**, and **tuba**. Alongside sustained and legato passages, staccato and marcato articulations provide rhythmic emphasis. Horn ensembles and combinations of multiple horns with cellos create a broader, more powerful orchestral sound. A combination of four horns and tuba further reinforces the short brass accents.\n\nThe orchestral core is enriched by **choral layers** featuring female voices, male voices, and a combined choir. These parts serve as an additional cinematic layer, enhancing the orchestra and adding depth and grandeur, particularly during the more expansive passages.\n\n**Piano and synthesizer** provide the keyboard-based accompaniment. The piano contributes a more immediate and recognisable attack, while the synthesizer introduces sustained harmonic textures and atmospheric layers.\n\nThe **percussion section** is extensive, featuring timpani, snare drum, bass drum, cymbals, tam-tam, tambourine, triangle, glockenspiel, marimba, tubular bells, chimes, and percussion swells. This wide range of instruments allows the music to combine relentless rhythmic drive with powerful cinematic impact.\n\nFinally, the production incorporates **electric guitar** and **bass guitar**, adding a contemporary, subtly amplified dimension to the otherwise orchestral instrumentation. The final mix also features additional orchestral hits and low-frequency percussion effects, providing extra emphasis during accents and transitions.",
   "release_month": 11,
-  "seo_title": "Pride of the Prairies | Expedition Creativity",
-  "source": "track-pride-of-the-prairies.html",
+  "related": [
+    "chills-of-antarctica",
+    "dreamcatcher"
+  ],
+  "slug": "pride-of-the-prairies",
+  "intro": "Who doesn’t love an authentic **Western film**? The thunder of **horses’ hooves**, the crack of gunfire, and the seemingly endless conflict between cowboys and the **Native American tribes** of days gone by. It was precisely this atmosphere I wanted to capture through music by composing a piece that brings these sounds to life...",
+  "instrumentation": "* **Strings**:\n\n  First and second violins, violas, cellos, and double basses; legato, sustained notes, spiccato, pizzicato, and staccato.\n* **Woodwinds**:\n\n  Flute, piccolo, oboe, clarinet, and bassoon; including flutter-tongued flute.\n* **Brass**:\n\n  French horns, trumpets, tenor and bass trombones, and tuba; solo and ensemble parts.\n* **String Ensembles**:\n\n  Combined cello and double bass parts, along with larger staccato ensembles.\n* **Choir**:\n\n  Female choir, male choir, and combined choral textures.\n* **Keyboards**:\n\n  Piano, organ, and synthesizer.\n* **Percussion**:\n\n  Timpani, snare drum, bass drum, glockenspiel, marimba, tubular bells, cymbals, tam-tam, tambourine, triangle, harp, and chimes.\n* **Additional Layers**:\n\n  Electric guitar, bass guitar, orchestral hits, low-frequency percussion, and cinematic percussion swells.",
+  "performance": {
+    "availability": "on_request",
+    "body": "*Pride of the Prairies* was composed and produced using **virtual orchestral instruments**. The current recording is a digital orchestral simulation (**orchestral mock-up**), rather than a live recording performed by a symphony orchestra.\n\nThe **musical score** is available upon request. Opportunities for a live performance, potential orchestral adaptations, and the availability of individual instrumental parts can all be discussed on a case-by-case basis.\n\nAre you a conductor, musician, or representative of a musical ensemble interested in performing *Pride of the Prairies*? Feel free to get in touch through the contact page. I would be delighted to explore the possibilities with you.",
+    "contact_cta": true
+  },
   "content_version": 2,
+  "world": "Old West",
+  "status": "published",
+  "section_order": [
+    "story"
+  ],
+  "duration": "",
+  "story": "Who doesn’t love an authentic **Western film**? The thunder of **horses’ hooves**, the crack of gunfire, and the seemingly endless conflict between cowboys and the **Native American tribes** of days gone by. It was precisely this atmosphere I wanted to capture through music by composing a piece that brings these sounds to life...\n\nUnlike other tracks such as [Chills of Antarctica](https://expeditioncreativity.com/en/tracks/chills-of-antarctica/), [Blue Boy Planet](https://expeditioncreativity.com/en/tracks/blue-boy-planet/), or [Symphonic Awakening](https://expeditioncreativity.com/en/tracks/symphonic-awakening/), I wanted to **pull out all the stops** with this composition, writing **powerful rhythmic riffs**, interspersed with and reinforced by **percussive hits** and an **uplifting cadence**. That exhilarating feeling of being swept away into a Wild West blockbuster movie, driven by the rousing rhythms of the American prairie... Yeehaw!",
+  "seo_title": "Pride of the Prairies | Expedition Creativity",
+  "approved": false,
+  "title": "Pride of the Prairies",
+  "type": "Cinematic orchestral music",
+  "source": "track-pride-of-the-prairies.html",
+  "image": "https://i.ytimg.com/vi/Z-0cfttsGKw/hqdefault.jpg",
+  "description": "A western-inspired orchestral ride through untamed landscapes where wild horses roam freely across vast plains.",
+  "year": 2023,
   "section_meta": {
     "story": {
       "id": "story",
       "title": "The Story"
     }
   },
-  "section_order": [
-    "story"
-  ],
-  "story": "Inspired by the Western plains on which wild horses roam freely, Pride of the Prairies combines rhythmic percussion, melodic violin motifs and whistling solo trumpets into a cinematic orchestral journey through untamed landscapes.",
-  "translation_status": "legacy_source"
+  "video_id": "Z-0cfttsGKw"
 }
