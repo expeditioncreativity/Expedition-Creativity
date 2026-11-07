@@ -25,10 +25,7 @@ collections:
   delete: false
   slug: '{{fields.slug}}'
   identifier_field: title
-  summary: '{{title}} · {{fields.year}} · {{status}}'
-  filter:
-    field: approved
-    value: false
+  summary: '{{fields.title}} · {{fields.year}} · {{status}}'
   editor:
     preview: true
   description: "Nederlandstalige composities. Opslaan bewaart een concept. Alleen Publiceren werkt de livewebsite bij na de build. Engels wordt afzonderlijk beheerd. Blue Boy Planet is beschermd."
@@ -318,7 +315,7 @@ collections:
   delete: false
   slug: '{{fields.slug}}'
   identifier_field: title
-  summary: '{{title}} · {{status}}'
+  summary: '{{fields.title}} · {{status}}'
   editor:
     preview: true
   description: Maak eerst de Nederlandse compositie. Gebruik hier exact dezelfde URL-naam. Video, afbeelding, jaar, maand en duur worden
@@ -343,6 +340,11 @@ collections:
     name: type
     widget: string
     hint: Gebruik de taal van deze collectie.
+  - label: Hoesafbeelding
+    name: image
+    widget: image
+    required: false
+    hint: Beheer deze miniatuur alleen wanneer de Nederlandse versie geen afbeelding bevat.
   - label: Inleiding
     name: intro
     widget: markdown
