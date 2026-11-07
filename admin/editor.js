@@ -1,5 +1,5 @@
 (() => {
-  const version = '20261106.4';
+  const version = '20261107.1';
   const help = document.getElementById('ec-help');
   document.getElementById('ec-help-toggle').addEventListener('click', event => {
     help.hidden = !help.hidden;
@@ -36,6 +36,23 @@
   window.addEventListener('focus', checkVersion);
   setInterval(checkVersion, 60000);
   checkVersion();
+  // The editorial workflow toolbar is retained internally for draft storage,
+  // but its review-status control is not part of this CMS workflow. Remove it
+  // whenever Decap mounts or re-renders the toolbar.
+  function hideReviewStatus() {
+    document.querySelectorAll('[class*="ToolbarContainer"], [class*="ToolbarSection"]').forEach(toolbar => {
+      toolbar.querySelectorAll('button,[role="button"],a,div').forEach(control => {
+        const label = (control.textContent || '').replace(/\s+/g, ' ').trim();
+        if (/^(Status:|Status\b|Concept\b|Wordt beoordeeld\b|Klaar\b)/i.test(label)) {
+          const item = control.closest('[class*="ToolbarSection"]') || control.parentElement;
+          if (item) item.style.display = 'none';
+        }
+      });
+    });
+  }
+  const toolbarObserver = new MutationObserver(hideReviewStatus);
+  toolbarObserver.observe(document.getElementById('nc-root') || document.body, {childList:true, subtree:true, characterData:true});
+  hideReviewStatus();
   // Count visible editor text only; never rewrite or serialize Decap's content.
   let frame;
   function counts() {
