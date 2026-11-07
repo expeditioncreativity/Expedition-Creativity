@@ -44,7 +44,7 @@ export function missingTranslationSections(nl,en){
   const translated=key==='performance'?hasContent(target?.body)||target?.contact_cta||target.availability&&target.availability!=='unspecified':hasContent(target);
   return populated&&!translated;
  });
- if((hasContent(nl.intro)||nl.sections?.some(s=>hasContent(s.body))||['story','journey','orchestration'].some(k=>hasContent(nl[k])))&&en.translation_status!=='complete')missing.push('translation_review');
+ if((hasContent(nl.intro)||nl.sections?.some(s=>hasContent(s.body))||['story','journey','orchestration'].some(k=>hasContent(nl[k])))&&en.translation_status!=='complete'&&en.translation_status!=='legacy_source')missing.push('translation_review');
  const sourceGallery=nl.sections?[...(source.behind||'').matchAll(/data-caption="([^"]*)"/g)].map(m=>({caption:m[1]})):(nl.gallery||[]);
  if(sourceGallery.length>(en.gallery||[]).length||sourceGallery.some((item,i)=>item.caption&&!hasContent(en.gallery?.[i]?.caption)))missing.push('gallery_translation');
  if(en.translation_source_hash&&en.translation_source_hash!==translationSourceHash(nl))missing.push('source_changed');
