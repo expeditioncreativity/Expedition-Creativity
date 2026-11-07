@@ -1,5 +1,5 @@
 (() => {
-  const version = '20261107.1';
+  const version = '20261107.2';
   const help = document.getElementById('ec-help');
   document.getElementById('ec-help-toggle').addEventListener('click', event => {
     help.hidden = !help.hidden;
@@ -40,14 +40,11 @@
   // but its review-status control is not part of this CMS workflow. Remove it
   // whenever Decap mounts or re-renders the toolbar.
   function hideReviewStatus() {
-    document.querySelectorAll('[class*="ToolbarContainer"], [class*="ToolbarSection"]').forEach(toolbar => {
-      toolbar.querySelectorAll('button,[role="button"],a,div').forEach(control => {
-        const label = (control.textContent || '').replace(/\s+/g, ' ').trim();
-        if (/^(Status:|Status\b|Concept\b|Wordt beoordeeld\b|Klaar\b)/i.test(label)) {
-          const item = control.closest('[class*="ToolbarSection"]') || control.parentElement;
-          if (item) item.style.display = 'none';
-        }
-      });
+    document.querySelectorAll('button,[role="button"],a,div,span').forEach(control => {
+      const label = (control.textContent || '').replace(/\s+/g, ' ').trim();
+      if (!/^(Status\s*:|Status\b|Concept\b|Wordt beoordeeld\b|Klaar\b)/i.test(label)) return;
+      const item = control.closest('button,[role="button"],[class*="ToolbarSection"]') || control.parentElement;
+      if (item && !item.querySelector('input,textarea,[contenteditable="true"]')) item.style.display = 'none';
     });
   }
   const toolbarObserver = new MutationObserver(hideReviewStatus);
