@@ -133,3 +133,5 @@ await writeFile(join(out,'build-manifest.json'),JSON.stringify({mode,pages:built
 console.log(`Built ${built.length} bilingual pages; ${legacyMap.length} existing routes preserved; mode=${mode}.`);
 
 await writeFile(join(out,'assets/full-search.json'),JSON.stringify(fullSearch));
+
+// Production rebuild trigger: ensure the latest CMS gallery data is rendered.
