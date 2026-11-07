@@ -3,7 +3,6 @@
   "orchestration": "De **strijkers** vormen een doorlopende basis met eerste en tweede violen, altviolen, cello’s en contrabassen. Er zijn afzonderlijke legato- en lange partijen, aangevuld met korte speelwijzen zoals spiccato, pizzicato en staccato. Daarnaast zijn er ensemblelagen voor het midden- en lage register, waaronder combinaties van cello’s en contrabassen.\n\nDe **houtblazers** bestaan uit fluit, piccolo, hobo, klarinet en fagot. Ze worden zowel melodisch in langere lijnen als ritmisch in korte, gearticuleerde passages ingezet. De flutter-fluitlaag voegt een lichtere, meer beweeglijke kleur toe.\n\nHet **koper** is sterk vertegenwoordigd. De set bevat hoorns, trompetten, tenor- en bastrombones en tuba. Naast lange en legato partijen zijn er staccato- en marcato-articulaties. Hoornensembles en combinaties van meerdere hoorns met cello’s zorgen voor een bredere, meer massieve orkestklank. Een combinatie van vier hoorns en tuba ondersteunt bovendien de korte koperaccenten.\n\nDe **orkestrale kern** wordt aangevuld met **koorlagen** voor vrouwenstemmen, mannenstemmen en een gecombineerde koorklank. Deze partijen functioneren als een **extra filmische laag** bovenop het orkest en versterken vooral de grotere passages.\n\n**Piano en synthesizer** vormen de toets instrumentale aanvulling. De piano zorgt voor een meer directe en herkenbare aanslag, terwijl de synthesizer langere harmonische of atmosferische lagen levert.\n\nDe **percussiesectie** is uitgebreid: pauken, snare drum, grote trom, bekkens, tamtam, tambourijn, triangel, glockenspiel, marimba, buisklokken, chimes en percussieve zwellingen. Daardoor kan de muziek zowel ritmische drive als brede filmische impact krijgen.\n\nTen slotte bevat de productie **elektrische gitaar** en **basgitaar**. Die voegen een hedendaagse, licht versterkte laag toe binnen de verder orkestrale bezetting. De gemixte track gebruikt daarnaast aanvullende orkestrale hits en lage percussieve effecten voor accenten en overgangen.",
   "release_month": 11,
   "related": [
-    "blue-boy-planet",
     "chills-of-antarctica",
     "dreamcatcher"
   ],
@@ -16,6 +15,12 @@
     "contact_cta": true
   },
   "content_version": 2,
+  "gallery": [
+    {
+      "image": "/assets/uploads/video-screenshot-01.png",
+      "alt": "Titel"
+    }
+  ],
   "world": "Old West",
   "status": "published",
   "section_order": [],
