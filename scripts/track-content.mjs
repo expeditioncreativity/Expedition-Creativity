@@ -39,9 +39,9 @@ export function missingTranslationSections(nl,en){
  if(nl.sections){source.instrumentation=(source.orchestration?.match(/<div class="instrument-box">[\s\S]*/)||[])[0]||'';}
  const missing=['intro','story','journey','orchestration','instrumentation','performance','behind'].filter(key=>{
   const original=key==='intro'?nl.intro:source[key];
-  const populated=key==='performance'?hasContent(original?.body||original)||original?.contact_cta||original?.availability&&original.availability!=='unspecified':key==='behind'?hasContent(original)||(nl.gallery||[]).length:hasContent(original);
+  // Keep the optional prose field separate from the optional image gallery.\n  const populated=key==='performance'?hasContent(original?.body||original)||original?.contact_cta||original?.availability&&original.availability!=='unspecified':hasContent(original);
   const target=en[key];
-  const translated=key==='performance'?hasContent(target?.body)||target?.contact_cta||target?.availability&&target.availability!=='unspecified':key==='behind'?hasContent(target)||(en.gallery||[]).length:hasContent(target);
+  const translated=key==='performance'?hasContent(target?.body)||target?.contact_cta||target.availability&&target.availability!=='unspecified':hasContent(target);
   return populated&&!translated;
  });
  if((hasContent(nl.intro)||nl.sections?.some(s=>hasContent(s.body))||['story','journey','orchestration'].some(k=>hasContent(nl[k])))&&en.translation_status!=='complete')missing.push('translation_review');
